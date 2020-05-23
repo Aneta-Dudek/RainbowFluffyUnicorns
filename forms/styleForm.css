@@ -40,6 +40,7 @@
 
 .form-container {
     font-family: Ubuntu;
+    font-weight: lighter;
     margin: 50px auto;
     max-width: 800px;
     padding: 0px 90px 50px;

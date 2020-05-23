@@ -30,6 +30,7 @@
     width: 100%; /* Full width */
     top: 0; /* Position the navbar at the top of the page */
     background: linear-gradient(90deg, var(--topnav-background-color-1) 50%, var(--topnav-background-color-2) 50%);
+    min-width: 560px;
 }
 
 /* Add a black background color to the top navigation */

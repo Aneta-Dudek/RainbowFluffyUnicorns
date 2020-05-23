@@ -176,6 +176,7 @@ body {
     color: #838383;
     background-color: #fafafa;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
 }
 
 h2 {
@@ -336,9 +337,8 @@ p {
   /* Apply styles
   ================================== */
   .Rtable {
-    position: relative;
-    top: 3px;
-    left: 3px;
+    margin: 3px 0 0 3px;
+
   }
   .Rtable-cell {
     margin: -3px 0 0 -3px;

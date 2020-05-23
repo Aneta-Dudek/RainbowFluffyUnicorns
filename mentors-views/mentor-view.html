@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -6,124 +6,131 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>View Mentors</title>
     <link rel="stylesheet" href="../views/assets/styles/app.css" />
-    <script src="scriptMenu.js" defer></script>
+    <script src="../views/components/topmenu/scriptMenu.js" defer></script>
   </head>
 
-<body>
-    <div class="topnavbar">
-        <div class="topnav" id="mytopnav">
-            <a href="#qstore" class="mytopnav-item">QUESTSTORE</a>
-            <a href="myprofile.html" class="mytopnav-item">PROFILE</a>
-            <a href="student-view.html" class="mytopnav-item active">VIEWS</a>
-            <a href="shop-view.html" class="mytopnav-item">SHOP</a>
-            <a href="contact.html" class="mytopnav-item">CONTACT</a>
-            <a href="javascript:void(0);" class="mytopnav-icon" onclick="responsiveTopBar()">
-                <i class="fa fa-bars"></i>
-            </a>
-        </div>
-    </div>
-<div class="container center shadow">
-    <div class="menu-container">
-        <div class="inner-menu-container admin">
-            <img class="avatar-image" src="assets/avatars/avatar2.png" />
-            <div class="details-wrapper details-wrapper-side-menu">
-                <div class="name">Name Surname</div>
-                <div class="role">Administrator</div>
-            </div>
-        </div>
-        <div class="inner-menu-container list">
-            <a href="student-view.html"class="single-menu-container">
-                <img class="symbol icon" src="assets/icons/student.png"/>
-                <img class="symbol active-icon" src="assets/icons/student-active.png"/>
-                <div class="singe-menu-name">students</div>
-            </a>
-            <a href="shop-view.html" class="single-menu-container">
-                <img class="symbol icon" src="assets/icons/animals.png" />
-                <img class="symbol active-icon" src="assets/icons/animals-active.png" />
-                <div class="singe-menu-name">artifacts</div>
-            </a>
-            <a href="mentor-view.html"class="single-menu-container active-side">
-                <img class="symbol icon" src="assets/icons/duck.png" />
-                <img class="symbol active-icon" src="assets/icons/duck-active.png" />
-                <div class="singe-menu-name">mentors</div>
-            </a>
-            <a href="class-view.html" class="single-menu-container">
-                <img class="symbol icon" src="assets/icons/web.png" />
-                <img class="symbol active-icon" src="assets/icons/web-active.png" />
-                <div class="singe-menu-name">classes</div>
-            </a>
-            <a href="quest-view.html" class="single-menu-container">
-                <img class="symbol icon" src="assets/icons/king.png" />
-                <img class="symbol active-icon" src="assets/icons/king-active.png" />
-                <div class="singe-menu-name">quests</div>
-            </a>
-            <a href="team-view.html" class="single-menu-container">
-                <img class="symbol icon" src="assets/icons/quaver.png" />
-                <img class="symbol active-icon" src="assets/icons/quaver-active.png" />
-                <div class="singe-menu-name">teams</div>
-            </a>
-            <a href="experience-view.html" class="single-menu-container">
-                <img class="symbol icon" src="assets/icons/guest-star.png" />
-                <img class="symbol active-icon" src="assets/icons/guest-star-active.png" />
-                <div class="singe-menu-name">experience</div>
-            </a>
+  <body>
+  <div class="topnavbar">
+      <div class="topnav" id="mytopnav">
+          <a href="#qstore" class="mytopnav-item">QUESTSTORE</a>
+          <a href="myprofile.html" class="mytopnav-item">PROFILE</a>
+          <a href="student-view.html" class="mytopnav-item active">VIEWS</a>
+          <a href="contact.html" class="mytopnav-item">CONTACT</a>
+          <a href="logout.html" class="mytopnav-item">LOG OUT</a>
+          <a href="javascript:void(0);" class="mytopnav-icon" onclick="responsiveTopBar()">
+              <i class="fa fa-bars"></i>
+          </a>
+      </div>
+  </div>
+      <div class="container center shadow">
+          <div class="menu-container">
+              <div class="inner-menu-container admin">
+                  <img class="avatar-image" src="assets/avatars/avatar2.png" />
+                  <div class="details-wrapper details-wrapper-side-menu">
+                      <div class="name">Name Surname</div>
+                      <div class="role">Administrator</div>
+                  </div>
+              </div>
+              <div class="inner-menu-container list">
+                  <a href="student-view.html" class="single-menu-container">
+                      <img class="symbol icon" src="assets/icons/student.png" />
+                      <img class="symbol active-icon" src="assets/icons/student-active.png" />
+                      <div class="singe-menu-name">students</div>
+                  </a>
+                  <a href="shop-view.html" class="single-menu-container">
+                      <img class="symbol icon" src="assets/icons/animals.png" />
+                      <img class="symbol active-icon" src="assets/icons/animals-active.png" />
+                      <div class="singe-menu-name">artifacts</div>
+                  </a>
+                  <a href="mentor-view.html" class="single-menu-container active-side">
+                      <img class="symbol icon" src="assets/icons/duck.png" />
+                      <img class="symbol active-icon" src="assets/icons/duck-active.png" />
+                      <div class="singe-menu-name">mentors</div>
+                  </a>
+                  <a href="class-view.html" class="single-menu-container">
+                      <img class="symbol icon" src="assets/icons/web.png" />
+                      <img class="symbol active-icon" src="assets/icons/web-active.png" />
+                      <div class="singe-menu-name">classes</div>
+                  </a>
+                  <a href="quest-view.html" class="single-menu-container">
+                      <img class="symbol icon" src="assets/icons/king.png" />
+                      <img class="symbol active-icon" src="assets/icons/king-active.png" />
+                      <div class="singe-menu-name">quests</div>
+                  </a>
+                  <a href="team-view.html" class="single-menu-container">
+                      <img class="symbol icon" src="assets/icons/quaver.png" />
+                      <img class="symbol active-icon" src="assets/icons/quaver-active.png" />
+                      <div class="singe-menu-name">teams</div>
+                  </a>
+                  <a href="experience-view.html" class="single-menu-container">
+                      <img class="symbol icon" src="assets/icons/guest-star.png" />
+                      <img class="symbol active-icon" src="assets/icons/guest-star-active.png" />
+                      <div class="singe-menu-name">experience</div>
+                  </a>
 
-        </div>
-    </div>    
-    <div class="view">
-        <div class="padding"> 
-            <h2 class="blue margin-top">Mentors View</h2>
-            <div class="sort-button margin-top">sort by ⮟</div>
-            <div class="list-container">
-                    <div class="card-list green">
-                        <div class="table-container">
-                        <h3 class="list-element color">Name Surname ⮝</h3>
-                        <div class="Rtable Rtable--2cols Rtable--collapse">
+              </div>
+          </div>
+          <div class="view">
+              <div class="padding">
+                  <h2 class="blue margin-top">Mentors View</h2>
+                  <div class="sort-button margin-top">sort by ⮟</div>
+                  <div class="list-container">
+                      <div class="card-list green">
+                          <div class="table-container">
+                              <h3 class="list-element color">Name Surname ⮝</h3>
+                              <div class="Rtable Rtable--2cols Rtable--collapse">
 
-                            <div class="Rtable-cell Rtable-cell--default nogrow"><h3>Details:</h3></div>
-                            <div class="Rtable-cell Rtable-cell--default nogrow"><p>Java Mentor</p></div>
+                                  <div class="Rtable-cell Rtable-cell--default nogrow"><h3>Details:</h3></div>
+                                  <div class="Rtable-cell Rtable-cell--default nogrow"><p>Java Mentor</p></div>
 
-                            <div class="Rtable-cell Rtable-cell--default nogrow"><h3>Email:</h3></div>
-                            <div class="Rtable-cell Rtable-cell--default nogrow"><p>mentor@questore.com</p></div>
-                
-                        
-                            <div class="Rtable-cell Rtable-cell--default nogrow"><h3>Stack:</h3></div>
-                            <div class="Rtable-cell Rtable-cell--default nogrow"><p>Java, JS, HTML, CSS, SQL</p></div>
-
-                            <div class="Rtable-cell Rtable-cell--default nogrow"><h3>Classes:</h3></div>
-                            <div class="Rtable-cell Rtable-cell--default nogrow"><p>Advanced, Web in Java with SQL</p></div>
-                        </div>
-                    </div>
-                    <div class="image-container"><img class="avatar" src=assets/avatars/avatar.png></div>
-                </div>
-
-                <div class="card-list blue"><h3 class="list-element color">Name Surname ⮟</h3>
-                </div>
-
-                <div class="card-list pink"><h3 class="list-element color">Name Surname ⮟</h3>
-                </div>
-
-                <div class="card-list purple"><h3 class="list-element color">Name Surname ⮟</h3>
-                </div>
-
-                <div class="card-list yellow"><h3 class="list-element color">Name Surname ⮟</h3>
-                </div>
-
-                <div class="card-list green"><h3 class="list-element color">Name Surname ⮟</h3>
-                </div>
-                
-                <div class="card-list blue"><h3 class="list-element color">Name Surname ⮟</h3>
-                </div>
-
-                <div class="card-list pink"><h3 class="list-element color">Name Surname ⮟</h3>
-                </div>
-            </div>
-
-            <button class="small right purple-btn">new account</button><button class="small right red-btn">delete</button><button class="small right green-btn">edit</button>
-        </div>
+                                  <div class="Rtable-cell Rtable-cell--default nogrow"><h3>Email:</h3></div>
+                                  <div class="Rtable-cell Rtable-cell--default nogrow"><p>mentor@questore.com</p></div>
 
 
+                                  <div class="Rtable-cell Rtable-cell--default nogrow"><h3>Stack:</h3></div>
+                                  <div class="Rtable-cell Rtable-cell--default nogrow"><p>Java, JS, HTML, CSS, SQL</p></div>
 
-    </div>
-</div>
-</body>
+                                  <div class="Rtable-cell Rtable-cell--default nogrow"><h3>Classes:</h3></div>
+                                  <div class="Rtable-cell Rtable-cell--default nogrow"><p>Advanced, Web in Java with SQL</p></div>
+                              </div>
+                          </div>
+                          <div class="image-container"><img class="avatar" src=assets/avatars/avatar.png></div>
+                      </div>
+
+                      <div class="card-list blue">
+                          <h3 class="list-element color">Name Surname ⮟</h3>
+                      </div>
+
+                      <div class="card-list pink">
+                          <h3 class="list-element color">Name Surname ⮟</h3>
+                      </div>
+
+                      <div class="card-list purple">
+                          <h3 class="list-element color">Name Surname ⮟</h3>
+                      </div>
+
+                      <div class="card-list yellow">
+                          <h3 class="list-element color">Name Surname ⮟</h3>
+                      </div>
+
+                      <div class="card-list green">
+                          <h3 class="list-element color">Name Surname ⮟</h3>
+                      </div>
+
+                      <div class="card-list blue">
+                          <h3 class="list-element color">Name Surname ⮟</h3>
+                      </div>
+
+                      <div class="card-list pink">
+                          <h3 class="list-element color">Name Surname ⮟</h3>
+                      </div>
+                  </div>
+
+                  <button class="small right purple-btn">new account</button><button class="small right red-btn">delete</button><button class="small right green-btn">edit</button>
+              </div>
+
+
+
+          </div>
+      </div>
+  </body>

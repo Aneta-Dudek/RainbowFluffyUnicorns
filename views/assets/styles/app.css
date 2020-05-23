@@ -19,7 +19,10 @@
 .container {
     max-width: 1140px;
     display: flex;
-    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.25);
+}
+
+.shadow {
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.25);
 }
 
 .menu {
@@ -495,3 +498,21 @@ p {
 .active-icon {
   display: none;
 }
+
+.single-menu-container.active-side .icon {
+  display: none;
+}
+
+.single-menu-container.active-side .active-icon {
+  display: block;
+}
+
+.active-side {
+  color: #49C8D9;
+  background-color: #fafafa;
+}
+
+.single-menu-container:hover {
+  background-color: #DADADA;
+}
+

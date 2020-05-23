@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Rainbow Fluffy Unicorns">
+    <title>QuestStore</title>
+
+    <link rel="stylesheet" href="styleForm.css" type="text/css" />
+    <!--<link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Salsa:regular,bold&subset=Latin">-->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:regular&subset=Latin">
+    <!-- Load an icon library to show a hamburger menu (bars) on small screens -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $("#includedContent").load("http://127.0.0.1:8000/FormButtons.html");
+        });
+    </script>
+
+</head>
+<body>
+    <div class="form-container">
+        <form class="login-form">
+
+            <div class="form-header full-width">New Artifact</div>
+            <p class="full-width form-element">
+                <label for="fname" class="form-label">Name</label>
+                <input type="text" id="fname" name="fname" class="form-input" value="John">
+            </p>
+            <p class="full-width form-element">
+                <label for="lname" class="form-label">Description</label>
+                <input type="text" id="lname" name="lname" class="form-input" value="Doe">
+            </p>
+            <p class="full-width form-element">
+                <label for="pass" class="form-label">Price</label>
+                <input type="text" id="pass" name="pass" class="form-input" value="">
+            </p>
+            <p class="full-width form-element">
+                <label for="reppass" class="form-label">Category</label>
+                <select id="reppass" name="reppass" class="form-select">
+                    <option value="item1" class="form-select-option">item1</option>
+                    <option value="item2" class="form-select-option">item2</option>
+                    <option value="item3" class="form-select-option">item3</option>
+                    <option value="item4" class="form-select-option">item4</option>
+                </select>
+            </p>
+            <!--<div id="includedContent"></div>-->
+            <input type="submit" name="action" class="form-button" value="confirm">
+            <input type="submit" name="action" class="form-button" value="back">
+
+        </form>
+    </div>
+</body>
+</html>

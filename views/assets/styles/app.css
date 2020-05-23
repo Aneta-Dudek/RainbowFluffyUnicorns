@@ -436,11 +436,10 @@ p {
   /*SIDE-MENU*/
 
 .menu-container {
-  width: 200px;
-  min-width: 200px;
+  min-width: 230px;
   background: #ECECEC;
   padding-top: 20px;
-  padding-left: 20px;
+  padding-left: 30px;
 }
 
 .inner-menu-container.admin {
@@ -458,11 +457,11 @@ p {
 }
 
   .details-wrapper-side-menu .name {
-      font-size: 0.8em;
+      font-size: 1em;
   }
 
   .details-wrapper-side-menu .role {
-      font-size: 0.5em;
+      font-size: 0.7em;
   }
 
 .inner-menu-container.list {

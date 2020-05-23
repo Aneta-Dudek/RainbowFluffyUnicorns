@@ -35,6 +35,10 @@
   margin-top: 10px;
 }
 
+.small-margin-left {
+  margin-left: 10px;
+}
+
 .padding {
     padding: 10px 40px;
 }
@@ -142,6 +146,10 @@
 .pink {
     color: #D65DBB;
     border-color: #D65DBB;
+}
+
+.elements-list {
+  padding: 20px 0px;
 }
 
 body {

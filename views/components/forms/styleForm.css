@@ -4,12 +4,12 @@
 
 @font-face {
     font-family: Agus;
-    src: url(../fonts/Agus/AgusSans-Regular.woff);
+    src: url(../../assets/fonts/Agus/AgusSans-Regular.woff);
 }
 
 @font-face {
     font-family: Ubuntu;
-    src: url(../fonts/Ubuntu/ubuntu-v14-latin-regular.woff);
+    src: url(../../assets/fonts/Ubuntu/ubuntu-v14-latin-regular.woff);
 }
 
 .form-container {

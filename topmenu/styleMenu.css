@@ -1,3 +1,6 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
+@import url(http://fonts.googleapis.com/css?family=Salsa:regular,bold&subset=Latin);
+
 .topnavbar {
     --topnav-font-regular-color: #f2f2f2;
     --topnav-background-color-1: #F0D266;
@@ -10,7 +13,6 @@
     --topnav-item4-color: #845DD6;
     --topnav-item5-color: #D65DBB;
 }
-
 
 .topnavbar {
     font-family: Salsa;

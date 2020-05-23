@@ -1,5 +1,12 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
-@import url(http://fonts.googleapis.com/css?family=Salsa:regular,bold&subset=Latin);
+@font-face {
+    font-family: Agus;
+    src: url(../fonts/Agus/AgusSans-Regular.woff);
+}
+@font-face {
+    font-family: Ubuntu;
+    src: url(../fonts/Ubuntu/ubuntu-v14-latin-regular.woff);
+}
 
 .topnavbar {
     --topnav-font-regular-color: #f2f2f2;
@@ -15,7 +22,7 @@
 }
 
 .topnavbar {
-    font-family: Salsa;
+    font-family: Agus;
     position: sticky; /* Set the navbar to fixed position */
     width: 100%; /* Full width */
     top: 0; /* Position the navbar at the top of the page */

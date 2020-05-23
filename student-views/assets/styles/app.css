@@ -1,5 +1,14 @@
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
-@import url(http://fonts.googleapis.com/css?family=Salsa:regular,bold&subset=Latin);
+
+@font-face {
+    font-family: Agus;
+    src: url(../fonts/Agus/AgusSans-Regular.woff);
+}
+
+@font-face {
+    font-family: Ubuntu;
+    src: url(../fonts/Ubuntu/ubuntu-v14-latin-regular.woff);
+}
 
 .container {
     max-width: 1140px;
@@ -149,7 +158,8 @@
 }
 
 .elements-list {
-  padding: 20px 0px;
+    padding: 20px 0px;
+    text-align: center;
 }
 
 body {
@@ -194,10 +204,10 @@ h3 {
 }
 
 .artifact-container {
-  display: flex;
-  align-content: space-around;
-  flex-wrap: wrap;
-
+    display: flex;
+    align-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .artifact {
@@ -412,7 +422,7 @@ p {
     margin-bottom: 1em;
   }
 
-  /* topnavbar */
+/****** MENU STYLING ******/
 
 .topnavbar {
     --topnav-font-regular-color: #f2f2f2;
@@ -428,7 +438,7 @@ p {
 }
 
 .topnavbar {
-    font-family: Salsa;
+    font-family: Agus;
     position: sticky; /* Set the navbar to fixed position */
     width: 100%; /* Full width */
     top: 0; /* Position the navbar at the top of the page */
@@ -442,10 +452,9 @@ p {
     margin-left: auto;
     max-width: 1100px;
     display: flex;
-    
 }
 
-/* Style the links inside the navigation bar */
+    /* Style the links inside the navigation bar */
     .topnav .mytopnav-icon,
     .topnav .mytopnav-item {
         float: left;
@@ -465,12 +474,9 @@ p {
     font-size: 40px;
 }
 
-
-
 .mytopnav-item:not(:first-child) {
     font-size: 25px;
 }
-
 
 /* Hide the link that should open and close the topnav on small screens */
 .topnav .mytopnav-icon {
@@ -540,7 +546,7 @@ p {
         background: var(--topnav-background-color-2);
         display: inline-flex;
         max-width: 20px;
-        color: black;
+        color: var(--topnav-font-regular-color);
         font-size: 25px;
     }
 }
@@ -560,9 +566,9 @@ p {
             padding: 26px 16px 26px 16px;
         }
 
-    .topnav.responsive .mytopnav-item {
-        float: none;
-        display: block;
-        text-align: left;
-    }
+        .topnav.responsive .mytopnav-item {
+            float: none;
+            display: block;
+            text-align: left;
+        }
 }

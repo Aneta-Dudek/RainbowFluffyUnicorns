@@ -19,6 +19,7 @@
 .container {
     max-width: 1140px;
     display: flex;
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.25);
 }
 
 .menu {
@@ -186,10 +187,10 @@ h3 {
 }
 
 .list-element {
-    color: black;
-    font-weight: lighter;
-    font-size: 18px;
-    margin: 0px;
+  color: #838383;
+  font-weight: lighter;
+  font-size: 18px;
+  margin: 0px;
 }
 
 .color:hover {
@@ -232,14 +233,14 @@ h3 {
 }
 
 .card-list {
-    margin: auto;
-    margin-top: 10px;
-    border-left: 15px solid;
-    background-color: white;
-    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.25);
-    padding: 5px 20px;
-    overflow: auto;
-    border-radius: 5px;
+  margin: auto;
+  margin-top: 10px;
+  border-left: 15px solid;
+  background-color: white;
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.25);
+  padding: 10px 20px;
+  overflow: auto;
+  border-radius: 5px;
 }
 
 .list-container {
@@ -358,10 +359,11 @@ p {
   }
 
   .Rtable-cell--default {
-      color: black;
-      background-color: inherit;
-      font-size: 12px;
+    color: #838383;
+    background-color: inherit;
+    font-size: 12px;
   }
+
   .Rtable-cell--medium {
     background-color: #b8c0c8;
     border-color: #a9b3bc;
@@ -427,3 +429,69 @@ p {
   .no-flexbox .Rtable > .Rtable-cell--foot {
     margin-bottom: 1em;
   }
+
+  /*SIDE-MENU*/
+
+.menu-container {
+  width: 200px;
+  min-width: 200px;
+  background: #ECECEC;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+
+.inner-menu-container.admin {
+  display: flex;
+}
+
+.avatar-image {
+  margin-left: 28px;
+  height: 50px;
+  width: 50px;
+}
+
+.details-wrapper-side-menu {
+  margin: auto 0 auto 15px;
+}
+
+  .details-wrapper-side-menu .name {
+      font-size: 0.8em;
+  }
+
+  .details-wrapper-side-menu .role {
+      font-size: 0.5em;
+  }
+
+.inner-menu-container.list {
+  display: flex;
+  flex-direction: column;
+}
+
+.single-menu-container {
+  display: flex;
+  margin-left: 25px;
+  margin-bottom: 5px;
+}
+
+  .single-menu-container:first-child {
+      margin-top: 20px;
+  }
+
+.symbol {
+  width: 25px;
+  height: 25px;
+  margin: 5px 0 5px 15px;
+}
+
+.singe-menu-name {
+  margin: 7px 0 5px 15px;
+  vertical-align: middle;
+}
+
+.singe-menu-name:focus {
+  color:#49c8d9
+}
+
+.active-icon {
+  display: none;
+}

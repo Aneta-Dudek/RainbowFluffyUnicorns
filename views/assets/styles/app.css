@@ -452,6 +452,11 @@ p {
   width: 50px;
 }
 
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .details-wrapper-side-menu {
   margin: auto 0 auto 15px;
 }

@@ -1,3 +1,4 @@
+/****** MENU STYLING ******/
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css);
 @font-face {
     font-family: Agus;
@@ -7,6 +8,7 @@
     font-family: Ubuntu;
     src: url(../fonts/Ubuntu/ubuntu-v14-latin-regular.woff);
 }
+
 
 .topnavbar {
     --topnav-font-regular-color: #f2f2f2;
@@ -134,7 +136,7 @@
         background: var(--topnav-background-color-2);
         display: inline-flex;
         max-width: 20px;
-        color: black;
+        color: var(--topnav-font-regular-color);
         font-size: 25px;
     }
 }

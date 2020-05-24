@@ -224,6 +224,7 @@ h3 {
     align-content: space-around;
     flex-wrap: wrap;
     justify-content: center;
+    line-height: 1.4;
 }
 
 .artifact {
@@ -250,6 +251,7 @@ h3 {
   padding: 10px 20px;
   overflow: auto;
   border-radius: 5px;
+  line-height: 1.4;
 }
 
 .list-container {

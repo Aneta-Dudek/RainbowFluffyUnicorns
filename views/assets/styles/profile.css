@@ -265,6 +265,7 @@ body {
 
 .item-subname {
     font-size: 0.6em;
+    color: #838383;
 }
 
 .item-title {
@@ -387,6 +388,10 @@ a {
         margin: 15px 15px 0 15px;
     }
 
+    .item-inner-container-team-view .item-title {
+        color: #845DD6;
+}
+
 .item-image-team-view {
     width: 25%;
     padding-right: 10px;
@@ -414,6 +419,7 @@ img.team-view-avatar {
     border: 1px solid;
     border-radius: 15px;
     box-shadow: 0 2px 7px rgba(0, 0, 0, 0.25);
+    font: 400 13.3333px Arial;
 }
 
 .button-edit {
@@ -476,6 +482,10 @@ img.team-view-avatar {
 
 .item-container-experience {
     margin-bottom: 25px;
+}
+
+    .item-container-experience .item-title {
+        color: #845DD6;
 }
 
 .item-wrapper {

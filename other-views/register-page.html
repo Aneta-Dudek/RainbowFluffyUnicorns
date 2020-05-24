@@ -1,0 +1,43 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Rainbow Fluffy Unicorns">
+    <title>QuestStore</title>
+    <link rel="stylesheet" href="../views/assets/styles/intro.css" />
+</head>
+<body>
+    <div class="login-page">
+        <div class="login-header">
+
+                QUESTSTORE
+
+        </div>
+        <div class="login-form">
+            <div class="form-container form-big">
+                <form action="../views/shop-view.html" class="form-grid">
+
+                    <div class="form-header full-width">Register</div>
+                    <p class="full-width form-element">
+                        <label for="email" class="form-label">E-mail</label>
+                        <input type="email" id="email" name="email" class="form-input" value="">
+                    </p>
+                    <p class="full-width form-element">
+                        <label for="pass" class="form-label">Password</label>
+                        <input type="text" id="pass" name="pass" class="password form-input" value="">
+                    </p>
+                    <p class="full-width form-element">
+                        <label for="reppass" class="form-label">Repeat password</label>
+                        <input type="text" id="reppass" name="reppass" class="password form-input" value="">
+                    </p>
+                    <!--<div id="includedContent"></div>-->
+                    <input type="submit" name="action" class="form-button" value="register">
+                    <input type="button" name="action" class="form-button" value="login" onclick="window.location='login-page.html';">
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

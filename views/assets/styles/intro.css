@@ -1,0 +1,66 @@
+@import url(../../components/forms/styleForm.css);
+
+@font-face {
+    font-family: Agus;
+    src: url(../fonts/Agus/AgusSans-Regular.woff);
+}
+
+@font-face {
+    font-family: Ubuntu;
+    src: url(../fonts/Ubuntu/ubuntu-v14-latin-regular.woff);
+}
+
+@font-face {
+    font-family: Simplifica;
+    src: url(../fonts/Simplifica.ttf);
+}
+
+html, body {
+    height: 100%;
+}
+
+.login-page {
+    --login-page-header-font-color: #F0D266;
+    --second-button-login-color: #49C8D9;
+}
+
+.login-page {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+    margin: auto;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.login-header {
+    padding: 50px 0;
+    text-align: center;
+    flex-grow: 1;
+    font-family: Agus;
+    font-size: 100px;
+    color: var(--login-page-header-font-color);
+}
+
+.login-form {
+    flex-grow: 4;
+}
+
+.password {
+    -webkit-text-security: disc;
+}
+
+.register-form {
+    flex-grow: 4;
+}
+
+.form-button:nth-of-type(2) {
+    background: var(--second-button-login-color);
+}
+
+
+@media screen and (max-width: 1200px) {
+    .login-page {
+        width: 100%;
+    }

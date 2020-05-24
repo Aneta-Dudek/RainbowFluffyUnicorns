@@ -24,7 +24,7 @@ body {
     padding: 0 20px 0 20px;
     margin-right: auto;
     margin-left: auto;
-    min-width: 440px;   
+    min-width: 440px;
 }
 
 .upper-margin {
@@ -59,13 +59,27 @@ body {
 
 .avatar-image-container {
     position: relative;
-    background: url("../avatars/avatar.png") no-repeat;
-    background-size: 99px 99px;
     width: 100px;
     height: 100px;
     margin: auto;
     z-index: -1;
 }
+
+.student-avatar {
+    background: url("../avatars/avatar.png") no-repeat;
+    background-size: 99px 99px;
+}
+
+.mentor-avatar {
+    background: url("../avatars/avatar.png") no-repeat;
+    background-size: 99px 99px;
+}
+
+.admin-avatar {
+    background: url("../avatars/avatar2.png") no-repeat;
+    background-size: 99px 99px;
+}
+
 
 
 .avatar-button {
@@ -318,13 +332,13 @@ a {
     margin: auto 0 auto 15px;
 }
 
-.details-wrapper-side-menu .name {
-    font-size: 1em;
-}
+    .details-wrapper-side-menu .name {
+        font-size: 1em;
+    }
 
-.details-wrapper-side-menu .role {
-    font-size: 0.7em;
-}
+    .details-wrapper-side-menu .role {
+        font-size: 0.7em;
+    }
 
 .inner-menu-container.list {
     display: flex;
@@ -337,9 +351,9 @@ a {
     margin-bottom: 5px;
 }
 
-.single-menu-container:first-child {
-    margin-top: 20px;
-}
+    .single-menu-container:first-child {
+        margin-top: 20px;
+    }
 
 .symbol {
     width: 25px;
@@ -352,9 +366,9 @@ a {
     vertical-align: middle;
 }
 
-.singe-menu-name:focus {
-    color: #49c8d9
-}
+    .singe-menu-name:focus {
+        color: #49c8d9
+    }
 
 .active-icon {
     display: none;
@@ -390,7 +404,7 @@ a {
 
     .item-inner-container-team-view .item-title {
         color: #845DD6;
-}
+    }
 
 .item-image-team-view {
     width: 25%;
@@ -486,7 +500,7 @@ img.team-view-avatar {
 
     .item-container-experience .item-title {
         color: #845DD6;
-}
+    }
 
 .item-wrapper {
     display: flex;
@@ -586,6 +600,7 @@ img.team-view-avatar {
     .input, .item-inner-container-profile {
         width: 100%;
     }
+
     .item-inner-container {
         margin-right: 0;
     }

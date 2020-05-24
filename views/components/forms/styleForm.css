@@ -13,6 +13,7 @@
 }
 
 .form-container {
+    --form-font-regular-color: #838383;
     --form-container-background-color: #FFFFFF;
     --form-container-border-color: #D65DBB;
     --form-container-border-radius: 20px;
@@ -20,7 +21,7 @@
     --form-element-border-radius: 5px;
     --form-element-focus-background-color: white;
     --form-element-focus-outline-color: #F0D266;
-    --form-element-focus-outline-style: 2px solid var(--form-element-focus-outline-color);
+    --form-element-focus-outline-style: 1px solid var(--form-element-focus-outline-color);
     --form-button-font-color: #FFFFFF;
     --form-button-shadow-color: rgba(0, 0, 0, 0.25);
     --form-button-background-color-1: #8FCE5D;
@@ -29,7 +30,9 @@
     --form-button-border-radius: 10px;
     --form-select-arrow-down-color: linear-gradient(45deg, transparent 50%, var(--form-element-background-color) 50%), linear-gradient(135deg, var(--form-element-background-color) 50%, transparent 50%);
     --form-select-arrow-up-color: linear-gradient(45deg, var(--form-element-focus-background-color) 50%, transparent 50%), linear-gradient(135deg, transparent 50%, var(--form-element-focus-background-color) 50%), linear-gradient(to right, var(--form-element-focus-outline-color), var(--form-element-focus-outline-color));
-    --form-select-arrow-background-size: 5px 8px, 5px 8px, 3.3em 3.3em;
+    --form-select-arrow-big-background-size: 6px 7px, 6px 7px, 3.3em 3.3em;
+    --form-select-arrow-medium-background-size: 4px 6px, 4px 6px, 3.3em 3.3em;
+    --form-select-arrow-small-background-size: 4px 5px, 4px 5px, 3.3em 3.3em;
     --form-item1-color: #8FCE5D;
     --form-item2-color: #49C8D9;
     --form-item3-color: #845DD6;
@@ -41,17 +44,46 @@
 .form-container {
     font-family: Ubuntu;
     font-weight: lighter;
-    margin: 50px auto;
-    max-width: 800px;
-    padding: 0px 90px 50px;
+    color: var(--form-font-regular-color);
     background: var(--form-container-background-color);
     border: 1px solid var(--form-container-border-color);
     box-sizing: border-box;
     border-radius: var(--form-container-border-radius);
 }
 
+    .form-container.form-big {
+        margin: auto;
+        max-width: 800px;
+        padding: 0px 90px 50px;
+    }
+
+    .form-container.form-big p {
+        margin: 16px 0px;
+    }
+
+    .form-container.form-medium {
+        margin: auto;
+        max-width: 560px;
+        padding: 0px 63px 35px
+    }
+
+    .form-container.form-medium p {
+        margin: 12px 0px;
+    }
+
+    .form-container.form-small {
+        margin: auto;
+        max-width: 400px;
+        padding: 0px 45px 40px
+    }
+
+    .form-container.form-small p {
+        margin: 8px 0px;
+    }
+
+
 /* reset */
-.form-select {
+.form-select{
     margin: 0;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -60,8 +92,14 @@
     -moz-appearance: none;
     outline: none;
 }
+.form-button,
+.form-input {
+    box-sizing: border-box;
+    outline: none;
+}
 
-.login-form {
+
+.form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: repeat(4, 1fr);
@@ -86,35 +124,62 @@
     border: 1px solid;
     padding: 1em;
     background: var(--form-element-background-color);
+    color: var(--form-font-regular-color);
 }
 
-.form-button,
-.form-select,
-.form-input {
-    box-sizing: border-box;
-}
 
-.form-header {
+.form-container .form-header {
     margin: auto;
-    font-size: 36px;
     text-align: center;
 }
 
-.form-button,
-.form-label {
+    .form-container.form-big .form-header {
+         font-size: 38px;
+    }
+
+    .form-container.form-medium .form-header {
+        font-size: 27px;
+    }
+
+    .form-container.form-small .form-header {
+        font-size: 22px;
+    }
+
+.form-container.form-big .form-button,
+.form-container.form-big .form-label {
     font-size: 24px;
 }
 
-.form-select,
-.form-input {
+.form-container.form-medium .form-button,
+.form-container.form-medium .form-label {
+    font-size: 17px;
+}
+
+.form-container.form-small .form-button,
+.form-container.form-small .form-label {
+    font-size: 14px;
+}
+
+.form-container.form-big .form-select,
+.form-container.form-big .form-input {
     font-size: 16px;
 }
 
-/**** COLORFUL INPUTS AND SELECTS *****/
+.form-container.form-medium .form-select,
+.form-container.form-medium .form-input {
+    font-size: 12px;
+}
 
+.form-container.form-small .form-select,
+.form-container.form-small .form-input {
+    font-size: 9px;
+}
+
+
+/**** COLORFUL INPUTS AND SELECTS *****/
 .form-input:focus {
     background: var(--form-element-focus-background-color);
-    outline: var(--form-element-focus-outline-style);
+    border: var(--form-element-focus-outline-style);
 }
 
 .form-element:nth-of-type(1) .form-input,
@@ -148,95 +213,129 @@
 
 }
 
+.form-element:nth-of-type(1) .form-input:focus,
+.form-element:nth-of-type(1) .form-selec:focus,
+.form-element:nth-of-type(2) .form-input:focus,
+.form-element:nth-of-type(2) .form-selec:focus,
+.form-element:nth-of-type(3) .form-input:focus,
+.form-element:nth-of-type(3) .form-selec:focus,
+.form-element:nth-of-type(4) .form-input:focus,
+.form-element:nth-of-type(4) .form-selec:focus,
+.form-element:nth-of-type(5) .form-input:focus,
+.form-element:nth-of-type(5) .form-input:focus,
+.form-element:nth-of-type(6) .form-selec:focus,
+.form-element:nth-of-type(6) .form-selec:focus {
+    border-color: var(--form-element-focus-outline-color);
+}
+
 .form-element:nth-of-type(1) .form-select {
     background-image: var(--form-select-arrow-down-color), linear-gradient(to right, var(--form-item1-color), var(--form-item1-color));
 }
-
-    .form-element:nth-of-type(1) .form-select:focus {
-        background-image: var(--form-select-arrow-up-color);
-        border: var(--form-element-focus-outline-style);
-        border-radius: var(--form-element-border-radius);
-    }
 
 .form-element:nth-of-type(2) .form-select {
     background-image: var(--form-select-arrow-down-color), linear-gradient(to right, var(--form-item2-color), var(--form-item2-color));
 }
 
-    .form-element:nth-of-type(2) .form-select:focus {
-        background-image: var(--form-select-arrow-up-color);
-        border: var(--form-element-focus-outline-style);
-        border-radius: var(--form-element-border-radius);
-    }
-
 .form-element:nth-of-type(3) .form-select {
     background-image: var(--form-select-arrow-down-color), linear-gradient(to right, var(--form-item3-color), var(--form-item3-color));
 }
-
-    .form-element:nth-of-type(3) .form-select:focus {
-        background-image: var(--form-select-arrow-up-color);
-        border: var(--form-element-focus-outline-style);
-        border-radius: var(--form-element-border-radius);
-    }
 
 .form-element:nth-of-type(4) .form-select {
     background-image: var(--form-select-arrow-down-color), linear-gradient(to right, var(--form-item4-color), var(--form-item4-color));
 }
 
-    .form-element:nth-of-type(4) .form-select:focus {
-        background-image: var(--form-select-arrow-up-color);
-        border: var(--form-element-focus-outline-style);
-        border-radius: var(--form-element-border-radius);
-    }
-
 .form-element:nth-of-type(5) .form-select {
     background-image: var(--form-select-arrow-down-color), linear-gradient(to right, var(--form-item5-color), var(--form-item5-color));
 }
-
-    .form-element:nth-of-type(5) .form-select:focus {
-        background-image: var(--form-select-arrow-up-color);
-        border: var(--form-element-focus-outline-style);
-        border-radius: var(--form-element-border-radius);
-    }
 
 .form-element:nth-of-type(6) .form-select {
     background-image: var(--form-select-arrow-down-color), linear-gradient(to right, var(--form-item6-color), var(--form-item6-color));
 }
 
+    .form-element:nth-of-type(1) .form-select:focus,
+    .form-element:nth-of-type(2) .form-select:focus,
+    .form-element:nth-of-type(3) .form-select:focus,
+    .form-element:nth-of-type(4) .form-select:focus,
+    .form-element:nth-of-type(5) .form-select:focus,
     .form-element:nth-of-type(6) .form-select:focus {
         background-image: var(--form-select-arrow-up-color);
+        background-color: var(--form-element-focus-background-color);
         border: var(--form-element-focus-outline-style);
         border-radius: var(--form-element-border-radius);
     }
 
-.form-select {
+.form-container.form-big .form-select {
     /* styling */
     background-position: calc(100% - 25px) calc(1em + 5px), calc(100% - 20px) calc(1em + 5px), 100% 0;
-    background-size: var(--form-select-arrow-background-size);
+    background-size: var(--form-select-arrow-big-background-size);
     background-repeat: no-repeat;
 }
 
-    .form-select:focus {
+    .form-container.form-big .form-select:focus {
         background-position: calc(100% - 20px) calc(1em + 3px), calc(100% - 25px) calc(1em + 3px), 100% 0;
-        background-size: var(--form-select-arrow-background-size);
+        background-size: var(--form-select-arrow-big-background-size);
         background-repeat: no-repeat;
         outline: 0;
     }
 
+.form-container.form-medium .form-select {
+    /* styling */
+    background-position: calc(100% - 19px) calc(1em + 4px), calc(100% - 15px) calc(1em + 4px), 100% 0;
+    background-size: var(--form-select-arrow-medium-background-size);
+    background-repeat: no-repeat;
+}
+
+    .form-container.form-medium .form-select:focus {
+        background-position: calc(100% - 15px) calc(1em + 2px), calc(100% - 19px) calc(1em + 2px), 100% 0;
+        background-size: var(--form-select-arrow-medium-background-size);
+        background-repeat: no-repeat;
+        outline: 0;
+    }
+
+.form-container.form-small .form-select {
+    /* styling */
+    background-position: calc(100% - 14px) calc(1em + 2px), calc(100% - 11px) calc(1em + 2px), 100% 0;
+    background-size: var(--form-select-arrow-small-background-size);
+    background-repeat: no-repeat;
+}
+
+    .form-container.form-small .form-select:focus {
+        background-position: calc(100% - 11px) calc(1em + 0px), calc(100% - 14px) calc(1em + 0px), 100% 0;
+        background-size: var(--form-select-arrow-small-background-size);
+        background-repeat: no-repeat;
+        outline: 0;
+    }
 /***** FORM BUTTONS ******/
 
- .form-button {
-     width: 60%;
-     margin: 36px auto 12px auto;
-     box-sizing: border-box;
-     padding: 1em;
-     min-width: 100px;
-     max-height: 52px;
-     border-radius: var(--form-button-border-radius);
-     border: none;
-     box-shadow: 0px 2px 6px var(--form-button-shadow-color);
-     padding: 0.5em;
-     color: var(--form-button-font-color);
- }
+.form-button {
+    width: 60%;
+    box-sizing: border-box;
+    border-radius: var(--form-button-border-radius);
+    border: none;
+    box-shadow: 0px 2px 6px var(--form-button-shadow-color);
+    color: var(--form-button-font-color);
+}
+
+.form-container.form-big .form-button {
+    margin: 36px auto 12px auto;
+    min-width: 100px;
+    max-height: 52px;
+    padding: 0.5em;
+}
+
+.form-container.form-medium .form-button {
+    margin: 25px auto 9px auto;
+    min-width: 70px;
+    max-height: 36px;
+    padding: 0.5em;
+}
+
+.form-container.form-small .form-button {
+    margin: 18px auto 6px auto;
+    min-width: 50px;
+    max-height: 28px;
+    padding: 0.4em;
+}
 
 .form-button:nth-child(1) {
     grid-column: 1;

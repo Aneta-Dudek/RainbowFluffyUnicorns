@@ -423,111 +423,137 @@ p {
 
   /* Responsive
   ==================================== */
-  @media all and (max-width: 500px) {
-    .Rtable--collapse {
-      display: block;
+
+@media screen and (max-width: 1024px) {
+    /*SIDE-MENU*/
+
+    .container .menu-container {
+        width: 100px;
+        min-width: 100px;
+        padding-left: 0;
     }
-    .Rtable--collapse > .Rtable-cell {
-      width: 100% !important;
+
+    .singe-menu-name {
+        display: none;
     }
-    .Rtable--collapse > .Rtable-cell--foot {
-      margin-bottom: 1em;
+
+    .details-wrapper-side-menu {
+        display: none;
     }
-  }
-  .no-flexbox .Rtable {
-    display: block;
-  }
-  .no-flexbox .Rtable > .Rtable-cell {
-    width: 100%;
-  }
-  .no-flexbox .Rtable > .Rtable-cell--foot {
-    margin-bottom: 1em;
-  }
-
-  /*SIDE-MENU*/
-
-.menu-container {
-  min-width: 230px;
-  background: #ECECEC;
-  padding-top: 20px;
-  padding-left: 30px;
 }
 
-.inner-menu-container.admin {
-  display: flex;
-}
 
-.avatar-image {
-  margin-left: 28px;
-  height: 50px;
-  width: 50px;
-}
+    @media all and (max-width: 500px) {
+        .Rtable--collapse {
+            display: block;
+        }
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+            .Rtable--collapse > .Rtable-cell {
+                width: 100% !important;
+            }
 
-.details-wrapper-side-menu {
-  margin: auto 0 auto 15px;
-}
+            .Rtable--collapse > .Rtable-cell--foot {
+                margin-bottom: 1em;
+            }
+    }
 
-  .details-wrapper-side-menu .name {
-      font-size: 1em;
-  }
+    .no-flexbox .Rtable {
+        display: block;
+    }
 
-  .details-wrapper-side-menu .role {
-      font-size: 0.7em;
-  }
+        .no-flexbox .Rtable > .Rtable-cell {
+            width: 100%;
+        }
 
-.inner-menu-container.list {
-  display: flex;
-  flex-direction: column;
-}
+        .no-flexbox .Rtable > .Rtable-cell--foot {
+            margin-bottom: 1em;
+        }
 
-.single-menu-container {
-  display: flex;
-  margin-left: 25px;
-  margin-bottom: 5px;
-}
 
-  .single-menu-container:first-child {
-      margin-top: 20px;
-  }
+    /*SIDE-MENU*/
 
-.symbol {
-  width: 25px;
-  height: 25px;
-  margin: 5px 0 5px 15px;
-}
+    .menu-container {
+        min-width: 230px;
+        background: #ECECEC;
+        padding-top: 20px;
+        padding-left: 30px;
+    }
 
-.singe-menu-name {
-  margin: 7px 0 5px 15px;
-  vertical-align: middle;
-}
+    .inner-menu-container.admin {
+        display: flex;
+    }
 
-.singe-menu-name:focus {
-  color:#49c8d9
-}
+    .avatar-image {
+        margin-left: 28px;
+        height: 50px;
+        width: 50px;
+    }
 
-.active-icon {
-  display: none;
-}
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
 
-.single-menu-container.active-side .icon {
-  display: none;
-}
+    .details-wrapper-side-menu {
+        margin: auto 0 auto 15px;
+    }
 
-.single-menu-container.active-side .active-icon {
-  display: block;
-}
+        .details-wrapper-side-menu .name {
+            font-size: 1em;
+        }
 
-.active-side {
-  color: #49C8D9;
-  background-color: #fafafa;
-}
+        .details-wrapper-side-menu .role {
+            font-size: 0.7em;
+        }
 
-.single-menu-container:hover {
-  background-color: #DADADA;
-}
+    .inner-menu-container.list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .single-menu-container {
+        display: flex;
+        margin-left: 25px;
+        margin-bottom: 5px;
+    }
+
+        .single-menu-container:first-child {
+            margin-top: 20px;
+        }
+
+    .symbol {
+        width: 25px;
+        height: 25px;
+        margin: 5px 0 5px 15px;
+    }
+
+    .singe-menu-name {
+        margin: 7px 0 5px 15px;
+        vertical-align: middle;
+    }
+
+        .singe-menu-name:focus {
+            color: #49c8d9
+        }
+
+    .active-icon {
+        display: none;
+    }
+
+    .single-menu-container.active-side .icon {
+        display: none;
+    }
+
+    .single-menu-container.active-side .active-icon {
+        display: block;
+    }
+
+    .active-side {
+        color: #49C8D9;
+        background-color: #fafafa;
+    }
+
+    .single-menu-container:hover {
+        background-color: #DADADA;
+    }
 

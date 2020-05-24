@@ -10,19 +10,66 @@
 </head>
 
   <body>
-    <div class ="topnavbar">
+    <div class="topnavbar">
         <div class="topnav" id="mytopnav">
             <a href="#qstore" class="mytopnav-item">QUESTSTORE</a>
-            <a href="profile-view.html" class="mytopnav-item">PROFILE</a>
-            <a href="quest-view.html" class="mytopnav-item">QUESTS</a>
-            <a href="shop-view.html" class="mytopnav-item active">SHOP</a>
+            <a href="myprofile-view-admin.html" class="mytopnav-item">PROFILE</a>
+            <a href="student-view.html" class="mytopnav-item active">VIEWS</a>
+            <a href="contact.html" class="mytopnav-item">CONTACT</a>
             <a href="logout.html" class="mytopnav-item">LOG OUT</a>
             <a href="javascript:void(0);" class="mytopnav-icon" onclick="responsiveTopBar()">
                 <i class="fa fa-bars"></i>
             </a>
         </div>
     </div>
-      <div class="container center">
+      <div class="container center shadow margin-bottom">
+        <div class="menu-container">
+            <div class="inner-menu-container admin">
+                <img class="avatar-image" src="assets/avatars/avatar2.png" />
+                <div class="details-wrapper details-wrapper-side-menu">
+                    <div class="name">Name Surname</div>
+                    <div class="role">Administrator</div>
+                </div>
+            </div>
+            <div class="inner-menu-container list">
+                <a href="student-view.html" class="single-menu-container">
+                    <img class="symbol icon" src="assets/icons/student.png" />
+                    <img class="symbol active-icon" src="assets/icons/student-active.png" />
+                    <div class="singe-menu-name">students</div>
+                </a>
+                <a href="shop-view.html" class="single-menu-container active-side">
+                    <img class="symbol icon" src="assets/icons/animals.png" />
+                    <img class="symbol active-icon" src="assets/icons/animals-active.png" />
+                    <div class="singe-menu-name">artifacts</div>
+                </a>
+                <a href="mentor-view.html" class="single-menu-container">
+                    <img class="symbol icon" src="assets/icons/duck.png" />
+                    <img class="symbol active-icon" src="assets/icons/duck-active.png" />
+                    <div class="singe-menu-name">mentors</div>
+                </a>
+                <a href="class-view.html" class="single-menu-container">
+                    <img class="symbol icon" src="assets/icons/web.png" />
+                    <img class="symbol active-icon" src="assets/icons/web-active.png" />
+                    <div class="singe-menu-name">classes</div>
+                </a>
+                <a href="quest-view.html" class="single-menu-container">
+                    <img class="symbol icon" src="assets/icons/king.png" />
+                    <img class="symbol active-icon" src="assets/icons/king-active.png" />
+                    <div class="singe-menu-name">quests</div>
+                </a>
+                <a href="team-view.html" class="single-menu-container">
+                    <img class="symbol icon" src="assets/icons/quaver.png" />
+                    <img class="symbol active-icon" src="assets/icons/quaver-active.png" />
+                    <div class="singe-menu-name">teams</div>
+                </a>
+                <a href="experience-view.html" class="single-menu-container">
+                    <img class="symbol icon" src="assets/icons/guest-star.png" />
+                    <img class="symbol active-icon" src="assets/icons/guest-star-active.png" />
+                    <div class="singe-menu-name">experience</div>
+                </a>
+
+            </div>
+        </div>
           <div class="view">
                 <div class="elements-list">
                     <h2 class="blue small-margin-left">Regular Items</h2>
@@ -111,6 +158,7 @@
                             </div>
                         </div>
                     </div>
+                    <button class="small right purple-btn">new quest</button><button class="small right red-btn">delete</button><button class="small right green-btn">edit</button>
             </div>
 
           </div>

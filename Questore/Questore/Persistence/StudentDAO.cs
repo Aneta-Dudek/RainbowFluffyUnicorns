@@ -2,6 +2,9 @@
 using NpgsqlTypes;
 using Questore.Models;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Linq;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 namespace Questore.Persistence
 {
@@ -199,6 +202,18 @@ namespace Questore.Persistence
             return team;
         }
 
+        private Title ProvideOneTitle(NpgsqlDataReader reader)
+        {
+            var title = new Title()
+            {
+                Id = reader.GetInt32((int)TeamEnum.Id),
+                Name = reader.GetString((int)TeamEnum.Name),
+                Threshold = reader.GetInt32((int)TeamEnum.ImageUrl)
+            };
+
+            return title;
+        }
+
         private IEnumerable<Artifact> GetStudentArtifacts(int id)
         {
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
@@ -303,9 +318,7 @@ namespace Questore.Persistence
 
             while (reader.Read())
             {
-                title.Id = reader.GetInt32((int)TitleEnum.Id);
-                title.Name = reader.GetString((int)TitleEnum.Name);
-                title.Threshold = reader.GetInt32((int)TitleEnum.Id);
+                title = ProvideOneTitle(reader);
             }
 
             return title;
@@ -323,14 +336,16 @@ namespace Questore.Persistence
             using var command = new NpgsqlCommand(query, connection);
             var reader = command.ExecuteReader();
 
-            var studentId = 0;
+            var studentTitles = new List<Title>();
 
             while (reader.Read())
             {
-                studentId = reader.GetInt32((int)TitleEnum.Id);
+                studentTitles.Add(ProvideOneTitle(reader));
             }
 
-            return studentId;
+            Title studentTitle = studentTitles.OrderByDescending(t => t.Threshold).First();
+
+            return studentTitle.Id;
         }
     }
 }

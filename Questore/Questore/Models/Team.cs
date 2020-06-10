@@ -8,8 +8,8 @@ namespace Questore.Models
 
         public string Name { get; set; }
 
-        public IEnumerable<Student> Students { get; set; }
-
         public string ImageUrl { get; set; }
+
+        public IEnumerable<Student> Students { get; set; }
     }
 }

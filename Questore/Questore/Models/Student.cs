@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace Questore.Models
 {
@@ -15,16 +12,15 @@ namespace Questore.Models
 
         public string Email { get; set; }
 
+        public string Password { get; set; }
+
         public int Coolcoins { get; set; }
 
-        //Current experience?
         public int Experience { get; set; }
 
         public string ImageUrl { get; set; }
 
         public Title Title { get; set; }
-
-        public int TitleId { get; set; }
 
         public IEnumerable<Class> Classes { get; set; }
 

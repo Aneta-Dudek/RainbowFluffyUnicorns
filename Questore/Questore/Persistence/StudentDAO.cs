@@ -24,7 +24,13 @@ namespace Questore.Persistence
 
             while (reader.Read())
             {
-                students.Add(provideOneStudent(reader));
+                var student = provideOneStudent(reader);
+
+                student.Artifacts = GetStudentArtifacts(student.Id);
+                student.Classes = GetStudentClasses(student.Id);
+                student.Teams = GetStudentTeams(student.Id);
+
+                students.Add(student);
             }
 
             return students;
@@ -39,13 +45,27 @@ namespace Questore.Persistence
                 LastName = reader.GetString(2),
                 Email = reader.GetString(3),
                 Coolcoins = reader.GetInt32(4),
-                CurrentExperience = reader.GetInt32(5),
+                Experience = reader.GetInt32(5),
                 ImageUrl = reader.GetString(6)
             };
 
             return student;
         }
-    public Student GetStudent(int id)
+
+        public IEnumerable<Artifact> GetStudentArtifacts(int id)
+        {
+
+        }
+
+        public IEnumerable<Class> GetStudentClasses(int id)
+        {
+
+        }
+        public IEnumerable<Team> GetStudentTeams(int id)
+        {
+
+        }
+        public Student GetStudent(int id)
     {
         throw new System.NotImplementedException();
     }

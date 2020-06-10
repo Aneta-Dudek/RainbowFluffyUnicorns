@@ -17,6 +17,7 @@ namespace Questore.Models
 
         public int Coolcoins { get; set; }
 
+        //Current experience?
         public int Experience { get; set; }
 
         public string ImageUrl { get; set; }

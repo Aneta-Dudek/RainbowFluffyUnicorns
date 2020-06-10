@@ -343,7 +343,7 @@ namespace Questore.Persistence
                 studentTitles.Add(ProvideOneTitle(reader));
             }
 
-            Title studentTitle = studentTitles.OrderByDescending(t => t.Threshold).First();
+            Title studentTitle = studentTitles.OrderBy(t => t.Threshold).First();
 
             return studentTitle.Id;
         }

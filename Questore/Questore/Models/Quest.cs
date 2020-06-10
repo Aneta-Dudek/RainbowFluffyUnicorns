@@ -13,7 +13,7 @@ namespace Questore.Models
 
         public string Description { get; set; }
 
-        public int Price { get; set; }
+        public int Reward { get; set; }
 
         public string ImageUrl { get; set; }
     }

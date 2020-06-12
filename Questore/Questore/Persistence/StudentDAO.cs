@@ -86,7 +86,7 @@ namespace Questore.Persistence
             command.Parameters.Add("password", NpgsqlDbType.Varchar).Value = student.Password;
             command.Parameters.Add("coolcoins", NpgsqlDbType.Integer).Value = student.Coolcoins;
             command.Parameters.Add("experience", NpgsqlDbType.Integer).Value = student.Experience;
-            command.Parameters.Add("image_url", NpgsqlDbType.Varchar).Value = student.ImageUrl;
+            command.Parameters.Add("image_url", NpgsqlDbType.Varchar).Value = "default_url";
 
             command.Prepare();
             command.ExecuteNonQuery();
@@ -114,7 +114,7 @@ namespace Questore.Persistence
             command.Parameters.Add("password", NpgsqlDbType.Varchar).Value = updatedStudent.Password;
             command.Parameters.Add("coolcoins", NpgsqlDbType.Integer).Value = updatedStudent.Coolcoins;
             command.Parameters.Add("experience", NpgsqlDbType.Integer).Value = updatedStudent.Experience;
-            command.Parameters.Add("image_url", NpgsqlDbType.Varchar).Value = updatedStudent.ImageUrl;
+            command.Parameters.Add("image_url", NpgsqlDbType.Varchar).Value = "default_url";
 
             command.Prepare();
             command.ExecuteNonQuery();

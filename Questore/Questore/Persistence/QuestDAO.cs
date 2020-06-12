@@ -69,8 +69,8 @@ namespace Questore.Persistence
             command.Parameters.Add("name", NpgsqlDbType.Varchar).Value = quest.Name;
             command.Parameters.Add("description", NpgsqlDbType.Varchar).Value = quest.Description;
             command.Parameters.Add("reward", NpgsqlDbType.Integer).Value = quest.Reward;
-            command.Parameters.Add("image_url", NpgsqlDbType.Varchar).Value = quest.ImageUrl;
-            command.Parameters.Add("category_id", NpgsqlDbType.Integer).Value = quest.Category.Id;
+            command.Parameters.Add("image_url", NpgsqlDbType.Varchar).Value = "default_url";
+            command.Parameters.Add("category_id", NpgsqlDbType.Integer).Value = 1;
 
             command.Prepare();
             command.ExecuteNonQuery();
@@ -93,8 +93,8 @@ namespace Questore.Persistence
             command.Parameters.Add("name", NpgsqlDbType.Varchar).Value = updatedQuest.Name;
             command.Parameters.Add("description", NpgsqlDbType.Varchar).Value = updatedQuest.Description;
             command.Parameters.Add("reward", NpgsqlDbType.Integer).Value = updatedQuest.Reward;
-            command.Parameters.Add("image_url", NpgsqlDbType.Varchar).Value = updatedQuest.ImageUrl;
-            command.Parameters.Add("category_id", NpgsqlDbType.Integer).Value = updatedQuest.Category.Id;
+            command.Parameters.Add("image_url", NpgsqlDbType.Varchar).Value = "default_url";
+            command.Parameters.Add("category_id", NpgsqlDbType.Integer).Value = 1;
 
             command.Prepare();
             command.ExecuteNonQuery();

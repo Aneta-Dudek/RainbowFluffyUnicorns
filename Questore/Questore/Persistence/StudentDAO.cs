@@ -30,7 +30,7 @@ namespace Questore.Persistence
         {
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
 
-            var query = $"SELECT id, first_name, last_name, email, coolcoins, experience, image_url, title_id " +
+            var query = $"SELECT id, first_name, last_name, email, coolcoins, experience, image_url " +
                               $"FROM {_table};";
 
             using var command = new NpgsqlCommand(query, connection);
@@ -54,7 +54,7 @@ namespace Questore.Persistence
         {
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
 
-            var query = $"SELECT id, first_name, last_name, email, coolcoins, experience, image_url, title_id " +
+            var query = $"SELECT id, first_name, last_name, email, coolcoins, experience, image_url " +
                               $"FROM {_table}" +
                               $"WHERE id = {id};";
 
@@ -76,7 +76,7 @@ namespace Questore.Persistence
         //Jakiś pomysł jak to nazwać?
         private void AssignStudentDetails(Student student)
         {
-            student.Title = GetStudentTitle(student.Id);
+            student.Title = GetStudentTitleByExperience(student.Experience);
             student.Artifacts = GetStudentArtifacts(student.Id);
             student.Classes = GetStudentClasses(student.Id);
             student.Teams = GetStudentTeams(student.Id);
@@ -85,8 +85,8 @@ namespace Questore.Persistence
         public void AddStudent(Student student)
         {
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-            var query = $"INSERT INTO {_table}(first_name, last_name, email, password, coolcoins, experience, image_url, title_id) " +
-                              $"VALUES (@first_name, @last_name, @email, @password, @coolcoins, @experience, @image_url, @title_id);";
+            var query = $"INSERT INTO {_table}(first_name, last_name, email, password, coolcoins, experience, image_url) " +
+                              $"VALUES (@first_name, @last_name, @email, @password, @coolcoins, @experience, @image_url);";
             using var command = new NpgsqlCommand(query, connection);
 
             command.Parameters.Add("first_name", NpgsqlDbType.Varchar).Value = student.FirstName;
@@ -96,7 +96,6 @@ namespace Questore.Persistence
             command.Parameters.Add("coolcoins", NpgsqlDbType.Integer).Value = student.Coolcoins;
             command.Parameters.Add("experience", NpgsqlDbType.Integer).Value = student.Experience;
             command.Parameters.Add("image_url", NpgsqlDbType.Varchar).Value = student.ImageUrl;
-            command.Parameters.Add("title_id", NpgsqlDbType.Integer).Value = GetStudentTitleIdByExperience(student.Experience);
 
             command.Prepare();
             command.ExecuteNonQuery();
@@ -113,8 +112,7 @@ namespace Questore.Persistence
                              $"password = '{updatedStudent.Password}', " +
                              $"coolcoins = {updatedStudent.Coolcoins}, " +
                              $"experience = {updatedStudent.Experience}, " +
-                             $"image_url = '{updatedStudent.ImageUrl}', " +
-                             $"title_id = {GetStudentTitleIdByExperience(updatedStudent.Experience)} " +
+                             $"image_url = '{updatedStudent.ImageUrl}' " +
                         $"WHERE id = {id};";
 
             using var command = new NpgsqlCommand(query, connection);
@@ -126,7 +124,6 @@ namespace Questore.Persistence
             command.Parameters.Add("coolcoins", NpgsqlDbType.Integer).Value = updatedStudent.Coolcoins;
             command.Parameters.Add("experience", NpgsqlDbType.Integer).Value = updatedStudent.Experience;
             command.Parameters.Add("image_url", NpgsqlDbType.Varchar).Value = updatedStudent.ImageUrl;
-            command.Parameters.Add("title_id", NpgsqlDbType.Integer).Value = GetStudentTitleIdByExperience(updatedStudent.Experience);
 
             command.Prepare();
             command.ExecuteNonQuery();
@@ -302,36 +299,14 @@ namespace Questore.Persistence
             return teams;
         }
 
-        private Title GetStudentTitle(int id)
-        {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
-            var query = $"SELECT title.id, title.name, title.threshold " +
-                        $"FROM title " +
-                        $"INNER JOIN student on student.title_id = title.id " +
-                        $"WHERE student.id = {id};";
-
-            using var command = new NpgsqlCommand(query, connection);
-            var reader = command.ExecuteReader();
-
-            var title = new Title();
-
-            while (reader.Read())
-            {
-                title = ProvideOneTitle(reader);
-            }
-
-            return title;
-        }
-
-        private int GetStudentTitleIdByExperience(int experience)
+        private Title GetStudentTitleByExperience(int experience)
         {
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
 
             //QUERY nie działa podobnie jak milion innych, które próbowałem typu:
             //SELECT id, MIN(threshold) FROM (SELECT id, threshold FROM title WHERE threshold > 200) s GROUP BY id;
 
-            var query = $"SELECT id FROM title GROUP BY id HAVING MIN (threshold) > {experience};";
+            var query = $"SELECT id, name, threshold FROM title WHERE threshold >= {experience};";
 
             using var command = new NpgsqlCommand(query, connection);
             var reader = command.ExecuteReader();
@@ -343,9 +318,9 @@ namespace Questore.Persistence
                 studentTitles.Add(ProvideOneTitle(reader));
             }
 
-            Title studentTitle = studentTitles.OrderBy(t => t.Threshold).First();
+            Title studentTitle = studentTitles.OrderBy(t => t.Threshold).FirstOrDefault();
 
-            return studentTitle.Id;
+            return studentTitle;
         }
     }
 }

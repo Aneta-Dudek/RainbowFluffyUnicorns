@@ -2,9 +2,7 @@
 using NpgsqlTypes;
 using Questore.Models;
 using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Linq;
-using Microsoft.AspNetCore.Server.Kestrel.Core;
 
 namespace Questore.Persistence
 {
@@ -13,13 +11,6 @@ namespace Questore.Persistence
         private readonly DBConnection _connection;
 
         private readonly string _table = "student";
-
-        private enum StudentEnum { Id, FirstName, LastName, Email, Coolcoins, Experience, ImageUrl, TitleId }
-        private enum ArtifactEnum { Id, Name, Description, ImageUrl, Price }
-        private enum ClassEnum { Id, Name, DateStarted, ImageUrl }
-        private enum TeamEnum { Id, Name, ImageUrl }
-        private enum CategoryEnum { Id, Name }
-        private enum TitleEnum { Id, Name, Threshold }
 
         public StudentDAO()
         {
@@ -55,7 +46,7 @@ namespace Questore.Persistence
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
 
             var query = $"SELECT id, first_name, last_name, email, coolcoins, experience, image_url " +
-                              $"FROM {_table}" +
+                              $"FROM {_table} " +
                               $"WHERE id = {id};";
 
             using var command = new NpgsqlCommand(query, connection);
@@ -146,13 +137,13 @@ namespace Questore.Persistence
         {
             var student = new Student()
             {
-                Id = reader.GetInt32((int)StudentEnum.Id),
-                FirstName = reader.GetString((int)StudentEnum.FirstName),
-                LastName = reader.GetString((int)StudentEnum.LastName),
-                Email = reader.GetString((int)StudentEnum.Email),
-                Coolcoins = reader.GetInt32((int)StudentEnum.Coolcoins),
-                Experience = reader.GetInt32((int)StudentEnum.Experience),
-                ImageUrl = reader.GetString((int)StudentEnum.ImageUrl)
+                Id = reader.GetInt32((int)DBUtilities.StudentEnum.Id),
+                FirstName = reader.GetString((int)DBUtilities.StudentEnum.FirstName),
+                LastName = reader.GetString((int)DBUtilities.StudentEnum.LastName),
+                Email = reader.GetString((int)DBUtilities.StudentEnum.Email),
+                Coolcoins = reader.GetInt32((int)DBUtilities.StudentEnum.Coolcoins),
+                Experience = reader.GetInt32((int)DBUtilities.StudentEnum.Experience),
+                ImageUrl = reader.GetString((int)DBUtilities.StudentEnum.ImageUrl)
             };
 
             return student;
@@ -162,11 +153,11 @@ namespace Questore.Persistence
         {
             var artifact = new Artifact()
             {
-                Id = reader.GetInt32((int)ArtifactEnum.Id),
-                Name = reader.GetString((int)ArtifactEnum.Name),
-                Description = reader.GetString((int)ArtifactEnum.Description),
-                ImageUrl = reader.GetString((int)ArtifactEnum.ImageUrl),
-                Price = reader.GetInt32((int)ArtifactEnum.Price)
+                Id = reader.GetInt32((int)DBUtilities.ArtifactEnum.Id),
+                Name = reader.GetString((int)DBUtilities.ArtifactEnum.Name),
+                Description = reader.GetString((int)DBUtilities.ArtifactEnum.Description),
+                ImageUrl = reader.GetString((int)DBUtilities.ArtifactEnum.ImageUrl),
+                Price = reader.GetInt32((int)DBUtilities.ArtifactEnum.Price)
             };
 
             artifact.Category = GetArtifactCategory(artifact.Id);
@@ -178,10 +169,10 @@ namespace Questore.Persistence
         {
             var newClass = new Class()
             {
-                Id = reader.GetInt32((int)ClassEnum.Id),
-                Name = reader.GetString((int)ClassEnum.Name),
-                DateStarted = reader.GetDateTime((int)ClassEnum.DateStarted),
-                ImageUrl = reader.GetString((int)ClassEnum.ImageUrl)
+                Id = reader.GetInt32((int)DBUtilities.ClassEnum.Id),
+                Name = reader.GetString((int)DBUtilities.ClassEnum.Name),
+                DateStarted = reader.GetDateTime((int)DBUtilities.ClassEnum.DateStarted),
+                ImageUrl = reader.GetString((int)DBUtilities.ClassEnum.ImageUrl)
             };
 
             return newClass;
@@ -191,9 +182,9 @@ namespace Questore.Persistence
         {
             var team = new Team()
             {
-                Id = reader.GetInt32((int)TeamEnum.Id),
-                Name = reader.GetString((int)TeamEnum.Name),
-                ImageUrl = reader.GetString((int)TeamEnum.ImageUrl)
+                Id = reader.GetInt32((int)DBUtilities.TeamEnum.Id),
+                Name = reader.GetString((int)DBUtilities.TeamEnum.Name),
+                ImageUrl = reader.GetString((int)DBUtilities.TeamEnum.ImageUrl)
             };
 
             return team;
@@ -203,9 +194,9 @@ namespace Questore.Persistence
         {
             var title = new Title()
             {
-                Id = reader.GetInt32((int)TitleEnum.Id),
-                Name = reader.GetString((int)TitleEnum.Name),
-                Threshold = reader.GetInt32((int)TitleEnum.Threshold)
+                Id = reader.GetInt32((int)DBUtilities.TitleEnum.Id),
+                Name = reader.GetString((int)DBUtilities.TitleEnum.Name),
+                Threshold = reader.GetInt32((int)DBUtilities.TitleEnum.Threshold)
             };
 
             return title;
@@ -237,9 +228,9 @@ namespace Questore.Persistence
         {
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
 
-            var query = $"SELECT category.id, category.name " +
-                              $"FROM category " +
-                              $"INNER JOIN artifact on artifact.category_id = category.id " +
+            var query = $"SELECT category_artifact.id, category_artifact.name " +
+                              $"FROM category_artifact " +
+                              $"INNER JOIN artifact on artifact.category_id = category_artifact.id " +
                               $"WHERE artifact.id = {id};";
 
             using var command = new NpgsqlCommand(query, connection);
@@ -249,8 +240,8 @@ namespace Questore.Persistence
 
             while (reader.Read())
             {
-                category.Id = reader.GetInt32((int)CategoryEnum.Id);
-                category.Name = reader.GetString((int)CategoryEnum.Name);
+                category.Id = reader.GetInt32((int)DBUtilities.CategoryEnum.Id);
+                category.Name = reader.GetString((int)DBUtilities.CategoryEnum.Name);
             }
 
             return category;
@@ -302,9 +293,6 @@ namespace Questore.Persistence
         private Title GetStudentTitleByExperience(int experience)
         {
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
-            //QUERY nie działa podobnie jak milion innych, które próbowałem typu:
-            //SELECT id, MIN(threshold) FROM (SELECT id, threshold FROM title WHERE threshold > 200) s GROUP BY id;
 
             var query = $"SELECT id, name, threshold FROM title WHERE threshold >= {experience};";
 

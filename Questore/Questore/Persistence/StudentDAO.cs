@@ -206,9 +206,9 @@ namespace Questore.Persistence
         {
             var title = new Title()
             {
-                Id = reader.GetInt32((int)TeamEnum.Id),
-                Name = reader.GetString((int)TeamEnum.Name),
-                Threshold = reader.GetInt32((int)TeamEnum.ImageUrl)
+                Id = reader.GetInt32((int)TitleEnum.Id),
+                Name = reader.GetString((int)TitleEnum.Name),
+                Threshold = reader.GetInt32((int)TitleEnum.Threshold)
             };
 
             return title;

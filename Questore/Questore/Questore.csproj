@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\assets\images\" />
+    <Folder Include="wwwroot\assets\fonts\" />
     <Folder Include="wwwroot\assets\scripts\" />
   </ItemGroup>
 

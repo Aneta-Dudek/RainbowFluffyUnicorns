@@ -56,6 +56,83 @@ body {
     display: flex;
     margin: auto;
 }
+/****** QUESTS CONTAINERS ******/
+
+.artifact-container {
+    display: flex;
+    align-content: space-around;
+    flex-wrap: wrap;
+    justify-content: center;
+    line-height: 1.4;
+}
+
+.view {
+    display: inline-block;
+    background-color: #FAFAFA;
+    width: 100%;
+    padding: 5px;
+}
+
+.elements-list {
+    padding: 20px 0px;
+    text-align: center;
+}
+
+/****** QUESTS STYLING ******/
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+
+.center-text {
+    text-align: center;
+}
+
+.half {
+    max-width: 50%;
+}
+
+.no-margin {
+    margin: 0px;
+}
+
+.tiny {
+    padding: 2px 5px;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid;
+    margin-top: 5px;
+}
+
+.green-btn {
+    background-color: #8FCE5D;
+    border-color: #8FCE5D;
+}
+
+.green-btn:hover {
+    background-color: rgb(94, 158, 42);
+    border-color: rgb(94, 158, 42);
+}
+
+.artifact {
+    background-color: white;
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    margin: 20px 10px 10px 10px;
+    width: 316px;
+    border-radius: 5px;
+}
+
+.artifact-img {
+    width: 158px;
+    height: auto;
+    float: left;
+}
 
 /****** MENU STYLING ******/
 

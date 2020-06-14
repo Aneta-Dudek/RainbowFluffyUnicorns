@@ -23,7 +23,12 @@ namespace Questore.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Quests()
+        {
+            return View();
+        }
+
+        public IActionResult Artifacts()
         {
             return View();
         }

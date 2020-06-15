@@ -84,8 +84,8 @@ namespace Questore.Persistence
                         $"SET name = '{updatedQuest.Name}', " +
                         $"description = '{updatedQuest.Description}', " +
                         $"reward = {updatedQuest.Reward}, " +
-                        $"image_url = '{updatedQuest.ImageUrl}', " +
-                        $"category_id = {updatedQuest.Category.Id} " +
+                        $"image_url = 'default_url', " +
+                        $"category_id = 1 " +
                         $"WHERE id = {id};";
 
             using var command = new NpgsqlCommand(query, connection);

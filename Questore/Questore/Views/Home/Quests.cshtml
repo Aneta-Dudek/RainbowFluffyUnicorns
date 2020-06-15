@@ -1,0 +1,12 @@
+﻿@model List<Quest>
+
+<div class="view">
+    <div class="elements-list">
+        <div class="artifact-container">
+        @foreach (var quest in @Model)
+        {
+            <partial name="_Quest" model="quest" />
+        }
+        </div>
+    </div>
+</div>

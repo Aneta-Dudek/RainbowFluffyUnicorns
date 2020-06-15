@@ -64,6 +64,71 @@ p {
     font-weight: lighter;
 }
 
+h2 {
+    padding: 0px;
+    margin: 0px;
+    display: inline;
+    font-weight: normal;
+    font-size: 24px;
+}
+
+/* DEFAULT MARGINS AND FLOATS */
+
+.small-margin-left {
+    margin-left: 10px;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.no-margin {
+    margin: 0px;
+}
+
+/* FONTS COLORS */
+
+
+.blue {
+    color: #49C8D9;
+    border-color: #49C8D9;
+}
+
+.yellow {
+    color: #F0D266;
+    border-color: #F0D266;
+}
+
+.red {
+    color: #E86868;
+    border-color: #E86868;
+}
+
+.purple {
+    color: #845DD6;
+    border-color: #845DD6;
+}
+
+.green {
+    color: #8FCE5D;
+    border-color: #8FCE5D;
+}
+
+.pink {
+    color: #D65DBB;
+    border-color: #D65DBB;
+}
+
+
+
 /****** QUESTS AND ARTIFACTS CONTAINERS ******/
 
 .artifact-container {
@@ -88,26 +153,11 @@ p {
 
 /****** QUESTS AND ARTIFACTS STYLING ******/
 
-.right {
-    float: right;
-}
-
-.left {
-    float: left;
-}
-
-
-.center-text {
-    text-align: center;
-}
 
 .half {
     max-width: 50%;
 }
 
-.no-margin {
-    margin: 0px;
-}
 
 .tiny {
     padding: 2px 5px;

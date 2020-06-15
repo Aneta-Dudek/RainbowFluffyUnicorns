@@ -2,7 +2,7 @@
 
 <div class="view">
     <div class="elements-list">
-        <h2 class="blue">Regular Items</h2>
+        <h2 class="font-blue">Regular Items</h2>
         <div class="artifact-container">
             @foreach (var artifact in @Model)
             {
@@ -14,16 +14,16 @@
         </div>
     </div>
     <div class="elements-list">
-        <h2 class="green">Magic Items</h2>
+        <h2 class="font-green">Magic Items</h2>
         <div class="artifact-container">
             @foreach (var artifact in @Model)
             {
                 @if (artifact.Category.Name == "Magic")
                 {
-                    <partial name="_Artifact" model="artifact"/>
+                    <partial name="_Artifact" model="artifact" />
                 }
             }
         </div>
     </div>
- 
+
 </div>

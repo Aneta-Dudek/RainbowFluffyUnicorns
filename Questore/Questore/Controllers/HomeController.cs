@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Questore.Models;
+using Questore.Persistence;
 
 namespace Questore.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IQuestDAO _questDao;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController()
         {
-            _logger = logger;
+            _questDao = new QuestDAO();
         }
 
         public IActionResult Index()
@@ -23,7 +24,13 @@ namespace Questore.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Quests()
+        {
+            var quests = _questDao.GetQuests().ToList();
+            return View(quests);
+        }
+
+        public IActionResult Artifacts()
         {
             return View();
         }

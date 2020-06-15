@@ -45,6 +45,15 @@ ol, ul {
     src: url(../fonts/Ubuntu/ubuntu-v14-latin-regular.woff);
 }
 
+root {
+    --main-color-yellow: #F0D266;
+    --main-color-green: #8FCE5D;
+    --main-color-blue: #49C8D9;
+    --main-color-purple: #845DD6;
+    --main-color-red: #E86868;
+    --main-color-pink: #D65DBB;
+}
+
 body {
     color: #838383;
     background-color: #fafafa;
@@ -97,34 +106,34 @@ h2 {
 /* FONTS COLORS */
 
 
-.blue {
-    color: #49C8D9;
-    border-color: #49C8D9;
+.font-blue {
+    color: var(--main-color-blue);
+    border-color: var(--main-color-blue);
 }
 
-.yellow {
-    color: #F0D266;
-    border-color: #F0D266;
+.font-yellow {
+    color: var(--main-color-yellow);
+    border-color: var(--main-color-yellow);
 }
 
-.red {
-    color: #E86868;
-    border-color: #E86868;
+.font-red {
+    color: var(--main-color-red);
+    border-color: var(--main-color-red);
 }
 
-.purple {
-    color: #845DD6;
-    border-color: #845DD6;
+.font-purple {
+    color: var(--main-color-purple);
+    border-color: var(--main-color-purple);
 }
 
-.green {
-    color: #8FCE5D;
-    border-color: #8FCE5D;
+.font-green {
+    color: var(--main-color-green);
+    border-color: var(--main-color-green);
 }
 
-.pink {
-    color: #D65DBB;
-    border-color: #D65DBB;
+.font-pink {
+    color: var(--main-color-pink);
+    border-color: var(--main-color-pink);
 }
 
 
@@ -168,8 +177,8 @@ h2 {
 }
 
 .green-btn {
-    background-color: #8FCE5D;
-    border-color: #8FCE5D;
+    background-color: var(--main-color-green);
+    border-color: var(--main-color-green);
 }
 
 .green-btn:hover {
@@ -178,8 +187,8 @@ h2 {
 }
 
 .yellow-btn {
-    background-color: #F0D266;
-    border-color: #F0D266;
+    background-color: var(--main-color-yellow);
+    border-color: var(--main-color-yellow);
 }
 
 .yellow-btn:hover {
@@ -224,11 +233,6 @@ h2 {
     --topnav-background-color-2: #E86868;
     --topnav-item-background-active: #FAFAFA;
     --topnav-item-background-hover: rgba(0, 0, 0, 0.1);
-    --topnav-item1-color: #F0D266;
-    --topnav-item2-color: #8FCE5D;
-    --topnav-item3-color: #49C8D9;
-    --topnav-item4-color: #845DD6;
-    --topnav-item5-color: #E86868;
 }
 
 .topnavbar {
@@ -282,43 +286,43 @@ h2 {
 }
 
 .mytopnav-item:nth-child(1) {
-    background: var(--topnav-item1-color);
+    background: var(--main-color-yellow);
 }
 
 .mytopnav-item:nth-child(2) {
-    background: var(--topnav-item2-color);
+    background: var(--main-color-green);
 }
 
 .mytopnav-item:nth-child(3) {
-    background: var(--topnav-item3-color);
+    background: var(--main-color-blue);
 }
 
 .mytopnav-item:nth-child(4) {
-    background: var(--topnav-item4-color);
+    background: var(--main-color-purple);
 }
 
 .mytopnav-item:nth-child(5) {
-    background: var(--topnav-item5-color);
+    background: var(--main-color-red);
 }
 
 .mytopnav-item:nth-child(1).active {
-    color: var(--topnav-item1-color);
+    color: var(--main-color-yellow);
 }
 
 .mytopnav-item:nth-child(2).active {
-    color: var(--topnav-item2-color);
+    color: var(--main-color-green);
 }
 
 .mytopnav-item:nth-child(3).active {
-    color: var(--topnav-item3-color);
+    color: var(--main-color-blue);
 }
 
 .mytopnav-item:nth-child(4).active {
-    color: var(--topnav-item4-color);
+    color: var(--main-color-purple);
 }
 
 .mytopnav-item:nth-child(5).active {
-    color: var(--topnav-item5-color);
+    color: var(--main-color-red);
 }
 
 

@@ -2,11 +2,28 @@
 
 <div class="view">
     <div class="elements-list">
+        <h2 class="font-blue">Basic Quests</h2>
         <div class="artifact-container">
-        @foreach (var quest in @Model)
-        {
-            <partial name="_Quest" model="quest" />
-        }
+            @foreach (var quest in @Model)
+            {
+                @if (quest.Category.Name == "Basic")
+                {
+                    <partial name="_Quest" model="quest" />
+                }
+            }
         </div>
     </div>
+    <div class="elements-list">
+        <h2 class="font-green">Extra Quests</h2>
+        <div class="artifact-container">
+            @foreach (var quest in @Model)
+            {
+                @if (quest.Category.Name == "Extra")
+                {
+                    <partial name="_Quest" model="quest" />
+                }
+            }
+        </div>
+    </div>
+
 </div>

@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Questore.Models;
 using Questore.Persistence;
 
 namespace Questore.Controllers
@@ -14,9 +8,12 @@ namespace Questore.Controllers
     {
         private readonly IQuestDAO _questDao;
 
+        private readonly IArtifactDAO _artifactDao;
+
         public HomeController()
         {
             _questDao = new QuestDAO();
+            _artifactDao = new ArtifactDAO();
         }
 
         public IActionResult Index()
@@ -32,7 +29,8 @@ namespace Questore.Controllers
 
         public IActionResult Artifacts()
         {
-            return View();
+            var artifacts = _artifactDao.GetArtifacts().ToList();
+            return View(artifacts);
         }
 
     }

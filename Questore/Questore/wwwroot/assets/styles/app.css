@@ -45,6 +45,15 @@ ol, ul {
     src: url(../fonts/Ubuntu/ubuntu-v14-latin-regular.woff);
 }
 
+root {
+    --main-color-yellow: #F0D266;
+    --main-color-green: #8FCE5D;
+    --main-color-blue: #49C8D9;
+    --main-color-purple: #845DD6;
+    --main-color-red: #E86868;
+    --main-color-pink: #D65DBB;
+}
+
 body {
     color: #838383;
     background-color: #fafafa;
@@ -56,7 +65,80 @@ body {
     display: flex;
     margin: auto;
 }
-/****** QUESTS CONTAINERS ******/
+
+p {
+    color: #838383;
+    margin: 0px;
+    font-size: 14px;
+    font-weight: lighter;
+}
+
+h2 {
+    padding: 0px;
+    margin: 0px;
+    display: inline;
+    font-weight: normal;
+    font-size: 24px;
+}
+
+/* DEFAULT MARGINS AND FLOATS */
+
+.small-margin-left {
+    margin-left: 10px;
+}
+
+.right {
+    float: right;
+}
+
+.left {
+    float: left;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.no-margin {
+    margin: 0px;
+}
+
+/* FONTS COLORS */
+
+
+.font-blue {
+    color: var(--main-color-blue);
+    border-color: var(--main-color-blue);
+}
+
+.font-yellow {
+    color: var(--main-color-yellow);
+    border-color: var(--main-color-yellow);
+}
+
+.font-red {
+    color: var(--main-color-red);
+    border-color: var(--main-color-red);
+}
+
+.font-purple {
+    color: var(--main-color-purple);
+    border-color: var(--main-color-purple);
+}
+
+.font-green {
+    color: var(--main-color-green);
+    border-color: var(--main-color-green);
+}
+
+.font-pink {
+    color: var(--main-color-pink);
+    border-color: var(--main-color-pink);
+}
+
+
+
+/****** QUESTS AND ARTIFACTS CONTAINERS ******/
 
 .artifact-container {
     display: flex;
@@ -78,28 +160,13 @@ body {
     text-align: center;
 }
 
-/****** QUESTS STYLING ******/
+/****** QUESTS AND ARTIFACTS STYLING ******/
 
-.right {
-    float: right;
-}
-
-.left {
-    float: left;
-}
-
-
-.center-text {
-    text-align: center;
-}
 
 .half {
     max-width: 50%;
 }
 
-.no-margin {
-    margin: 0px;
-}
 
 .tiny {
     padding: 2px 5px;
@@ -110,14 +177,25 @@ body {
 }
 
 .green-btn {
-    background-color: #8FCE5D;
-    border-color: #8FCE5D;
+    background-color: var(--main-color-green);
+    border-color: var(--main-color-green);
 }
 
 .green-btn:hover {
     background-color: rgb(94, 158, 42);
     border-color: rgb(94, 158, 42);
 }
+
+.yellow-btn {
+    background-color: var(--main-color-yellow);
+    border-color: var(--main-color-yellow);
+}
+
+.yellow-btn:hover {
+    background-color: rgb(206, 167, 26);
+    border-color: rgb(206, 167, 26);
+}
+
 
 .artifact {
     background-color: white;
@@ -126,6 +204,7 @@ body {
     margin: 20px 10px 10px 10px;
     width: 316px;
     border-radius: 5px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .artifact-img {
@@ -154,11 +233,6 @@ body {
     --topnav-background-color-2: #E86868;
     --topnav-item-background-active: #FAFAFA;
     --topnav-item-background-hover: rgba(0, 0, 0, 0.1);
-    --topnav-item1-color: #F0D266;
-    --topnav-item2-color: #8FCE5D;
-    --topnav-item3-color: #49C8D9;
-    --topnav-item4-color: #845DD6;
-    --topnav-item5-color: #E86868;
 }
 
 .topnavbar {
@@ -212,43 +286,43 @@ body {
 }
 
 .mytopnav-item:nth-child(1) {
-    background: var(--topnav-item1-color);
+    background: var(--main-color-yellow);
 }
 
 .mytopnav-item:nth-child(2) {
-    background: var(--topnav-item2-color);
+    background: var(--main-color-green);
 }
 
 .mytopnav-item:nth-child(3) {
-    background: var(--topnav-item3-color);
+    background: var(--main-color-blue);
 }
 
 .mytopnav-item:nth-child(4) {
-    background: var(--topnav-item4-color);
+    background: var(--main-color-purple);
 }
 
 .mytopnav-item:nth-child(5) {
-    background: var(--topnav-item5-color);
+    background: var(--main-color-red);
 }
 
 .mytopnav-item:nth-child(1).active {
-    color: var(--topnav-item1-color);
+    color: var(--main-color-yellow);
 }
 
 .mytopnav-item:nth-child(2).active {
-    color: var(--topnav-item2-color);
+    color: var(--main-color-green);
 }
 
 .mytopnav-item:nth-child(3).active {
-    color: var(--topnav-item3-color);
+    color: var(--main-color-blue);
 }
 
 .mytopnav-item:nth-child(4).active {
-    color: var(--topnav-item4-color);
+    color: var(--main-color-purple);
 }
 
 .mytopnav-item:nth-child(5).active {
-    color: var(--topnav-item5-color);
+    color: var(--main-color-red);
 }
 
 

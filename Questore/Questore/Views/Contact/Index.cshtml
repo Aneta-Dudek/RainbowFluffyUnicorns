@@ -1,0 +1,35 @@
+﻿<!-- TODO: ADD STYLES FOR FORMS TO APP.CSS -->
+
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="contact-page">
+    <div class="contact-page-header">
+
+        THANKS FOR CONTACTING QUESTSTORE!
+
+    </div>
+    <div class="container shadow center contact-form">
+        <div class="form-container form-big">
+            <form action="../views/shop-view.html" class="form-grid" id="contact-form">
+
+                <div class="form-header full-width">Feel free to contact us!</div>
+                <p class="full-width form-element">
+                    <label for="subject" class="form-label">Subject</label>
+                    <input type="text" id="subject" name="subject" class="form-input" value="">
+                </p>
+                <p class="full-width form-element form-texbox">
+                    <label for="email" class="form-label">Message</label>
+                    <textarea rows="4" cols="50" name="comment" class="form-textarea" form="contact-form"> Enter text here...</textarea>
+                </p>
+
+                <!--<input type="submit" name="confirm" class="form-button" value="confirm">-->
+                <email address="nearly.angel@gmail.com" content="Confirm"></email>
+                <input type="button" name="reset" class="form-button" value="reset" onclick="window.location.reload();">
+
+            </form>
+        </div>
+    </div>
+</div>

@@ -2,13 +2,11 @@
 
 namespace Questore.Controllers
 {
-    public class HomeController : Controller
+    public class ProfileController : Controller
     {
-
         public IActionResult Index()
         {
             return View();
         }
-
     }
 }

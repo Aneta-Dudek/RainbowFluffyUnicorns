@@ -45,7 +45,7 @@ ol, ul {
     src: url(../fonts/Ubuntu/ubuntu-v14-latin-regular.woff);
 }
 
-root {
+:root {
     --main-color-yellow: #F0D266;
     --main-color-green: #8FCE5D;
     --main-color-blue: #49C8D9;

@@ -1,0 +1,30 @@
+﻿@model Student
+
+<div class="top-details-container container-shadow upper-margin">
+    <div class="top-details-inner-container">
+        <div class="avatar-image-container">
+            <img class="student-avatar" src="../assets/images/avatars/@Model.ImageUrl" />
+            <div class="avatar-button avatar-lvl">@Model.Title.Id</div>
+            <div class="avatar-button avatar-add">+</div>
+        </div>
+    </div>
+
+    <div class="top-details-inner-container">
+        <div class="details-wrapper">
+            <div class="name">@Model.FirstName @Model.LastName</div>
+            <div class="role">@Model.Title.Name</div>
+        </div>
+    </div>
+
+    <div class="top-details-inner-container">
+        <div class="text-padding">email:</div>
+        <div class="text-padding">experience:</div>
+        <div class="text-padding">stars:</div>
+    </div>
+
+    <div class="top-details-inner-container">
+        <div class="text-padding">@Model.Email</div>
+        <div class="text-padding">@Model.Experience</div>
+        <div class="text-padding">@Model.Coolcoins</div>
+    </div>
+</div>

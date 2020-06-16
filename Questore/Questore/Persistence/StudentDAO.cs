@@ -71,6 +71,7 @@ namespace Questore.Persistence
             student.Artifacts = GetStudentArtifacts(student.Id);
             student.Classes = GetStudentClasses(student.Id);
             student.Teams = GetStudentTeams(student.Id);
+            student.Details = GetStudentDetails(student.Id);
         }
 
         public void AddStudent(Student student)
@@ -202,6 +203,18 @@ namespace Questore.Persistence
             return title;
         }
 
+        private Detail ProvideOneDetail(NpgsqlDataReader reader)
+        {
+            var detail = new Detail()
+            {
+                Id = reader.GetInt32((int)DBUtilities.DetailEnum.Id),
+                Name = reader.GetString((int)DBUtilities.DetailEnum.Name),
+                Content = reader.GetString((int)DBUtilities.DetailEnum.Content)
+            };
+
+            return detail;
+        }
+
         private IEnumerable<Artifact> GetStudentArtifacts(int id)
         {
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
@@ -288,6 +301,28 @@ namespace Questore.Persistence
             }
 
             return teams;
+        }
+
+        private IEnumerable<Detail> GetStudentDetails(int id)
+        {
+            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
+
+            var query = $"SELECT detail.id, detail.name, detail.content " +
+                        $"FROM detail " +
+                        $"INNER JOIN student ON detail.student_id = student.id " +
+                        $"WHERE student.id = {id};";
+
+            using var command = new NpgsqlCommand(query, connection);
+            var reader = command.ExecuteReader();
+
+            var details = new List<Detail>();
+
+            while (reader.Read())
+            {
+                details.Add(ProvideOneDetail(reader));
+            }
+
+            return details;
         }
 
         private Title GetStudentTitleByExperience(int experience)

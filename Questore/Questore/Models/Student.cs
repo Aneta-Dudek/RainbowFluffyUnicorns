@@ -27,5 +27,7 @@ namespace Questore.Models
         public IEnumerable<Team> Teams { get; set; }
 
         public IEnumerable<Artifact> Artifacts { get; set; }
+        
+        public IEnumerable<Detail> Details { get; set; }
     }
 }

@@ -16,5 +16,6 @@
 
         public enum QuestEnum { Id, Name, Description, Reward, ImageUrl }
 
+        public enum DetailEnum { Id, Name, Content }
     }
 }

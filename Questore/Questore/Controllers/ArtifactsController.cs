@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace Questore.Controllers
 {
-    public class ShopController : Controller
+    public class ArtifactsController : Controller
     {
         private readonly IArtifactDAO _artifactDao;
 
-        public ShopController()
+        public ArtifactsController()
         {
             _artifactDao = new ArtifactDAO();
         }

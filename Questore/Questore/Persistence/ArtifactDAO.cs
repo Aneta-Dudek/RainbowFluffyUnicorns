@@ -80,20 +80,20 @@ namespace Questore.Persistence
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
 
             var query = $"UPDATE {_table} " +
-                        $"SET name = '{updatedArtifact.Name}', " +
-                        $"description = '{updatedArtifact.Description}', " +
-                        $"image_url = 'default_url', " +
-                        $"category_id = 1, " +
-                        $"price = {updatedArtifact.Price} " +
+                        $"SET name = @name, " +
+                        $"description = @description, " +
+                        $"image_url = @image_url, " +
+                        $"category_id = @category_id, " +
+                        $"price = @price " +
                         $"WHERE id = {id};";
 
             using var command = new NpgsqlCommand(query, connection);
 
-            command.Parameters.Add("name", NpgsqlDbType.Varchar).Value = updatedArtifact.Name;
-            command.Parameters.Add("description", NpgsqlDbType.Varchar).Value = updatedArtifact.Description;
-            command.Parameters.Add("image_url", NpgsqlDbType.Varchar).Value = "default_url";
-            command.Parameters.Add("category_id", NpgsqlDbType.Integer).Value = 1;
-            command.Parameters.Add("price", NpgsqlDbType.Integer).Value = updatedArtifact.Price;
+            command.Parameters.Add("@name", NpgsqlDbType.Varchar).Value = updatedArtifact.Name;
+            command.Parameters.Add("@description", NpgsqlDbType.Varchar).Value = updatedArtifact.Description;
+            command.Parameters.Add("@image_url", NpgsqlDbType.Varchar).Value = "test_url";
+            command.Parameters.Add("@category_id", NpgsqlDbType.Integer).Value = 1;
+            command.Parameters.Add("@price", NpgsqlDbType.Integer).Value = updatedArtifact.Price;
 
             command.Prepare();
             command.ExecuteNonQuery();

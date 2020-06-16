@@ -81,11 +81,11 @@ namespace Questore.Persistence
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
 
             var query = $"UPDATE {_table} " +
-                        $"SET name = '{updatedQuest.Name}', " +
-                        $"description = '{updatedQuest.Description}', " +
-                        $"reward = {updatedQuest.Reward}, " +
-                        $"image_url = 'default_url', " +
-                        $"category_id = 1 " +
+                        $"SET name = @name, " +
+                        $"description = @description, " +
+                        $"reward = @reward, " +
+                        $"image_url = @image_url, " +
+                        $"category_id = @category_id " +
                         $"WHERE id = {id};";
 
             using var command = new NpgsqlCommand(query, connection);

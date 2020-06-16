@@ -97,13 +97,13 @@ namespace Questore.Persistence
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
 
             var query = $"UPDATE {_table} " +
-                        $"SET first_name = '{updatedStudent.FirstName}', " +
-                             $"last_name = '{updatedStudent.LastName}', " +
-                             $"email = '{updatedStudent.Email}', " +
-                             $"password = '{updatedStudent.Password}', " +
-                             $"coolcoins = {updatedStudent.Coolcoins}, " +
-                             $"experience = {updatedStudent.Experience}, " +
-                             $"image_url = '{updatedStudent.ImageUrl}' " +
+                        $"SET first_name = @first_name, " +
+                             $"last_name = @last_name, " +
+                             $"email = @email, " +
+                             $"password = @password, " +
+                             $"coolcoins = @coolcoins, " +
+                             $"experience = @experience, " +
+                             $"image_url = @image_url " +
                         $"WHERE id = {id};";
 
             using var command = new NpgsqlCommand(query, connection);

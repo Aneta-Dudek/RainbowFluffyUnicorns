@@ -1,8 +1,59 @@
-﻿
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>MyProfile Page</h1>
+@model Student
+
+<partial name="_StudentTopDetails" />
+
+<div class="information-container container-shadow upper-margin">
+
+    <div class="information-title">
+        Details
+        <img class="edit-toggle-button edit-toggle-button-2" src="../assets/buttons/edit-button.png" />
+    </div>
+
+    <div class="input-container">
+        @foreach (var detail in Model.Details)
+        {
+            <partial name="_StudentDetail" model="detail" />
+        }
+    </div>
+</div>
+
+<div class="item-container upper-margin">
+
+    <div class="item-inner-container item-inner-container-profile container-shadow">
+        <div class="item-title title-1">artifacts</div>
+
+        @foreach (var studentArtifact in Model.Artifacts)
+        {
+            <partial name="_StudentArtifact" model="studentArtifact" />
+        }
+
+    </div>
+
+    <div class="item-inner-container item-inner-container-profile container-shadow">
+        <div class="item-title title-2">classes</div>
+
+        @foreach (var studentClass in Model.Classes)
+        {
+            <partial name="_StudentClass" model="studentClass" />
+        }
+
+    </div>
+
+    <div class="item-inner-container item-inner-container-profile container-shadow margin-right-zero">
+        <div class="item-title title-3">teams</div>
+
+        @foreach (var studentTeam in Model.Teams)
+        {
+            <partial name="_StudentTeam" model="studentTeam" />
+        }
+
+    </div>
+
+</div>
+
 

@@ -203,13 +203,13 @@ namespace Questore.Persistence
             return title;
         }
 
-        private Detail ProvideOneDetail(NpgsqlDataReader reader)
+        private StudentDetail ProvideOneDetail(NpgsqlDataReader reader)
         {
-            var detail = new Detail()
+            var detail = new StudentDetail()
             {
-                Id = reader.GetInt32((int)DBUtilities.DetailEnum.Id),
-                Name = reader.GetString((int)DBUtilities.DetailEnum.Name),
-                Content = reader.GetString((int)DBUtilities.DetailEnum.Content)
+                Id = reader.GetInt32((int)DBUtilities.StudentDetailEnum.Id),
+                Name = reader.GetString((int)DBUtilities.StudentDetailEnum.Name),
+                Content = reader.GetString((int)DBUtilities.StudentDetailEnum.Content)
             };
 
             return detail;
@@ -303,7 +303,7 @@ namespace Questore.Persistence
             return teams;
         }
 
-        private IEnumerable<Detail> GetStudentDetails(int id)
+        private IEnumerable<StudentDetail> GetStudentDetails(int id)
         {
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
 
@@ -315,7 +315,7 @@ namespace Questore.Persistence
             using var command = new NpgsqlCommand(query, connection);
             var reader = command.ExecuteReader();
 
-            var details = new List<Detail>();
+            var details = new List<StudentDetail>();
 
             while (reader.Read())
             {

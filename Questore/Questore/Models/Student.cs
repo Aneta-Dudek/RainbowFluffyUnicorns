@@ -28,6 +28,6 @@ namespace Questore.Models
 
         public IEnumerable<Artifact> Artifacts { get; set; }
         
-        public IEnumerable<Detail> Details { get; set; }
+        public IEnumerable<StudentDetail> Details { get; set; }
     }
 }

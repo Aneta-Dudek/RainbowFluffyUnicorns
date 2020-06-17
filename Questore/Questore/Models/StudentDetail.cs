@@ -1,6 +1,6 @@
 ﻿namespace Questore.Models
 {
-    public class Detail
+    public class StudentDetail
     {
         public int Id { get; set; }
 

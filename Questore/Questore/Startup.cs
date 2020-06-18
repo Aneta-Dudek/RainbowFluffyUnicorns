@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Questore.Middleware;
 
 namespace Questore
 {
@@ -43,6 +44,7 @@ namespace Questore
 
             app.UseRouting();
             app.UseSession();
+            app.UseMiddleware<AllowAuthenticated>();
 
             app.UseAuthorization();
 

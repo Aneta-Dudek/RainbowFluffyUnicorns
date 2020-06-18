@@ -22,7 +22,7 @@ namespace Questore.Controllers
         public IActionResult Index(Login login)
         {
             var user = _authentication.Authenticate(login);
-            return Ok();
+            return RedirectToAction("index", "quests");
         }
     }
 }

@@ -5,17 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Questore</title>
     <link rel="stylesheet" href="/assets/styles/app.css" asp-append-version="true" />
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet">
     <script src="assets/scripts/scriptMenu.js" asp-append-version="true" defer></script>
 </head>
 <body>
     <div class="topnavbar">
         <div class="topnav" id="mytopnav">
-            <a asp-controller="Home" asp-action="Index" class="mytopnav-item">QUESTSTORE</a>
-            <a asp-controller="Profile" asp-action="Index" class="mytopnav-item">PROFILE</a>
-            <a asp-controller="Quests" asp-action="Index" class="mytopnav-item">QUESTS</a>
-            <a asp-controller="Artifacts" asp-action="Index" class="mytopnav-item">SHOP</a>
-            <a asp-controller="Login" asp-action="Index" class="mytopnav-item">LOG OUT</a>
+            <a is-active-route asp-controller="Home" asp-action="Index" class="mytopnav-item">QUESTSTORE</a>
+            <a is-active-route asp-controller="Profile" asp-action="Index" class="mytopnav-item">PROFILE</a>
+            <a is-active-route asp-controller="Quests" asp-action="Index" class="mytopnav-item">QUESTS</a>
+            <a is-active-route asp-controller="Artifacts" asp-action="Index" class="mytopnav-item">SHOP</a>
+            <a is-active-route asp-controller="Login" asp-action="Index" class="mytopnav-item">LOG OUT</a>
             <a href="javascript:void(0);" class="mytopnav-icon" onclick="responsiveTopBar()">
+                <i class="fa fa-bars"></i>
             </a>
         </div>
     </div>

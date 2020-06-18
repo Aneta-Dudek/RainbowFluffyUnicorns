@@ -425,8 +425,29 @@ h2 {
 }
 
 .name-wrapper {
-    width: 75%;
+    width: 80%;
     min-width: 100px;
+}
+
+.artifact-name-wrapper {
+    width: 65%;
+}
+
+.artifact-btn {
+    width: 15%;
+    margin: auto;
+    text-align: center;
+    padding: 2px 5px;
+    color: white;
+    border-radius: 10px;
+    border: 1px solid;
+    cursor: pointer;
+}
+
+.inactive-btn {
+    cursor: default;
+    background-color: #D3D3D3;
+    border-color: #D3D3D3;
 }
 
 .remove-btn {

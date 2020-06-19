@@ -82,19 +82,68 @@ h2 {
 
 /* LOGIN CLASSES */
 
-.login-box {
+.button {
+    padding: 10px 20px;
+    color: white;
+    border: 1px solid;
+    border-radius: 15px;
+    font: 400 13.3333px Arial;
+}
 
+.input-style {
+    padding: 5px 10px;
+    width: 92%;
+    margin: 5px 0px 10px;
+    border: 1px solid #bdbdbd;
+    border-radius: 5px;
+}
+
+.label-style {
+    margin: 3px 0;
+}
+
+.center-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-box {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.big-margin-top {
+    margin-top: 60px;
+}
+
+.margin-on-bot {
+    margin-bottom: 20px;
+}
+
+.margin-on-top {
+    margin-top: 12px;
+}
+
+.login-box-inside {
+    display: inline;
+    padding: 30px 40px;
 }
 
 .rainbow {
     text-align: center;
     text-decoration: underline;
-    font-size: 32px;
     letter-spacing: 5px;
     margin: auto;
-    margin-top: 30%;
-    width: 30%;
+    display: inline;
 } 
+
+.move-down {
+    margin-top: 25%;
+}
+
 
 .big {
     font-size: 50px;
@@ -116,6 +165,44 @@ h2 {
 
     50% {
         background-position: 100% 0;
+    }
+}
+
+/* RAINBOW BORDER */
+
+.gradient-border {
+    --borderWidth: 1px;
+    background: white;
+    position: relative;
+    border-radius: 5px;
+}
+
+    .gradient-border:after {
+        content: '';
+        position: absolute;
+        top: calc(-1 * var(--borderWidth));
+        left: calc(-1 * var(--borderWidth));
+        height: calc(100% + var(--borderWidth) * 2);
+        width: calc(100% + var(--borderWidth) * 2);
+        background: linear-gradient(60deg, #F0D266, #8FCE5D, #49C8D9, #845DD6, #D65DBB, #E86868);
+        border-radius: 5px;
+        z-index: -1;
+        animation: animatedgradient 6s ease alternate infinite;
+        background-size: 300% 300%;
+    }
+
+
+@keyframes animatedgradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
     }
 }
 

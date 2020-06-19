@@ -15,5 +15,7 @@
         public int Price { get; set; }
 
         public bool IsUsed { get; set; }
+
+        public bool IsAffordable { get; set; } = false;
     }
 }

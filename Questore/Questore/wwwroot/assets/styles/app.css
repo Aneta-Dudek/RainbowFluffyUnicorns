@@ -444,6 +444,11 @@ h2 {
     cursor: pointer;
 }
 
+.fix-width-padding {
+    width: 100%;
+    padding: 2px 0;
+}
+
 form[type="submit"] {
     font-family: Ubuntu;
     font-size: 16px;
@@ -453,6 +458,7 @@ form[type="submit"] {
 
 
 .inactive-btn {
+    width: 100%;
     cursor: default;
     background-color: #D3D3D3;
     border-color: #D3D3D3;

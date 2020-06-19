@@ -31,7 +31,7 @@ namespace Questore.Controllers
             var user = _authentication.Authenticate(login);
             _session.SetString("user", JsonSerializer.Serialize(user));
 
-            return RedirectToAction("index", "quests");
+            return RedirectToAction("index", "quest");
         }
     }
 }

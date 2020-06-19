@@ -467,6 +467,7 @@ input[type="submit"]:focus {
 }
 
 .artifact-btn input {
+    width: 100%;
     text-align: center;
     color: white;
     cursor: pointer;

@@ -83,7 +83,7 @@ h2 {
 /* LOGIN CLASSES */
 
 .button {
-    padding: 10px 20px;
+    padding: 8px 30px;
     color: white;
     border: 1px solid;
     border-radius: 15px;
@@ -116,7 +116,7 @@ h2 {
 }
 
 .big-margin-top {
-    margin-top: 60px;
+    margin-top: 50px;
 }
 
 .margin-on-bot {

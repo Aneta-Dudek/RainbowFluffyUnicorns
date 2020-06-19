@@ -10,5 +10,6 @@ namespace Questore.Persistence
         void AddArtifact(Artifact artifact);
         void UpdateArtifact(int id, Artifact updatedArtifact);
         void DeleteArtifact(int id);
+        void UseArtifact(int id);
     }
 }

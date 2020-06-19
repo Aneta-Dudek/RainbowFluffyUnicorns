@@ -16,9 +16,13 @@
     }
     else
     {
-        <div class="artifact-btn green-btn">
-            USE
-        </div>
+        <form asp-action="Use" asp-controller="Artifact" asp-route-id="@Model.Id" method="post">
+            <input type="submit" class="artifact-btn green-btn" value="USE" />
+        </form>
     }
 
 </div>
+
+@*<input type="button"
+    value="Go Somewhere Else"
+    onclick="location.href='<%: Url.Action("Action", "Controller") %>'" />*@

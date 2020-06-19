@@ -99,6 +99,22 @@ namespace Questore.Persistence
             command.ExecuteNonQuery();
         }
 
+        public void UseArtifact(int id)
+        {
+            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
+
+            var query = $"UPDATE student_{_table} " +
+                        $"SET is_used = @is_used " +
+                        $"WHERE artifact_id = {id};";
+
+            using var command = new NpgsqlCommand(query, connection);
+
+            command.Parameters.Add("@is_used", NpgsqlDbType.Boolean).Value = true;
+
+            command.Prepare();
+            command.ExecuteNonQuery();
+        }
+
         public void DeleteArtifact(int id)
         {
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();

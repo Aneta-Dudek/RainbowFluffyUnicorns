@@ -4,11 +4,11 @@ using System.Linq;
 
 namespace Questore.Controllers
 {
-    public class QuestsController : Controller
+    public class QuestController : Controller
     {
         private readonly IQuestDAO _questDao;
 
-        public QuestsController()
+        public QuestController()
         {
             _questDao = new QuestDAO();
         }

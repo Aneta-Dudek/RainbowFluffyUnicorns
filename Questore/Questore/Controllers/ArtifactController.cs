@@ -1,14 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Questore.Persistence;
 using System.Linq;
+using Questore.Models;
 
 namespace Questore.Controllers
 {
-    public class ArtifactsController : Controller
+    public class ArtifactController : Controller
     {
         private readonly IArtifactDAO _artifactDao;
 
-        public ArtifactsController()
+        public ArtifactController()
         {
             _artifactDao = new ArtifactDAO();
         }
@@ -16,6 +17,13 @@ namespace Questore.Controllers
         {
             var artifacts = _artifactDao.GetArtifacts().ToList();
             return View(artifacts);
+        }
+
+        [HttpPost]
+        public IActionResult Use(int id)
+        {
+            _artifactDao.UseArtifact(id);
+            return RedirectToActionPermanent("Index", "Profile");
         }
     }
 }

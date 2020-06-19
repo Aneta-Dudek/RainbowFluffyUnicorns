@@ -449,11 +449,8 @@ h2 {
     padding: 2px 0;
 }
 
-form[type="submit"] {
-    font-family: Ubuntu;
-    font-size: 16px;
-    box-sizing: initial;
-    max-height: 16px;
+input[type="submit"]:focus {
+    outline: none;
 }
 
 

@@ -434,20 +434,41 @@ h2 {
 }
 
 .artifact-btn {
-    width: 15%;
+    width: 25%;
+    max-width: 80px;
     margin: auto;
     text-align: center;
-    padding: 2px 5px;
     color: white;
     border-radius: 10px;
-    border: 1px solid;
+    border: -1px solid;
     cursor: pointer;
 }
+
+form[type="submit"] {
+    font-family: Ubuntu;
+    font-size: 16px;
+    box-sizing: initial;
+    max-height: 16px;
+}
+
 
 .inactive-btn {
     cursor: default;
     background-color: #D3D3D3;
     border-color: #D3D3D3;
+    padding: 3.8px 0;
+}
+
+.artifact-btn input {
+    width: 100%;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    border-style: none;
+    font-family: inherit;
+    font-size: inherit;
+    border-radius: 10px;
+    padding: 2px 0;
 }
 
 .remove-btn {

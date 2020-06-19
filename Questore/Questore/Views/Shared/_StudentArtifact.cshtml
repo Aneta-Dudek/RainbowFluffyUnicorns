@@ -16,8 +16,8 @@
     }
     else
     {
-        <form asp-action="Use" asp-controller="Artifact" asp-route-id="@Model.Id" method="post">
-            <input type="submit" class="artifact-btn green-btn" value="USE" />
+        <form asp-action="Use" asp-controller="Artifact" asp-route-id="@Model.Id" method="post" class="artifact-btn green-btn">
+            <input type="submit" value="USE" class="green-btn"/>
         </form>
     }
 

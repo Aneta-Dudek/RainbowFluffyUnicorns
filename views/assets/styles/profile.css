@@ -247,20 +247,33 @@ body {
 
 .artifact-btn {
     width: 25%;
+    max-width: 80px;
     margin: auto;
     text-align: center;
-    padding: 2px 5px;
     color: white;
     border-radius: 10px;
-    border: 1px solid;
+    border: -1px solid;
     cursor: pointer;
+}
+
+.artifact-btn input {
+    width: 100%;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    border-style: none;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 16px;
+    border-radius: 10px;
 }
 
 .inactive-btn {
     cursor: default;
     background-color: #D3D3D3;
     border-color: #D3D3D3;
+    padding: 3.5px 0;
 }
+
 
 .artifact-name-wrapper {
     width: 55%;

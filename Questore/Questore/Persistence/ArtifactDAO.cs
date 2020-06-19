@@ -104,8 +104,8 @@ namespace Questore.Persistence
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
 
             var query = $"UPDATE student_{_table} " +
-                        $"SET is_used = @is_used " +
-                        $"WHERE artifact_id = {id};";
+                              $"SET is_used = @is_used " +
+                              $"WHERE artifact_id = {id};";
 
             using var command = new NpgsqlCommand(query, connection);
 
@@ -113,6 +113,66 @@ namespace Questore.Persistence
 
             command.Prepare();
             command.ExecuteNonQuery();
+        }
+
+        public void BuyArtifact(int artifactId, int studentId)
+        {
+            if (IsArtifactAffordable(artifactId, studentId))
+            {
+                ClaimArtifact(artifactId, studentId);
+                UpdateCoolcoinsAfterPurchase(artifactId, studentId);
+            }
+        }
+
+        private void ClaimArtifact(int artifactId, int studentId)
+        {
+            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
+
+            var query = $"INSERT INTO student_{_table}(student_id, artifact_id) " +
+                        $"VALUES ({studentId}, {artifactId});";
+
+            using var command = new NpgsqlCommand(query, connection);
+
+            command.Prepare();
+            command.ExecuteNonQuery();
+        }
+
+        private void UpdateCoolcoinsAfterPurchase(int artifactId, int studentId)
+        {
+            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
+
+            var query = $"UPDATE student " +
+                              $"SET coolcoins = student.coolcoins - artifact.price " +
+                              $"FROM artifact " +
+                              $"WHERE artifact.id = {artifactId} AND student.id = {studentId};";
+
+            using var command = new NpgsqlCommand(query, connection);
+
+            command.Prepare();
+            command.ExecuteNonQuery();
+        }
+
+        private bool IsArtifactAffordable(int artifactId, int studentId)
+        {
+            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
+
+            var query = $"SELECT artifact.id " +
+                        $"FROM {_table}, student " +
+                        $"WHERE student.id = {studentId} AND student.coolcoins >= artifact.price;";
+
+            using var command = new NpgsqlCommand(query, connection);
+            var reader = command.ExecuteReader();
+
+            var artifactIds = new List<int>();
+
+            while (reader.Read())
+            {
+                artifactIds.Add(reader.GetInt32((int)DBUtilities.ArtifactEnum.Id));
+            }
+
+            if (artifactIds.Contains(artifactId)) return true;
+
+            return false;
         }
 
         public void DeleteArtifact(int id)

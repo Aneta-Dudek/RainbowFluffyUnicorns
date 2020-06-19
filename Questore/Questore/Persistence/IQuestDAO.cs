@@ -10,5 +10,6 @@ namespace Questore.Persistence
         void AddQuest(Quest quest);
         void UpdateQuest(int id, Quest updatedQuest);
         void DeleteQuest(int id);
+        void ClaimQuest(int questId, int studentId);
     }
 }

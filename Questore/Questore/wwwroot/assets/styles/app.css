@@ -578,7 +578,7 @@ h2 {
     padding: 2px 0;
 }
 
-input[type="submit"]:focus {
+input[type="submit"]:focus, input[type="image"] {
     outline: none;
 }
 
@@ -590,6 +590,10 @@ input[type="submit"]:focus {
     background-color: #D3D3D3;
     border-color: #D3D3D3;
     display: inline;
+}
+
+.hidden {
+    visibility: hidden;
 }
 
 .inactive-btn:hover {
@@ -614,16 +618,15 @@ input[type="submit"]:focus {
 
 .remove-btn {
     position: relative;
-    width: 5%;
-    z-index: -1;
+    z-index: 0;
+    cursor: pointer;
 }
 
-.remove-btn img {
+.remove-btn input {
     position: absolute;
-    width: 5px;
-    height: 5px;
-    right: 5px;
-    top: 5px;
+    width: 8px;
+    right: 0;
+    top: 0;
 }
 
 .item {
@@ -695,6 +698,7 @@ input[type="submit"]:focus {
     top: 0; /* Position the navbar at the top of the page */
     background: linear-gradient(90deg, var(--topnav-background-color-1) 50%, var(--topnav-background-color-2) 50%);
     min-width: 480px;
+    z-index: 1;
 }
 
 /* Add a black background color to the top navigation */

@@ -4,7 +4,7 @@
     {
         public enum StudentEnum { Id, FirstName, LastName, Email, Coolcoins, Experience, ImageUrl }
 
-        public enum ArtifactEnum { Id, Name, Description, ImageUrl, Price, IsUsed }
+        public enum ArtifactEnum { Id, Name, Description, ImageUrl, Price, IsUsed, StudentArtifactId }
 
         public enum ClassEnum { Id, Name, DateStarted, ImageUrl }
 

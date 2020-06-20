@@ -4,27 +4,27 @@
 }
 @model Login
 
-<div class="login-page">
-    <div class="login-header">
-
-        QUESTSTORE
-
-    </div>
+<div class="login-box move-down">
     <div>
-        <div>
-            <form asp-action="Index" method="post">
-                <div>Login</div>
-                <p>
-                    <label asp-for="Identifier"></label>
-                    <input asp-for="Identifier">
-                </p>
-                <p>
-                    <label asp-for="Password"></label>
-                    <input asp-for="Password" type="password">
-                </p>
-                <input type="submit" value="login"/>
-            </form>
-        </div>
+        <h1 class="rainbow rainbow_text_animated big">QUESTORE</h1>
     </div>
+    
+
 </div>
 
+        <div class="login-box big-margin-top"> 
+            <div class="login-box-inside gradient-border">
+                <form asp-action="Index" method="post">
+                    <div class="center-content"><h2 class="margin-on-bot">Login</h2></div>
+                    <p>
+                        <label class="label-style" asp-for="Identifier"></label>
+                        <input class="input-style" asp-for="Identifier">
+                    </p>
+                    <p>
+                        <label asp-for="Password"></label>
+                        <input class="input-style" asp-for="Password" type="password">
+                    </p>
+                    <div class="center-content"><input class="button green-btn margin-on-top" type="submit" value="login" /></div>
+                </form>
+            </div>
+        </div>

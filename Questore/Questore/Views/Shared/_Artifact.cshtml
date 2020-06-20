@@ -10,13 +10,13 @@
         <p>@Model.Price stars</p>
         @if (@Model.IsAffordable)
         {
-            <form asp-action="Buy" asp-controller="Artifact" asp-route-id="@Model.Id" method="post" class="artifact-btn green-btn fix-width-padding">
-                <input type="submit" class="green-btn" value="buy ★" />
+            <form asp-action="Buy" asp-controller="Artifact" asp-route-id="@Model.Id" method="post">
+                <input type="submit" class="yellow-btn button tiny" value="buy ★" />
             </form>
         }
         else
         {
-            <div class="artifact-btn inactive-btn">
+            <div class="button tiny inactive-btn">
                 buy ★
             </div>
         }

@@ -8,8 +8,8 @@
         <h3 class="no-margin">@Model.Name</h3>
         <p>@Model.Description</p>
         <p>@Model.Reward stars</p>
-        <form asp-action="Claim" asp-controller="Quest" asp-route-id="@Model.Id" method="post" class="artifact-btn green-btn fix-width-padding">
-            <input type="submit" class="green-btn" value="claim ★" />
+        <form asp-action="Claim" asp-controller="Quest" asp-route-id="@Model.Id" method="post">
+            <input type="submit" value="claim ★" class="remove-input-settings green-btn tiny button"/>
         </form>
     </div>
 </div>

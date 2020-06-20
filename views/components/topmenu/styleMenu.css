@@ -6,6 +6,7 @@
     font-family: Agus;
     src: url(../../assets/fonts/Agus/AgusSans-Regular.woff);
 }
+
 @font-face {
     font-family: Ubuntu;
     src: url(../../assets/fonts/Ubuntu/ubuntu-v14-latin-regular.woff);
@@ -26,11 +27,15 @@
 
 .topnavbar {
     font-family: Agus;
-    position: sticky; /* Set the navbar to fixed position */
-    width: 100%; /* Full width */
-    top: 0; /* Position the navbar at the top of the page */
+    position: sticky;
+    /* Set the navbar to fixed position */
+    width: 100%;
+    /* Full width */
+    top: 0;
+    /* Position the navbar at the top of the page */
     background: linear-gradient(90deg, var(--topnav-background-color-1) 50%, var(--topnav-background-color-2) 50%);
     min-width: 560px;
+    z-index: 1;
 }
 
 /* Add a black background color to the top navigation */
@@ -40,24 +45,24 @@
     margin-left: auto;
     max-width: 1140px;
     display: flex;
-    
+
 }
 
 /* Style the links inside the navigation bar */
-    .topnav .mytopnav-icon,
-    .topnav .mytopnav-item {
-        float: left;
-        display: block;
-        color: var(--topnav-font-regular-color);
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-grow: 1;
-        min-width: 30px;
-    }
+.topnav .mytopnav-icon,
+.topnav .mytopnav-item {
+    float: left;
+    display: block;
+    color: var(--topnav-font-regular-color);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    min-width: 30px;
+}
 
 .mytopnav-item:nth-child(1) {
     font-size: 40px;
@@ -150,13 +155,13 @@
         flex-direction: column;
     }
 
-        .topnav.responsive .mytopnav-icon {
-            background: var(--topnav-background-color-2);
-            position: absolute;
-            right: 0;
-            top: 0;
-            padding: 22px 16px 21px 16px;
-        }
+    .topnav.responsive .mytopnav-icon {
+        background: var(--topnav-background-color-2);
+        position: absolute;
+        right: 0;
+        top: 0;
+        padding: 22px 16px 21px 16px;
+    }
 
     .topnav.responsive .mytopnav-item {
         float: none;

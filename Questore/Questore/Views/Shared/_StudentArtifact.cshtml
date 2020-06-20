@@ -4,11 +4,21 @@
     <div class="item-image">
         <img class="profile-view-icon-size" src="../assets/icons/call.png" />
     </div>
-    <div class="name-wrapper">
+    <div class="artifact-name-wrapper">
         <div class="text-padding">@Model.Name</div>
         <div class="item-subname text-padding">@Model.Description</div>
     </div>
-    <div class="remove-btn">
-        <img src="../assets/buttons/interface.png" />
-    </div>
+    @if (@Model.IsUsed)
+    {
+        <div class="artifact-btn inactive-btn width-25">
+            USE
+        </div>
+    }
+    else
+    {
+        <form asp-action="Use" asp-controller="Artifact" asp-route-id="@Model.Id" method="post" class="artifact-btn green-btn">
+            <input type="submit" value="USE" class="green-btn"/>
+        </form>
+    }
+
 </div>

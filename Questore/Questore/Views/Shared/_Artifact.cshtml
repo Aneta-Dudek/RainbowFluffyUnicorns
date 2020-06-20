@@ -8,6 +8,17 @@
         <h3 class="no-margin">@Model.Name</h3>
         <p>@Model.Description</p>
         <p>@Model.Price stars</p>
-        <button class="tiny yellow-btn">claim ★</button>
+        @if (@Model.IsAffordable)
+        {
+            <form asp-action="Buy" asp-controller="Artifact" asp-route-id="@Model.Id" method="post" class="artifact-btn green-btn fix-width-padding">
+                <input type="submit" class="green-btn" value="buy ★" />
+            </form>
+        }
+        else
+        {
+            <div class="artifact-btn inactive-btn">
+                buy ★
+            </div>
+        }
     </div>
 </div>

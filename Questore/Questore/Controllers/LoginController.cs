@@ -1,10 +1,10 @@
-﻿using System;
-using System.Text.Json;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using Questore.Models;
 using Questore.Persistence;
+using System;
+using System.Text.Json;
 
 namespace Questore.Controllers
 {
@@ -29,6 +29,9 @@ namespace Questore.Controllers
         public IActionResult Index(Login login)
         {
             var user = _authentication.Authenticate(login);
+            if (user == null)
+                return RedirectToAction("index");
+
             _session.SetString("user", JsonSerializer.Serialize(user));
 
             return RedirectToAction("index", "quest");

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Npgsql;
+﻿using Npgsql;
 using Questore.Models;
 
 namespace Questore.Persistence
@@ -33,13 +29,16 @@ namespace Questore.Persistence
             using var command = new NpgsqlCommand(query, connection);
             var reader = command.ExecuteReader();
 
-            reader.Read();
-            var id = reader.GetInt32(0);
+            if (reader.HasRows)
+            {
+                reader.Read();
+                var id = reader.GetInt32(0);
+                var student = _studentDao.GetStudent(id);
+                return student;
+            }
 
+            return null;
 
-            var student = _studentDao.GetStudent(id);
-
-            return student;
         }
 
     }

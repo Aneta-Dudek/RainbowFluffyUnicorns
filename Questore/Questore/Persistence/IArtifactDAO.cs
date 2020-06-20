@@ -12,5 +12,6 @@ namespace Questore.Persistence
         void DeleteArtifact(int id);
         void UseArtifact(int id);
         void BuyArtifact(int artifactId, int studentId);
+        void DeleteStudentArtifact(int id);
     }
 }

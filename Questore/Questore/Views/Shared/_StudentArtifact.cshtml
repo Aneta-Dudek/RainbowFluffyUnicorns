@@ -10,9 +10,12 @@
     </div>
     @if (@Model.IsUsed)
     {
-        <div class="artifact-btn inactive-btn width-25">
+        <div class="artifact-btn inactive-btn width-25 hidden">
             USE
         </div>
+        <form asp-action="DeleteStudentArtifact" asp-controller="Artifact" asp-route-id="@Model.StudentArtifactId" method="post" class="remove-btn">
+            <input type="image" src="assets/buttons/interface.png" border="0" alt="Submit" />
+        </form>
     }
     else
     {

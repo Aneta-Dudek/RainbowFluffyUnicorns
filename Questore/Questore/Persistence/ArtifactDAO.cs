@@ -188,6 +188,19 @@ namespace Questore.Persistence
             command.ExecuteNonQuery();
         }
 
+        public void DeleteStudentArtifact(int id)
+        {
+            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
+
+            var query = $"DELETE FROM student_{_table}" +
+                        $" WHERE id = {id};";
+
+            using var command = new NpgsqlCommand(query, connection);
+
+            command.Prepare();
+            command.ExecuteNonQuery();
+        }
+
         private Artifact ProvideOneArtifact(NpgsqlDataReader reader)
         {
             var artifact = new Artifact()

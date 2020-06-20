@@ -58,5 +58,13 @@ namespace Questore.Controllers
             _session.SetString("user", JsonSerializer.Serialize(updatedStudent));
             return RedirectToAction("Index", "Profile");
         }
+
+        public IActionResult DeleteStudentArtifact(int id)
+        {
+            _artifactDao.DeleteStudentArtifact(id);
+            var updatedStudent = _student.GetStudent(ActiveStudent.Id);
+            _session.SetString("user", JsonSerializer.Serialize(updatedStudent));
+            return RedirectToAction("Index", "Profile");
+        }
     }
 }

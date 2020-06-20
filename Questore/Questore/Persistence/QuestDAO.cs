@@ -113,6 +113,22 @@ namespace Questore.Persistence
             command.ExecuteNonQuery();
         }
 
+        public void ClaimQuest(int questId, int studentId)
+        {
+            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
+
+            var query = $"UPDATE student " +
+                        $"SET coolcoins = student.coolcoins + quest.reward, " +
+                        $"experience = student.experience + quest.reward " +
+                        $"FROM quest " +
+                        $"WHERE quest.id = {questId} AND student.id = {studentId};";
+
+            using var command = new NpgsqlCommand(query, connection);
+
+            command.Prepare();
+            command.ExecuteNonQuery();
+        }
+
         private Quest ProvideOneQuest(NpgsqlDataReader reader)
         {
             var quest = new Quest()

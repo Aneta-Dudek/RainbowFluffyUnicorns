@@ -1,15 +1,18 @@
 ﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile</title>
     <link rel="stylesheet" href="../views/assets/styles/reset.css" />
     <link rel="stylesheet" href="../views/assets/styles/profile.css" />
+    <link rel="stylesheet" href="../views/assets/styles/app.css" />
     <link rel="stylesheet" href="../views/components/topmenu/styleMenu.css" />
     <script src="../views/components/topmenu/scriptMenu.js" defer></script>
 </head>
+
 <body>
 
     <div class="topnavbar">
@@ -125,25 +128,25 @@
                     <div class="item-image">
                         <img class="profile-view-icon-size" src="assets/icons/call.png" />
                     </div>
-                    <div class="name-wrapper">
+                    <div class="artifact-name-wrapper">
                         <div class="text-padding">item-title</div>
                         <div class="item-subname text-padding">item-subtitle</div>
                     </div>
-                    <div class="remove-btn">
-                        <img src="assets/buttons/interface.png" />
-                    </div>
+                    <form class="artifact-btn green-btn">
+                        <input type="submit" value="USE" class="green-btn" />
+                    </form>
                 </div>
 
                 <div class="item container-shadow">
                     <div class="item-image">
                         <img class="profile-view-icon-size" src="assets/icons/call.png" />
                     </div>
-                    <div class="name-wrapper">
+                    <div class="artifact-name-wrapper">
                         <div class="text-padding">item-title</div>
                         <div class="item-subname text-padding">item-subtitle</div>
                     </div>
-                    <div class="remove-btn">
-                        <img src="assets/buttons/interface.png" />
+                    <div class="artifact-btn inactive-btn">
+                        USE
                     </div>
                 </div>
                 <div class="item container-shadow">
@@ -240,4 +243,5 @@
         </div>
     </div>
 </body>
+
 </html>

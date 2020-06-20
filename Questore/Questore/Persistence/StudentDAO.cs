@@ -150,7 +150,7 @@ namespace Questore.Persistence
             return student;
         }
 
-        private Artifact ProvideOneArtifact(NpgsqlDataReader reader)
+        private Artifact ProvideOneStudentArtifact(NpgsqlDataReader reader)
         {
             var artifact = new Artifact()
             {
@@ -158,7 +158,8 @@ namespace Questore.Persistence
                 Name = reader.GetString((int)DBUtilities.ArtifactEnum.Name),
                 Description = reader.GetString((int)DBUtilities.ArtifactEnum.Description),
                 ImageUrl = reader.GetString((int)DBUtilities.ArtifactEnum.ImageUrl),
-                Price = reader.GetInt32((int)DBUtilities.ArtifactEnum.Price)
+                Price = reader.GetInt32((int)DBUtilities.ArtifactEnum.Price),
+                IsUsed = reader.GetBoolean((int)DBUtilities.ArtifactEnum.IsUsed)
             };
 
             artifact.Category = GetArtifactCategory(artifact.Id);
@@ -219,7 +220,7 @@ namespace Questore.Persistence
         {
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
 
-            var query = $"SELECT artifact.id, artifact.name, artifact.description, artifact.image_url, artifact.price " +
+            var query = $"SELECT artifact.id, artifact.name, artifact.description, artifact.image_url, artifact.price, student_artifact.is_used " +
                               $"FROM artifact " +
                               $"INNER JOIN student_artifact ON artifact.id = student_artifact.artifact_id " +
                               $"WHERE student_artifact.student_id = {id};";
@@ -231,7 +232,7 @@ namespace Questore.Persistence
 
             while (reader.Read())
             {
-                artifacts.Add(ProvideOneArtifact(reader));
+                artifacts.Add(ProvideOneStudentArtifact(reader));
             }
 
             return artifacts;

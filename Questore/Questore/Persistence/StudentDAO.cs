@@ -64,7 +64,6 @@ namespace Questore.Persistence
             return student;
         }
 
-        //Jakiś pomysł jak to nazwać?
         private void AssignStudentDetails(Student student)
         {
             student.Title = GetStudentTitleByExperience(student.Experience);
@@ -159,7 +158,8 @@ namespace Questore.Persistence
                 Description = reader.GetString((int)DBUtilities.ArtifactEnum.Description),
                 ImageUrl = reader.GetString((int)DBUtilities.ArtifactEnum.ImageUrl),
                 Price = reader.GetInt32((int)DBUtilities.ArtifactEnum.Price),
-                IsUsed = reader.GetBoolean((int)DBUtilities.ArtifactEnum.IsUsed)
+                IsUsed = reader.GetBoolean((int)DBUtilities.ArtifactEnum.IsUsed),
+                StudentArtifactId = reader.GetInt32((int)DBUtilities.ArtifactEnum.StudentArtifactId)
             };
 
             artifact.Category = GetArtifactCategory(artifact.Id);
@@ -220,7 +220,7 @@ namespace Questore.Persistence
         {
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
 
-            var query = $"SELECT artifact.id, artifact.name, artifact.description, artifact.image_url, artifact.price, student_artifact.is_used " +
+            var query = $"SELECT artifact.id, artifact.name, artifact.description, artifact.image_url, artifact.price, student_artifact.is_used, student_artifact.id " +
                               $"FROM artifact " +
                               $"INNER JOIN student_artifact ON artifact.id = student_artifact.artifact_id " +
                               $"WHERE student_artifact.student_id = {id};";

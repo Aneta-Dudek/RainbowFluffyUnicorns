@@ -105,7 +105,7 @@ namespace Questore.Persistence
 
             var query = $"UPDATE student_{_table} " +
                               $"SET is_used = @is_used " +
-                              $"WHERE artifact_id = {id};";
+                              $"WHERE id = {id};";
 
             using var command = new NpgsqlCommand(query, connection);
 

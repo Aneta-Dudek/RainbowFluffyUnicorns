@@ -14,6 +14,7 @@ namespace Questore.Persistence
         {
             return $"Host={Host};Username={Username};Password={Password};Database={Database};Pooling={IsPooling}";
         }
+
         public NpgsqlConnection GetOpenConnectionObject()
         {
             var connection = new NpgsqlConnection(GetConnectionString());

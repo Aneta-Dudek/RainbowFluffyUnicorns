@@ -30,11 +30,17 @@ namespace Questore.Controllers
         {
             var user = _authentication.Authenticate(login);
             if (user == null)
-                return RedirectToAction("index");
+                return RedirectToAction("Index");
 
             _session.SetString("user", JsonSerializer.Serialize(user));
 
             return RedirectToAction("index", "quest");
+        }
+
+        public IActionResult Logout()
+        {
+            _session.Remove("user");
+            return RedirectToAction("Index");
         }
     }
 }

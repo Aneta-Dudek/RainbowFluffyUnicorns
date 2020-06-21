@@ -1,0 +1,28 @@
+﻿@model Artifact
+
+<div class="item container-shadow margin-reset">
+    <div class="item-image">
+        <img class="profile-view-icon-size" src="../assets/icons/call.png" />
+    </div>
+    <div class="artifact-name-wrapper">
+        <div class="text-padding">@Model.Name</div>
+        <div class="item-subname text-padding">@Model.Description</div>
+    </div>
+    @if (@Model.IsUsed)
+    {
+        <div class="artifact-btn inactive-btn width-25 hidden">
+            USE
+        </div>
+        <form asp-action="DeleteStudentArtifact" asp-controller="Artifact" asp-route-id="@Model.StudentArtifactId" method="post" class="remove-btn">
+            <input type="image" src="assets/buttons/interface.png" border="0" alt="Submit" />
+        </form>
+    }
+    else
+    {   <div class="artifact-btn">
+            <form asp-action="Use" asp-controller="Artifact" asp-route-id="@Model.StudentArtifactId" method="post">
+                <input type="submit" value="use" class="green-btn float-bot"/>
+            </form>
+        </div>
+    }
+
+</div>

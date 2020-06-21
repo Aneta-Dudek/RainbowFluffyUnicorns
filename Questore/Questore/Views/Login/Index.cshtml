@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+@model Login
+
+<div class="login-box move-down">
+    <div>
+        <h1 class="rainbow rainbow_text_animated big">QUESTORE</h1>
+    </div>
+
+
+</div>
+
+<div class="login-box big-margin-top">
+    <div class="login-box-inside gradient-border">
+        <form asp-action="Index" method="post">
+            <div class="center-content"><h2 class="margin-on-bot">Login</h2></div>
+            <p>
+                @Html.ValidationSummary(false, "", new { @class = "label-style font-red" })
+                <br/>
+            </p>
+            <p>
+                <label asp-for="Email" class="label-style"></label>
+                <input asp-for="Email" class="input-style">
+            </p>
+            <p>
+                <label asp-for="Password" class="label-style"></label>
+                <input asp-for="Password" class="input-style" type="password">
+            </p>
+            <div class="center-content"><input class="button green-btn margin-on-top" type="submit" value="login" /></div>
+        </form>
+    </div>
+</div>

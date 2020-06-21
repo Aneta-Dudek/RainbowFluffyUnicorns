@@ -1,0 +1,24 @@
+﻿@model Artifact
+
+<div class="artifact">
+    <div class="left">
+        <img class="artifact-img" src="../assets/images/artifacts/@Model.ImageUrl">
+    </div>
+    <div class="right center-text half">
+        <h3 class="no-margin">@Model.Name</h3>
+        <p>@Model.Description</p>
+        <p>@Model.Price stars</p>
+        @if (@Model.IsAffordable)
+        {
+            <form asp-action="Buy" asp-controller="Artifact" asp-route-id="@Model.Id" method="post">
+                <input type="submit" class="yellow-btn button tiny" value="buy ★" />
+            </form>
+        }
+        else
+        {
+            <div class="button tiny inactive-btn">
+                buy ★
+            </div>
+        }
+    </div>
+</div>

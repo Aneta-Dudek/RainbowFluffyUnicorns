@@ -4,23 +4,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - Questore</title>
-    <link rel="stylesheet" href="assets/styles/app.css" />
-    <script src="assets/scripts/scriptMenu.js" defer></script>
+    <link rel="stylesheet" href="/assets/styles/app.css" asp-append-version="true" />
+    <link href="~/lib/font-awesome/css/all.css" rel="stylesheet">
+    <script src="assets/scripts/scriptMenu.js" asp-append-version="true" defer></script>
 </head>
 <body>
-<div class="topnavbar">
-    <div class="topnav" id="mytopnav">
-        <a href="#qstore" class="mytopnav-item">QUESTSTORE</a>
-        <a href="myprofile-view-student.html" class="mytopnav-item">PROFILE</a>
-        <a href="quest-view.html" class="mytopnav-item active">QUESTS</a>
-        <a href="shop-view.html" class="mytopnav-item">SHOP</a>
-        <a href="../other-views/login-page.html" class="mytopnav-item">LOG OUT</a>
-        <a href="javascript:void(0);" class="mytopnav-icon" onclick="responsiveTopBar()">
-        </a>
+    <div class="topnavbar">
+        <div class="topnav" id="mytopnav">
+            <a is-active-route asp-controller="Home" asp-action="Index" class="mytopnav-item">QUESTSTORE</a>
+            <a is-active-route asp-controller="Profile" asp-action="Index" class="mytopnav-item">PROFILE</a>
+            <a is-active-route asp-controller="Quest" asp-action="Index" class="mytopnav-item">QUESTS</a>
+            <a is-active-route asp-controller="Artifact" asp-action="Index" class="mytopnav-item">SHOP</a>
+            <a is-active-route asp-controller="Login" asp-action="Logout" class="mytopnav-item">LOG OUT</a>
+            <a href="javascript:void(0);" class="mytopnav-icon" onclick="responsiveTopBar()">
+                <i class="fa fa-bars"></i>
+            </a>
+        </div>
     </div>
-</div>
-    <div>
-    @RenderBody()
+    <div class="container">
+        @RenderBody()
     </div>
 </body>
 </html>

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Questore.Models
+﻿namespace Questore.Models
 {
     public class Quest
     {
@@ -14,6 +9,8 @@ namespace Questore.Models
         public string Description { get; set; }
 
         public int Reward { get; set; }
+
+        public Category Category { get; set; }
 
         public string ImageUrl { get; set; }
     }

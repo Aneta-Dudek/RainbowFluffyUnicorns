@@ -1,0 +1,15 @@
+﻿@model Quest
+
+<div class="artifact">
+    <div class="left">
+        <img class="artifact-img" src="../assets/images/quests/@Model.ImageUrl">
+    </div>
+    <div class="right center-text half">
+        <h3 class="no-margin">@Model.Name</h3>
+        <p>@Model.Description</p>
+        <p>@Model.Reward stars</p>
+        <form asp-action="Claim" asp-controller="Quest" asp-route-id="@Model.Id" method="post">
+            <input type="submit" value="claim ★" class="remove-input-settings green-btn tiny button"/>
+        </form>
+    </div>
+</div>

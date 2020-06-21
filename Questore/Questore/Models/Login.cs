@@ -1,14 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Questore.Models
 {
     public class Login
     {
-        public string Password { get; set; }
+        [Required]
+        [StringLength(50)]
+        [Display(Name = "E-mail:")]
+        [DataType(DataType.EmailAddress)]
+        public string Email { get; set; }
 
-        public string Identifier { get; set; }
+        [Required]
+        [StringLength(30)]
+        [Display(Name = "Password:")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
     }
 }

@@ -19,13 +19,14 @@ namespace Questore.Middleware
         {
             var user = context.Session.GetString("user");
 
-            if (user != null || context.Request.Path.Value == "/")
+            if (user != null || context.Request.Path.Value == "/" || context.Request.Path.Value == "/Error")
             {
                 await _next(context);
             }
             else
             {
                 context.Response.Redirect("/");
+
             }
         }
     }

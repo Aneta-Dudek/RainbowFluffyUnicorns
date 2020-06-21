@@ -29,13 +29,12 @@ namespace Questore
         {
             if (env.IsDevelopment())
             {
-                app.UseStatusCodePages();
                 app.UseDeveloperExceptionPage();
-
             }
             else
             {
-                app.UseExceptionHandler("/Home/Error");
+                app.UseExceptionHandler("/Error");
+                app.UseStatusCodePagesWithReExecute("/Error/Error/{0}");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
@@ -50,6 +49,9 @@ namespace Questore
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllerRoute(
+                    name: "errors",
+                    pattern: "Error/{action}/{statusCode?}", defaults: new { Controller = "Error", Action = "Index"});
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Login}/{action=Index}/{id?}");

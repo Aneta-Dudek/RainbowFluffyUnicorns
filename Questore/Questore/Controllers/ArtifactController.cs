@@ -46,6 +46,8 @@ namespace Questore.Controllers
         {
             _artifactDao.UseArtifact(id);
             var updatedStudent = _student.GetStudent(ActiveStudent.Id);
+            if (updatedStudent == null)
+                return RedirectToAction("Index");
             _session.SetString("user", JsonSerializer.Serialize(updatedStudent));
             return RedirectToAction("Index", "Profile");
         }
@@ -55,6 +57,8 @@ namespace Questore.Controllers
         {
             _artifactDao.BuyArtifact(id, ActiveStudent.Id);
             var updatedStudent = _student.GetStudent(ActiveStudent.Id);
+            if (updatedStudent == null)
+                return RedirectToAction("Index");
             _session.SetString("user", JsonSerializer.Serialize(updatedStudent));
             return RedirectToAction("Index", "Profile");
         }
@@ -63,6 +67,8 @@ namespace Questore.Controllers
         {
             _artifactDao.DeleteStudentArtifact(id);
             var updatedStudent = _student.GetStudent(ActiveStudent.Id);
+            if (updatedStudent == null)
+                return RedirectToAction("Index");
             _session.SetString("user", JsonSerializer.Serialize(updatedStudent));
             return RedirectToAction("Index", "Profile");
         }

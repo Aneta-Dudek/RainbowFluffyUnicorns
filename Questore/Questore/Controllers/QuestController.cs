@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Questore.Persistence;
-using System.Linq;
-using System.Text.Json;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Questore.Models;
+using Questore.Persistence;
+using System;
+using System.Linq;
+using System.Text.Json;
 
 namespace Questore.Controllers
 {
@@ -37,6 +37,8 @@ namespace Questore.Controllers
         {
             _questDao.ClaimQuest(id, ActiveStudent.Id);
             var updatedStudent = _student.GetStudent(ActiveStudent.Id);
+            if (updatedStudent == null)
+                return RedirectToAction("Index");
             _session.SetString("user", JsonSerializer.Serialize(updatedStudent));
             return RedirectToAction("Index", "Profile");
         }

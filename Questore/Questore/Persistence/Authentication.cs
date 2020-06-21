@@ -24,7 +24,7 @@ namespace Questore.Persistence
 
             var query = $"SELECT id " +
                         $"FROM {_table} " +
-                        $"WHERE email = '{login.Identifier}' AND password = '{login.Password}';";
+                        $"WHERE email = '{login.Email}' AND password = '{login.Password}';";
 
             using var command = new NpgsqlCommand(query, connection);
             var reader = command.ExecuteReader();

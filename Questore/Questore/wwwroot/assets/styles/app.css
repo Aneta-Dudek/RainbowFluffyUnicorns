@@ -563,14 +563,20 @@ h2 {
 }
 
 .artifact-btn {
-    width: 25%;
+    width: 15%;
     max-width: 80px;
     margin: auto;
     text-align: center;
     color: white;
     border-radius: 10px;
-    border: -1px solid;
     cursor: pointer;
+    text-transform: lowercase;
+    display: flex;
+    flex-direction: column
+}
+
+.float-bot {
+    margin-top: auto;
 }
 
 .fix-width-padding {
@@ -611,9 +617,8 @@ input[type="submit"]:focus, input[type="image"] {
     cursor: pointer;
     border-style: none;
     font-family: inherit;
-    font-size: inherit;
     border-radius: 10px;
-    padding: 2px 0;
+    text-transform: lowercase;
 }
 
 .remove-btn {

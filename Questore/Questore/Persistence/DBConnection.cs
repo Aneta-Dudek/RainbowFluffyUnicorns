@@ -8,7 +8,7 @@ namespace Questore.Persistence
         private const string Username = "hfyfzvrh";
         private const string Password = "M7N7RnAE2hgq0LNoIdRLEjFS536vflMA";
         private const string Database = "hfyfzvrh";
-        private const string IsPooling = "false";
+        private const string IsPooling = "true";
 
         private string GetConnectionString()
         {

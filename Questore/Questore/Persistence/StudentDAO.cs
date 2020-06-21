@@ -47,9 +47,10 @@ namespace Questore.Persistence
 
             var query = $"SELECT id, first_name, last_name, email, coolcoins, experience, image_url " +
                               $"FROM {_table} " +
-                              $"WHERE id = {id};";
+                              $"WHERE id = @id;";
 
             using var command = new NpgsqlCommand(query, connection);
+            command.Parameters.Add("id", NpgsqlDbType.Integer).Value = id;
             var reader = command.ExecuteReader();
 
             var student = new Student();
@@ -104,7 +105,7 @@ namespace Questore.Persistence
                              $"coolcoins = @coolcoins, " +
                              $"experience = @experience, " +
                              $"image_url = @image_url " +
-                        $"WHERE id = {id};";
+                        $"WHERE id = @id;";
 
             using var command = new NpgsqlCommand(query, connection);
 
@@ -115,6 +116,7 @@ namespace Questore.Persistence
             command.Parameters.Add("coolcoins", NpgsqlDbType.Integer).Value = updatedStudent.Coolcoins;
             command.Parameters.Add("experience", NpgsqlDbType.Integer).Value = updatedStudent.Experience;
             command.Parameters.Add("image_url", NpgsqlDbType.Varchar).Value = "default_url";
+            command.Parameters.Add("id", NpgsqlDbType.Integer).Value = id;
 
             command.Prepare();
             command.ExecuteNonQuery();
@@ -125,9 +127,10 @@ namespace Questore.Persistence
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
 
             var query = $"DELETE FROM {_table}" +
-                              $" WHERE id = {id};";
+                              $" WHERE id = @id;";
 
             using var command = new NpgsqlCommand(query, connection);
+            command.Parameters.Add("id", NpgsqlDbType.Integer).Value = id;
 
             command.Prepare();
             command.ExecuteNonQuery();
@@ -223,9 +226,10 @@ namespace Questore.Persistence
             var query = $"SELECT artifact.id, artifact.name, artifact.description, artifact.image_url, artifact.price, student_artifact.is_used, student_artifact.id " +
                               $"FROM artifact " +
                               $"INNER JOIN student_artifact ON artifact.id = student_artifact.artifact_id " +
-                              $"WHERE student_artifact.student_id = {id};";
+                              $"WHERE student_artifact.student_id = @id;";
 
             using var command = new NpgsqlCommand(query, connection);
+            command.Parameters.Add("id", NpgsqlDbType.Integer).Value = id;
             var reader = command.ExecuteReader();
 
             var artifacts = new List<Artifact>();
@@ -245,9 +249,10 @@ namespace Questore.Persistence
             var query = $"SELECT category_artifact.id, category_artifact.name " +
                               $"FROM category_artifact " +
                               $"INNER JOIN artifact on artifact.category_id = category_artifact.id " +
-                              $"WHERE artifact.id = {id};";
+                              $"WHERE artifact.id = @id;";
 
             using var command = new NpgsqlCommand(query, connection);
+            command.Parameters.Add("id", NpgsqlDbType.Integer).Value = id;
             var reader = command.ExecuteReader();
 
             var category = new Category();
@@ -267,9 +272,10 @@ namespace Questore.Persistence
             var query = $"SELECT class.id, class.name, class.date_started, class.image_url " +
                               $"FROM class " +
                               $"INNER JOIN student_class ON class.id = student_class.class_id " +
-                              $"WHERE student_class.student_id = {id};";
+                              $"WHERE student_class.student_id = @id;";
 
             using var command = new NpgsqlCommand(query, connection);
+            command.Parameters.Add("id", NpgsqlDbType.Integer).Value = id;
             var reader = command.ExecuteReader();
 
             var classes = new List<Class>();
@@ -289,9 +295,10 @@ namespace Questore.Persistence
             var query = $"SELECT team.id, team.name, team.image_url " +
                               $"FROM team " +
                               $"INNER JOIN student_team ON team.id = student_team.team_id " +
-                              $"WHERE student_team.student_id = {id};";
+                              $"WHERE student_team.student_id = @id;";
 
             using var command = new NpgsqlCommand(query, connection);
+            command.Parameters.Add("id", NpgsqlDbType.Integer).Value = id;
             var reader = command.ExecuteReader();
 
             var teams = new List<Team>();
@@ -311,9 +318,10 @@ namespace Questore.Persistence
             var query = $"SELECT detail.id, detail.name, detail.content " +
                         $"FROM detail " +
                         $"INNER JOIN student ON detail.student_id = student.id " +
-                        $"WHERE student.id = {id};";
+                        $"WHERE student.id = @id;";
 
             using var command = new NpgsqlCommand(query, connection);
+            command.Parameters.Add("id", NpgsqlDbType.Integer).Value = id;
             var reader = command.ExecuteReader();
 
             var details = new List<StudentDetail>();
@@ -330,9 +338,10 @@ namespace Questore.Persistence
         {
             using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
 
-            var query = $"SELECT id, name, threshold FROM title WHERE threshold >= {experience};";
+            var query = $"SELECT id, name, threshold FROM title WHERE threshold >= @experience;";
 
             using var command = new NpgsqlCommand(query, connection);
+            command.Parameters.Add("experience", NpgsqlDbType.Integer).Value = experience;
             var reader = command.ExecuteReader();
 
             var studentTitles = new List<Title>();

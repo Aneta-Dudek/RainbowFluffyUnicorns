@@ -508,6 +508,7 @@ h2 {
     border-radius: 5px;
     margin-top: 5px;
     border: 1px solid white;
+    font-size: smaller;
 }
 
 .text-box:hover {

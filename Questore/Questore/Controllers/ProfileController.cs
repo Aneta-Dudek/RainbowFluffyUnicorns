@@ -1,11 +1,10 @@
-﻿using System;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Session;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Questore.Models;
 using Questore.Persistence;
+using System;
 
 namespace Questore.Controllers
 {
@@ -25,6 +24,8 @@ namespace Questore.Controllers
         public IActionResult Index()
         {
             var student = _studentDao.GetStudent(ActiveStudent.Id);
+            if (student == null)
+                return RedirectToAction("Logout", "Login");
             return View(student);
         }
     }

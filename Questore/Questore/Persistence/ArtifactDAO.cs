@@ -2,18 +2,21 @@
 using NpgsqlTypes;
 using Questore.Models;
 using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 
 namespace Questore.Persistence
 {
     public class ArtifactDAO : IArtifactDAO
     {
+        private readonly IConfiguration _configuration;
         private readonly DBConnection _connection;
 
         private readonly string _table = "artifact";
 
-        public ArtifactDAO()
+        public ArtifactDAO(IConfiguration configuration)
         {
-            _connection = new DBConnection();
+            _configuration = configuration;
+            _connection = new DBConnection(configuration);
         }
         public IEnumerable<Artifact> GetArtifacts()
         {

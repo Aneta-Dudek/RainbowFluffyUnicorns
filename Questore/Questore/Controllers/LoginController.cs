@@ -6,18 +6,22 @@ using Questore.Persistence;
 using System;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace Questore.Controllers
 {
     public class LoginController : Controller
     {
+        private readonly IStudentDAO _studentDao;
+
         private Authentication _authentication;
 
         private ISession _session;
 
-        public LoginController(IServiceProvider services)
+        public LoginController(IServiceProvider services, IConfiguration configuration, IStudentDAO studentDao)
         {
-            _authentication = new Authentication();
+            _studentDao = studentDao;
+            _authentication = new Authentication(studentDao, configuration);
             _session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
         }
 
@@ -27,7 +31,7 @@ namespace Questore.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index(Login login)
+        public IActionResult Index(Login login)
         {
             if (!ModelState.IsValid)
                 return View(login);

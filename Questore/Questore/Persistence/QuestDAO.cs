@@ -2,18 +2,22 @@
 using NpgsqlTypes;
 using Questore.Models;
 using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 
 namespace Questore.Persistence
 {
     public class QuestDAO : IQuestDAO
     {
+        private readonly IConfiguration _configuration;
+
         private readonly DBConnection _connection;
 
         private readonly string _table = "quest";
 
-        public QuestDAO()
+        public QuestDAO(IConfiguration configuration)
         {
-            _connection = new DBConnection();
+            _configuration = configuration;
+            _connection = new DBConnection(_configuration);
         }
 
         public IEnumerable<Quest> GetQuests()

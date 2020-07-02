@@ -1,4 +1,5 @@
-﻿using Npgsql;
+﻿using Microsoft.Extensions.Configuration;
+using Npgsql;
 using Questore.Models;
 
 namespace Questore.Persistence
@@ -9,13 +10,15 @@ namespace Questore.Persistence
 
         private readonly IStudentDAO _studentDao;
 
+        private readonly IConfiguration _configuration;
+
         private readonly string _table = "student";
 
-        public Authentication()
+        public Authentication(IStudentDAO studentDao, IConfiguration configuration)
         {
-            _connection = new DBConnection();
-
-            _studentDao = new StudentDAO();
+            _connection = new DBConnection(configuration);
+            _studentDao = studentDao;
+            _configuration = configuration;
         }
 
         public Student Authenticate(Login login)

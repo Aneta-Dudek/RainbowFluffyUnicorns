@@ -1,23 +1,20 @@
 ﻿using Npgsql;
+using Microsoft.Extensions.Configuration;
 
 namespace Questore.Persistence
 {
     public class DBConnection
     {
-        private const string Host = "kandula.db.elephantsql.com";
-        private const string Username = "hfyfzvrh";
-        private const string Password = "M7N7RnAE2hgq0LNoIdRLEjFS536vflMA";
-        private const string Database = "hfyfzvrh";
-        private const string IsPooling = "false";
+        private readonly IConfiguration _config;
 
-        private string GetConnectionString()
+        public DBConnection(IConfiguration configuration)
         {
-            return $"Host={Host};Username={Username};Password={Password};Database={Database};Pooling={IsPooling}";
+            _config = configuration;
         }
 
         public NpgsqlConnection GetOpenConnectionObject()
         {
-            var connection = new NpgsqlConnection(GetConnectionString());
+            var connection = new NpgsqlConnection(_config.GetConnectionString("DefaultConnection"));
             connection.Open();
             return connection;
         }

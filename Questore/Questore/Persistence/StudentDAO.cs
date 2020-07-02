@@ -3,18 +3,23 @@ using NpgsqlTypes;
 using Questore.Models;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.Extensions.Configuration;
 
 namespace Questore.Persistence
 {
     public class StudentDAO : IStudentDAO
     {
+        private readonly IConfiguration _configuration;
+
         private readonly DBConnection _connection;
 
         private readonly string _table = "student";
 
-        public StudentDAO()
+        public StudentDAO(IConfiguration configuration)
         {
-            _connection = new DBConnection();
+            _configuration = configuration;
+
+            _connection = new DBConnection(_configuration);
         }
 
         public IEnumerable<Student> GetStudents()

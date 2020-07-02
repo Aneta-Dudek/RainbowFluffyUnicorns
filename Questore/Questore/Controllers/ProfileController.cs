@@ -15,9 +15,9 @@ namespace Questore.Controllers
         private Student ActiveStudent => JsonConvert.DeserializeObject<Student>(_session.GetString("user"));
 
 
-        public ProfileController(IServiceProvider services)
+        public ProfileController(IServiceProvider services, IStudentDAO studentDao)
         {
-            _studentDao = new StudentDAO();
+            _studentDao = studentDao;
             _session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
         }
 

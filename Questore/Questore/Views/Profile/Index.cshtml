@@ -2,11 +2,13 @@
     ViewData["Title"] = "Index";
 }
 
+@section Scripts {
+    <script type="text/javascript" src="~/assets/scripts/addDetail.js" defer></script>
+}
+
 @model Student
 
 <div style="max-width: 840px; margin: auto">
-    
-    <div id="add-button" class="button green-btn"> Click! </div>
 
     <partial name="_StudentTopDetails" />
 
@@ -14,7 +16,7 @@
 
         <div class="information-title">
             Details
-            <img class="edit-toggle-button edit-toggle-button-2" src="../assets/buttons/add-button.png" />
+            <img class="edit-toggle-button" id="add-button" src="../assets/buttons/add-button.png" />
         </div>
 
         <div class="input-container">
@@ -59,24 +61,8 @@
     </div>
 </div>
 
+@{var detailDto = new DetailDto();}
+<partial name="DetailModal" model=detailDto/>
 
-<div id="backdrop"></div>
-<div class="modal card" id="add-modal">
-    <form>
-        <div class="modal__content">
-            <label for="title">Detail Name</label>
-            <input type="text" name="title" id="title" />
-            <label for="description">Description</label>
-            <input type="text" name="description" id="image-url" />
-        </div>
-        <div class="modal__actions">
-            <button id="cancel" class="button yellow-btn">Cancel</button>
-            <button id="add" class="button green-btn">Add</button>
-        </div>
-    </form>
-</div>
 
-@section Scripts {
-    <script type="text/javascript" src="~/assets/scripts/addDetail.js" defer></script>
-}
 

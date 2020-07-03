@@ -431,9 +431,8 @@ h2 {
 }
 
 .edit-toggle-button {
-    position: absolute;
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
 }
 
 .edit-toggle-button-1 {

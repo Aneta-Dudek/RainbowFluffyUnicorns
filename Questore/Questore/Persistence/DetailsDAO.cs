@@ -17,7 +17,7 @@ namespace Questore.Persistence
         {
             using var connection = Connection;
             var query = $"INSERT INTO detail (name, content, student_id)" +
-                        $"VALUES (${detailDto.Name}, ${detailDto.Content}, {detailDto.StudentId})";
+                        $"VALUES ('{detailDto.Name}','{detailDto.Content}', {detailDto.StudentId})";
 
             using var command = new NpgsqlCommand(query, connection);
             command.ExecuteNonQuery();

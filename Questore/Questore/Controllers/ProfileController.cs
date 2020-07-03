@@ -30,6 +30,7 @@ namespace Questore.Controllers
         [HttpPost]
         public IActionResult AddDetail(DetailDto detailDto)
         {
+            detailDto.StudentId = ActiveStudent.Id;
             _detailsDao.AddDetail(detailDto);
             return RedirectToAction("Index");
         }

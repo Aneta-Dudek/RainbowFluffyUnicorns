@@ -11,6 +11,6 @@ namespace Questore.Dtos
 
         public string Content { get; set; }
 
-        public string StudentId { get; set; }
+        public int StudentId { get; set; }
     }
 }

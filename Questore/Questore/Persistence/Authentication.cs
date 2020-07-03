@@ -1,30 +1,24 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Npgsql;
-using Questore.Models;
+ using Questore.Dtos;
+ using Questore.Models;
 
 namespace Questore.Persistence
 {
-    public class Authentication
+    public class Authentication : DefaultDAO
     {
-        private readonly DBConnection _connection;
-
         private readonly IStudentDAO _studentDao;
-
-        private readonly IConfiguration _configuration;
 
         private readonly string _table = "student";
 
-        public Authentication(IStudentDAO studentDao, IConfiguration configuration)
+        public Authentication(IStudentDAO studentDao, IConfiguration configuration) : base(configuration)
         {
-            _connection = new DBConnection(configuration);
             _studentDao = studentDao;
-            _configuration = configuration;
         }
 
         public Student Authenticate(Login login)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            var connection = Connection;
             var query = $"SELECT id " +
                         $"FROM {_table} " +
                         $"WHERE email = '{login.Email}' AND password = '{login.Password}';";
@@ -41,8 +35,6 @@ namespace Questore.Persistence
             }
 
             return null;
-
         }
-
     }
 }

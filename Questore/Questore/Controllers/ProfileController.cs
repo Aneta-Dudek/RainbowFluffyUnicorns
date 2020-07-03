@@ -21,6 +21,11 @@ namespace Questore.Controllers
             _session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
         }
 
+        public IActionResult AddDetail()
+        {
+            return RedirectToAction("Index");
+        }
+
         public IActionResult Index()
         {
             var student = _studentDao.GetStudent(ActiveStudent.Id);

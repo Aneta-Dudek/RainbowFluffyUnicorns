@@ -367,8 +367,6 @@ h2 {
 
     /*AVATAR*/
     .top-details-inner-container:first-child {
-        width: 15%;
-        min-width: 110px;
     }
 
 .avatar-image-container {
@@ -434,8 +432,8 @@ h2 {
 
 .edit-toggle-button {
     position: absolute;
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
 }
 
 .edit-toggle-button-1 {
@@ -471,7 +469,7 @@ h2 {
 }
 
 .text-padding {
-    padding: 5px 0 5px 20px;
+    padding: 5px 0 5px 8px;
 }
 
 .information-container {
@@ -488,14 +486,18 @@ h2 {
 .information-title {
     font-size: 24px;
     color: #8FCE5D;
-    padding: 10px 0 10px 30px;
+    padding: 20px 0 10px 30px;
     position: relative;
     z-index: -1;
 }
 
 .edit-toggle-button-2 {
-    top: 9px;
-    left: 120px;
+    top: 23px;
+    left: 115px;
+}
+
+.edit-toggle-button-2:hover {
+    cursor: pointer;
 }
 
 .input {
@@ -564,16 +566,7 @@ h2 {
 }
 
 .artifact-btn {
-    width: 15%;
-    max-width: 80px;
-    margin: auto;
-    text-align: center;
-    color: white;
-    border-radius: 10px;
-    cursor: pointer;
-    text-transform: lowercase;
-    display: flex;
-    flex-direction: column
+    margin-top: 22%;
 }
 
 .float-bot {
@@ -596,7 +589,7 @@ input[type="submit"]:focus, input[type="image"] {
 .inactive-btn {
     background-color: #D3D3D3;
     border-color: #D3D3D3;
-    display: inline;
+    display: inline-block
 }
 
 .hidden {

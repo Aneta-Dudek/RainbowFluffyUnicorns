@@ -7,27 +7,19 @@ using Microsoft.Extensions.Configuration;
 
 namespace Questore.Persistence
 {
-    public class StudentDAO : IStudentDAO
+    public class StudentDAO : DefaultDAO, IStudentDAO
     {
-        private readonly IConfiguration _configuration;
-
-        private readonly DBConnection _connection;
-
         private readonly string _table = "student";
 
-        public StudentDAO(IConfiguration configuration)
+        public StudentDAO(IConfiguration configuration) : base(configuration)
         {
-            _configuration = configuration;
-
-            _connection = new DBConnection(_configuration);
         }
 
         public IEnumerable<Student> GetStudents()
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"SELECT id, first_name, last_name, email, coolcoins, experience, image_url " +
-                              $"FROM {_table};";
+                        $"FROM {_table};";
 
             using var command = new NpgsqlCommand(query, connection);
             var reader = command.ExecuteReader();
@@ -42,17 +34,15 @@ namespace Questore.Persistence
 
                 students.Add(student);
             }
-
             return students;
         }
 
         public Student GetStudent(int id)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"SELECT id, first_name, last_name, email, coolcoins, experience, image_url " +
-                              $"FROM {_table} " +
-                              $"WHERE id = @id;";
+                        $"FROM {_table} " +
+                        $"WHERE id = @id;";
 
             using var command = new NpgsqlCommand(query, connection);
             command.Parameters.Add("id", NpgsqlDbType.Integer).Value = id;
@@ -66,7 +56,6 @@ namespace Questore.Persistence
 
                 AssignStudentDetails(student);
             }
-
             return student;
         }
 
@@ -81,9 +70,9 @@ namespace Questore.Persistence
 
         public void AddStudent(Student student)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
+            using var connection = Connection;
             var query = $"INSERT INTO {_table}(first_name, last_name, email, password, coolcoins, experience, image_url) " +
-                              $"VALUES (@first_name, @last_name, @email, @password, @coolcoins, @experience, @image_url);";
+                        $"VALUES (@first_name, @last_name, @email, @password, @coolcoins, @experience, @image_url);";
             using var command = new NpgsqlCommand(query, connection);
 
             command.Parameters.Add("first_name", NpgsqlDbType.Varchar).Value = student.FirstName;
@@ -100,16 +89,15 @@ namespace Questore.Persistence
 
         public void UpdateStudent(int id, Student updatedStudent)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"UPDATE {_table} " +
                         $"SET first_name = @first_name, " +
-                             $"last_name = @last_name, " +
-                             $"email = @email, " +
-                             $"password = @password, " +
-                             $"coolcoins = @coolcoins, " +
-                             $"experience = @experience, " +
-                             $"image_url = @image_url " +
+                        $"last_name = @last_name, " +
+                        $"email = @email, " +
+                        $"password = @password, " +
+                        $"coolcoins = @coolcoins, " +
+                        $"experience = @experience, " +
+                        $"image_url = @image_url " +
                         $"WHERE id = @id;";
 
             using var command = new NpgsqlCommand(query, connection);
@@ -129,10 +117,9 @@ namespace Questore.Persistence
 
         public void DeleteStudent(int id)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"DELETE FROM {_table}" +
-                              $" WHERE id = @id;";
+                        $" WHERE id = @id;";
 
             using var command = new NpgsqlCommand(query, connection);
             command.Parameters.Add("id", NpgsqlDbType.Integer).Value = id;
@@ -226,12 +213,11 @@ namespace Questore.Persistence
 
         private IEnumerable<Artifact> GetStudentArtifacts(int id)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"SELECT artifact.id, artifact.name, artifact.description, artifact.image_url, artifact.price, student_artifact.is_used, student_artifact.id " +
-                              $"FROM artifact " +
-                              $"INNER JOIN student_artifact ON artifact.id = student_artifact.artifact_id " +
-                              $"WHERE student_artifact.student_id = @id;";
+                        $"FROM artifact " +
+                        $"INNER JOIN student_artifact ON artifact.id = student_artifact.artifact_id " +
+                        $"WHERE student_artifact.student_id = @id;";
 
             using var command = new NpgsqlCommand(query, connection);
             command.Parameters.Add("id", NpgsqlDbType.Integer).Value = id;
@@ -249,12 +235,11 @@ namespace Questore.Persistence
 
         private Category GetArtifactCategory(int id)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"SELECT category_artifact.id, category_artifact.name " +
-                              $"FROM category_artifact " +
-                              $"INNER JOIN artifact on artifact.category_id = category_artifact.id " +
-                              $"WHERE artifact.id = @id;";
+                        $"FROM category_artifact " +
+                        $"INNER JOIN artifact on artifact.category_id = category_artifact.id " +
+                        $"WHERE artifact.id = @id;";
 
             using var command = new NpgsqlCommand(query, connection);
             command.Parameters.Add("id", NpgsqlDbType.Integer).Value = id;
@@ -272,12 +257,11 @@ namespace Questore.Persistence
         }
         private IEnumerable<Class> GetStudentClasses(int id)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"SELECT class.id, class.name, class.date_started, class.image_url " +
-                              $"FROM class " +
-                              $"INNER JOIN student_class ON class.id = student_class.class_id " +
-                              $"WHERE student_class.student_id = @id;";
+                        $"FROM class " +
+                        $"INNER JOIN student_class ON class.id = student_class.class_id " +
+                        $"WHERE student_class.student_id = @id;";
 
             using var command = new NpgsqlCommand(query, connection);
             command.Parameters.Add("id", NpgsqlDbType.Integer).Value = id;
@@ -295,12 +279,11 @@ namespace Questore.Persistence
 
         private IEnumerable<Team> GetStudentTeams(int id)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"SELECT team.id, team.name, team.image_url " +
-                              $"FROM team " +
-                              $"INNER JOIN student_team ON team.id = student_team.team_id " +
-                              $"WHERE student_team.student_id = @id;";
+                        $"FROM team " +
+                        $"INNER JOIN student_team ON team.id = student_team.team_id " +
+                        $"WHERE student_team.student_id = @id;";
 
             using var command = new NpgsqlCommand(query, connection);
             command.Parameters.Add("id", NpgsqlDbType.Integer).Value = id;
@@ -318,8 +301,7 @@ namespace Questore.Persistence
 
         private IEnumerable<StudentDetail> GetStudentDetails(int id)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"SELECT detail.id, detail.name, detail.content " +
                         $"FROM detail " +
                         $"INNER JOIN student ON detail.student_id = student.id " +
@@ -341,8 +323,7 @@ namespace Questore.Persistence
 
         private Title GetStudentTitleByExperience(int experience)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"SELECT id, name, threshold FROM title WHERE threshold >= @experience;";
 
             using var command = new NpgsqlCommand(query, connection);

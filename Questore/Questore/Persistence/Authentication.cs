@@ -18,7 +18,7 @@ namespace Questore.Persistence
 
         public Student Authenticate(Login login)
         {
-            var connection = Connection;
+            using var connection = Connection;
             var query = $"SELECT id " +
                         $"FROM {_table} " +
                         $"WHERE email = '{login.Email}' AND password = '{login.Password}';";

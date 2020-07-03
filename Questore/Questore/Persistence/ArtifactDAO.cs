@@ -6,22 +6,17 @@ using Microsoft.Extensions.Configuration;
 
 namespace Questore.Persistence
 {
-    public class ArtifactDAO : IArtifactDAO
+    public class ArtifactDAO : DefaultDAO, IArtifactDAO
     {
-        private readonly IConfiguration _configuration;
-        private readonly DBConnection _connection;
-
         private readonly string _table = "artifact";
 
-        public ArtifactDAO(IConfiguration configuration)
+        public ArtifactDAO(IConfiguration configuration) : base(configuration)
         {
-            _configuration = configuration;
-            _connection = new DBConnection(configuration);
         }
+
         public IEnumerable<Artifact> GetArtifacts()
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"SELECT id, name, description, image_url, price " +
                         $"FROM {_table};";
 
@@ -42,8 +37,7 @@ namespace Questore.Persistence
 
         public Artifact GetArtifact(int id)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"SELECT id, name, description, image_url, price " +
                         $"FROM {_table} " +
                         $"WHERE id = @id;";
@@ -64,7 +58,7 @@ namespace Questore.Persistence
 
         public void AddArtifact(Artifact artifact)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
+            using var connection = Connection;
             var query = $"INSERT INTO {_table}(name, description, image_url, category_id, price) " +
                         $"VALUES (@name, @description, @image_url, @category_id, @price);";
             using var command = new NpgsqlCommand(query, connection);
@@ -81,8 +75,7 @@ namespace Questore.Persistence
 
         public void UpdateArtifact(int id, Artifact updatedArtifact)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"UPDATE {_table} " +
                         $"SET name = @name, " +
                         $"description = @description, " +
@@ -106,11 +99,10 @@ namespace Questore.Persistence
 
         public void UseArtifact(int id)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"UPDATE student_{_table} " +
-                              $"SET is_used = @is_used " +
-                              $"WHERE id = @id;";
+                        $"SET is_used = @is_used " +
+                        $"WHERE id = @id;";
 
             using var command = new NpgsqlCommand(query, connection);
 
@@ -132,8 +124,7 @@ namespace Questore.Persistence
 
         private void ClaimArtifact(int artifactId, int studentId)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"INSERT INTO student_{_table}(student_id, artifact_id) " +
                         $"VALUES (@studentId, @artifactId);";
 
@@ -147,12 +138,11 @@ namespace Questore.Persistence
 
         private void UpdateCoolcoinsAfterPurchase(int artifactId, int studentId)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"UPDATE student " +
-                              $"SET coolcoins = student.coolcoins - artifact.price " +
-                              $"FROM artifact " +
-                              $"WHERE artifact.id = @artifactId AND student.id = @studentId;";
+                        $"SET coolcoins = student.coolcoins - artifact.price " +
+                        $"FROM artifact " +
+                        $"WHERE artifact.id = @artifactId AND student.id = @studentId;";
 
             using var command = new NpgsqlCommand(query, connection);
             command.Parameters.Add("studentId", NpgsqlDbType.Integer).Value = studentId;
@@ -164,8 +154,7 @@ namespace Questore.Persistence
 
         private bool IsArtifactAffordable(int artifactId, int studentId)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"SELECT artifact.id " +
                         $"FROM {_table}, student " +
                         $"WHERE student.id = @studentId AND student.coolcoins >= artifact.price;";
@@ -188,8 +177,7 @@ namespace Questore.Persistence
 
         public void DeleteArtifact(int id)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"DELETE FROM {_table}" +
                         $" WHERE id = @id;";
 
@@ -202,8 +190,7 @@ namespace Questore.Persistence
 
         public void DeleteStudentArtifact(int id)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"DELETE FROM student_{_table}" +
                         $" WHERE id = @id;";
 
@@ -232,8 +219,7 @@ namespace Questore.Persistence
 
         private Category GetArtifactCategory(int id)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"SELECT category_artifact.id, category_artifact.name " +
                         $"FROM category_artifact " +
                         $"INNER JOIN artifact on artifact.category_id = category_artifact.id " +

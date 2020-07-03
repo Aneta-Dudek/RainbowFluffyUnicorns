@@ -13,7 +13,8 @@ namespace Questore.ServicesExtensions
         {
             services.AddScoped<IArtifactDAO, ArtifactDAO>()
                 .AddScoped<IQuestDAO, QuestDAO>()
-                .AddScoped<IStudentDAO, StudentDAO>();
+                .AddScoped<IStudentDAO, StudentDAO>()
+                .AddScoped<IDetailsDAO, DetailsDAO>();
 
             return services;
         }

@@ -16,15 +16,15 @@ namespace Questore.Controllers
 
         private readonly ISession _session;
 
-        private readonly IStudentDAO _student;
+        private readonly IStudentDAO _studentDao;
 
         private Student ActiveStudent => JsonSerializer.Deserialize<Student>(_session.GetString("user"));
 
-        public ArtifactController(IServiceProvider services)
+        public ArtifactController(IServiceProvider services, IArtifactDAO artifactDao, IStudentDAO studentDao)
         {
-            _artifactDao = new ArtifactDAO();
+            _artifactDao = artifactDao;
+            _studentDao = studentDao;
             _session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
-            _student = new StudentDAO();
         }
         public IActionResult Index()
         {
@@ -33,7 +33,7 @@ namespace Questore.Controllers
             return View(artifacts);
         }
 
-        private void CheckAffordability(List<Artifact> artifacts)
+        private void CheckAffordability(IEnumerable<Artifact> artifacts)
         {
             foreach (var artifact in artifacts)
             {
@@ -45,7 +45,7 @@ namespace Questore.Controllers
         public IActionResult Use(int id)
         {
             _artifactDao.UseArtifact(id);
-            var updatedStudent = _student.GetStudent(ActiveStudent.Id);
+            var updatedStudent = _studentDao.GetStudent(ActiveStudent.Id);
             if (updatedStudent == null)
                 return RedirectToAction("Index");
             _session.SetString("user", JsonSerializer.Serialize(updatedStudent));
@@ -56,7 +56,7 @@ namespace Questore.Controllers
         public IActionResult Buy(int id)
         {
             _artifactDao.BuyArtifact(id, ActiveStudent.Id);
-            var updatedStudent = _student.GetStudent(ActiveStudent.Id);
+            var updatedStudent = _studentDao.GetStudent(ActiveStudent.Id);
             if (updatedStudent == null)
                 return RedirectToAction("Index");
             _session.SetString("user", JsonSerializer.Serialize(updatedStudent));
@@ -66,7 +66,7 @@ namespace Questore.Controllers
         public IActionResult DeleteStudentArtifact(int id)
         {
             _artifactDao.DeleteStudentArtifact(id);
-            var updatedStudent = _student.GetStudent(ActiveStudent.Id);
+            var updatedStudent = _studentDao.GetStudent(ActiveStudent.Id);
             if (updatedStudent == null)
                 return RedirectToAction("Index");
             _session.SetString("user", JsonSerializer.Serialize(updatedStudent));

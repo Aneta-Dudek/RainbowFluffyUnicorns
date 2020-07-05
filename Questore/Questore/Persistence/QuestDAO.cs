@@ -2,24 +2,21 @@
 using NpgsqlTypes;
 using Questore.Models;
 using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
 
 namespace Questore.Persistence
 {
-    public class QuestDAO : IQuestDAO
+    public class QuestDAO : DefaultDAO, IQuestDAO
     {
-        private readonly DBConnection _connection;
-
         private readonly string _table = "quest";
 
-        public QuestDAO()
+        public QuestDAO(IConfiguration configuration) : base(configuration)
         {
-            _connection = new DBConnection();
         }
 
         public IEnumerable<Quest> GetQuests()
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"SELECT id, name, description, reward, image_url " +
                         $"FROM {_table};";
 
@@ -40,11 +37,10 @@ namespace Questore.Persistence
 
         public Quest GetQuest(int id)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"SELECT id, name, description, reward, image_url " +
-                              $"FROM {_table} " +
-                              $"WHERE id = @id;";
+                        $"FROM {_table} " +
+                        $"WHERE id = @id;";
 
             using var command = new NpgsqlCommand(query, connection);
             command.Parameters.Add("id", NpgsqlDbType.Integer).Value = id;
@@ -63,7 +59,7 @@ namespace Questore.Persistence
 
         public void AddQuest(Quest quest)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
+            using var connection = Connection;
             var query = $"INSERT INTO {_table}(name, description, reward, image_url, category_id) " +
                         $"VALUES (@name, @description, @reward, @image_url, @category_id);";
             using var command = new NpgsqlCommand(query, connection);
@@ -80,8 +76,7 @@ namespace Questore.Persistence
 
         public void UpdateQuest(int id, Quest updatedQuest)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"UPDATE {_table} " +
                         $"SET name = @name, " +
                         $"description = @description, " +
@@ -105,8 +100,7 @@ namespace Questore.Persistence
 
         public void DeleteQuest(int id)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"DELETE FROM {_table}" +
                         $" WHERE id = @id;";
 
@@ -119,15 +113,13 @@ namespace Questore.Persistence
 
         public void ClaimQuest(int questId, int studentId)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
             var query = $"UPDATE student " +
                         $"SET coolcoins = student.coolcoins + quest.reward, " +
                         $"experience = student.experience + quest.reward " +
                         $"FROM quest " +
                         $"WHERE quest.id = @questId AND student.id = @studentId;";
 
-            using var command = new NpgsqlCommand(query, connection);
+            using var command = new NpgsqlCommand(query, Connection);
             command.Parameters.Add("questId", NpgsqlDbType.Integer).Value = questId;
             command.Parameters.Add("studentId", NpgsqlDbType.Integer).Value = studentId;
 
@@ -153,8 +145,7 @@ namespace Questore.Persistence
 
         private Category GetQuestCategory(int id)
         {
-            using NpgsqlConnection connection = _connection.GetOpenConnectionObject();
-
+            using var connection = Connection;
             var query = $"SELECT category_quest.id, category_quest.name " +
                         $"FROM category_quest " +
                         $"INNER JOIN quest on quest.category_id = category_quest.id " +

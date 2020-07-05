@@ -2,7 +2,7 @@
 using System.IO;
 using System.Text;
 
-namespace Questore.Models
+namespace Questore.Logger
 {
     public class Logger : ILog
     {

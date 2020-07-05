@@ -20,11 +20,11 @@ namespace Questore.Controllers
         private Student ActiveStudent => JsonSerializer.Deserialize<Student>(_session.GetString("user"));
 
 
-        public QuestController(IServiceProvider services)
+        public QuestController(IServiceProvider services, IQuestDAO questDao, IStudentDAO studentDao)
         {
-            _questDao = new QuestDAO();
+            _questDao = questDao;
             _session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
-            _student = new StudentDAO();
+            _student = studentDao;
         }
 
         public IActionResult Index()

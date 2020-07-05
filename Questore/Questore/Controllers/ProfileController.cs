@@ -5,20 +5,34 @@ using Newtonsoft.Json;
 using Questore.Models;
 using Questore.Persistence;
 using System;
+using Questore.Dtos;
 
 namespace Questore.Controllers
 {
     public class ProfileController : Controller
     {
         private readonly IStudentDAO _studentDao;
+
+        private readonly IDetailsDAO _detailsDao;
+
         private readonly ISession _session;
+
         private Student ActiveStudent => JsonConvert.DeserializeObject<Student>(_session.GetString("user"));
 
 
-        public ProfileController(IServiceProvider services)
+        public ProfileController(IServiceProvider services, IStudentDAO studentDao, IDetailsDAO detailsDao)
         {
-            _studentDao = new StudentDAO();
+            _studentDao = studentDao;
+            _detailsDao = detailsDao;
             _session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+        }
+
+        [HttpPost]
+        public IActionResult AddDetail(DetailDto detailDto)
+        {
+            detailDto.StudentId = ActiveStudent.Id;
+            _detailsDao.AddDetail(detailDto);
+            return RedirectToAction("Index");
         }
 
         public IActionResult Index()

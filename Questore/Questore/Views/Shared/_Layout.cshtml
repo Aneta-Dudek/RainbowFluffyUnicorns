@@ -6,7 +6,8 @@
     <title>@ViewData["Title"] - Questore</title>
     <link rel="stylesheet" href="/assets/styles/app.css" asp-append-version="true" />
     <link href="~/lib/font-awesome/css/all.css" rel="stylesheet">
-    <script src="assets/scripts/scriptMenu.js" asp-append-version="true" defer></script>
+    <script src="./assets/scripts/scriptMenu.js" asp-append-version="true" defer></script>
+    @RenderSection("Scripts", false)
 </head>
 <body>
     <div class="topnavbar">

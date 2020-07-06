@@ -29,7 +29,7 @@ namespace Questore.Controllers
             _session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
         }
 
-
+        [HttpPost]
         public IActionResult DeleteStudentDetail(int id)
         {
             _detailsDao.DeleteDetail(id);

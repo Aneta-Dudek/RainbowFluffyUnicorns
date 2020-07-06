@@ -16,7 +16,7 @@
 
         <div class="information-title">
             Details
-            <img class="edit-toggle-button" id="add-button" src="../assets/buttons/add-button.png" />
+            <input type="image" class="edit-toggle-button" id="add-button" src="../assets/buttons/add-button.png" />
         </div>
 
         <div class="input-container">
@@ -62,25 +62,9 @@
 </div>
 
 @{
-    Model.Detail ??= new DetailDto { StudentId = Model.Student.Id };
+    Model.Detail ??= new DetailDto();
 }
 
-<div id="backdrop"></div>
-<div class="modal card" id="add-modal">
-    <form asp-action="AddDetail" method="post">
-        <div class="modal__content">
-            <div asp-validation-summary="All" class="font-red"></div>
-            <label asp-for="Detail.Name" class="label-style"></label>
-            <input asp-for="Detail.Name" type="text" />
-            <label asp-for="Detail.Content" class="label-style"></label>
-            <input asp-for="Detail.Content" type="text" />
-        </div>
-        <div class="modal__actions">
-            <input type="submit" id="add" value="add" class="button green-btn" />
-        </div>
-    </form>
-    <button id="cancel" class="button yellow-btn">cancel</button>
-</div>
-
+<partial name="_DetailModal" model="Model.Detail"/>
 
 

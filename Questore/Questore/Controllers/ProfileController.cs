@@ -29,16 +29,26 @@ namespace Questore.Controllers
             _session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
         }
 
+
+        public IActionResult DeleteStudentDetail(int id)
+        {
+            _detailsDao.DeleteDetail(id);
+            return RedirectToAction("Index");
+        }
+
+
         [HttpPost]
         [ExportModelState]
         public IActionResult AddDetail(DetailDto detail)
         {
+
             if (!ModelState.IsValid)
             {
                 TempData["Detail"] = JsonSerializer.Serialize(detail);
                 return RedirectToAction("Index");
             }
 
+            detail.StudentId = ActiveStudent.Id;
             _detailsDao.AddDetail(detail);
             return RedirectToAction("Index");
         }
@@ -50,7 +60,9 @@ namespace Questore.Controllers
             if (student == null)
                 return RedirectToAction("Logout", "Login");
 
-            var detail = TempData["Detail"] as DetailDto;
+            var detail = TempData.ContainsKey("Detail")
+                ? JsonSerializer.Deserialize<DetailDto>(TempData["Detail"].ToString())
+                : null;
 
             var profile = new Profile
             {

@@ -6,21 +6,21 @@
     <script type="text/javascript" src="~/assets/scripts/addDetail.js" defer></script>
 }
 
-@model Student
+@model Profile
 
 <div style="max-width: 840px; margin: auto">
 
-    <partial name="_StudentTopDetails" />
+    <partial name="_StudentTopDetails" model="Model.Student" />
 
     <div class="information-container container-shadow upper-margin">
 
         <div class="information-title">
             Details
-            <img class="edit-toggle-button" id="add-button" src="../assets/buttons/add-button.png" />
+            <input type="image" class="edit-toggle-button" id="add-button" src="../assets/buttons/add-button.png" />
         </div>
 
         <div class="input-container">
-            @foreach (var detail in Model.Details)
+            @foreach (var detail in Model.Student.Details)
             {
                 <partial name="_StudentDetail" model="detail" />
             }
@@ -32,7 +32,7 @@
         <div class="item-inner-container item-inner-container-profile container-shadow">
             <div class="item-title title-1">artifacts</div>
 
-            @foreach (var studentArtifact in Model.Artifacts)
+            @foreach (var studentArtifact in Model.Student.Artifacts)
             {
                 <partial name="_StudentArtifact" model="studentArtifact" />
             }
@@ -42,7 +42,7 @@
         <div class="item-inner-container item-inner-container-profile container-shadow">
             <div class="item-title title-2">classes</div>
 
-            @foreach (var studentClass in Model.Classes)
+            @foreach (var studentClass in Model.Student.Classes)
             {
                 <partial name="_StudentClass" model="studentClass" />
             }
@@ -52,7 +52,7 @@
         <div class="item-inner-container item-inner-container-profile container-shadow margin-right-zero">
             <div class="item-title title-3">teams</div>
 
-            @foreach (var studentTeam in Model.Teams)
+            @foreach (var studentTeam in Model.Student.Teams)
             {
                 <partial name="_StudentTeam" model="studentTeam" />
             }
@@ -61,8 +61,10 @@
     </div>
 </div>
 
-@{var detailDto = new DetailDto();}
-<partial name="DetailModal" model=detailDto/>
+@{
+    Model.Detail ??= new DetailDto();
+}
 
+<partial name="_DetailModal" model="Model.Detail"/>
 
 

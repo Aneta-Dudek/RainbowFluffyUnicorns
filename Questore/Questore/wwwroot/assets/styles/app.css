@@ -309,20 +309,32 @@ h2 {
     border-color: var(--main-color-green);
 }
 
-    .green-btn:hover {
-        background-color: rgb(94, 158, 42);
-        border-color: rgb(94, 158, 42);
-    }
+.green-btn:hover {
+    background-color: rgb(94, 158, 42);
+    border-color: rgb(94, 158, 42);
+}
 
 .yellow-btn {
     background-color: var(--main-color-yellow);
     border-color: var(--main-color-yellow);
 }
 
-    .yellow-btn:hover {
-        background-color: rgb(206, 167, 26);
-        border-color: rgb(206, 167, 26);
-    }
+.yellow-btn:hover {
+    background-color: rgb(206, 167, 26);
+    border-color: rgb(206, 167, 26);
+}
+
+.red-btn {
+    background-color: var(--main-color-red);
+    border-color: var(--main-color-red);
+}
+
+
+.red-btn:hover {
+    background-color: rgb(158, 42, 42);
+    border-color: rgb(158, 42, 42);
+}
+
 
 
 .artifact {
@@ -479,15 +491,13 @@ h2 {
 .input-container {
     display: flex;
     flex-flow: row wrap;
-    padding: 15px;
+    padding: 0px 15px 5px 15px;
 }
 
 .information-title {
     font-size: 24px;
     color: #8FCE5D;
     padding: 20px 0 10px 30px;
-    position: relative;
-    z-index: -1;
 }
 
 .edit-toggle-button-2 {
@@ -495,7 +505,7 @@ h2 {
     left: 115px;
 }
 
-.edit-toggle-button-2:hover {
+.edit-toggle-button:hover {
     cursor: pointer;
 }
 
@@ -625,6 +635,11 @@ input[type="submit"]:focus, input[type="image"] {
     width: 8px;
     right: 0;
     top: 0;
+}
+
+
+.margin-right {
+    margin-right: 10px;
 }
 
 .item {
@@ -921,7 +936,7 @@ input[type="submit"]:focus, input[type="image"] {
 .modal {
     position: fixed;
     z-index: 100;
-    width: 80%;
+    width: 350px;
     top: 30vh;
     left: 10%;
     display: none;
@@ -946,9 +961,16 @@ input[type="submit"]:focus, input[type="image"] {
 }
 
 .modal .modal__actions {
-    padding: 1rem;
+    padding: 0 1rem 1rem 1rem;
     display: flex;
     justify-content: flex-end;
+}
+
+.remove-on-detail {
+    width: 8px;
+    float: left;
+    padding-top: 4px;
+    padding-right: 5px;
 }
 
 #backdrop {
@@ -975,8 +997,8 @@ input[type="submit"]:focus, input[type="image"] {
 
 @media (min-width: 768px) {
     .modal {
-        width: 40rem;
-        left: calc(50% - 20rem);
+        width: 20rem;
+        left: calc(50% - 10rem);
     }
 }
 

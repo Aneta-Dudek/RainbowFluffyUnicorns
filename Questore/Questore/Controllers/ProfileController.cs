@@ -1,11 +1,13 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
 using Questore.Models;
 using Questore.Persistence;
 using System;
+using System.Text.Json;
 using Questore.Dtos;
+using Questore.ModelState;
+using Questore.ViewModel;
 
 namespace Questore.Controllers
 {
@@ -17,7 +19,7 @@ namespace Questore.Controllers
 
         private readonly ISession _session;
 
-        private Student ActiveStudent => JsonConvert.DeserializeObject<Student>(_session.GetString("user"));
+        private Student ActiveStudent => JsonSerializer.Deserialize<Student>(_session.GetString("user"));
 
 
         public ProfileController(IServiceProvider services, IStudentDAO studentDao, IDetailsDAO detailsDao)
@@ -28,19 +30,47 @@ namespace Questore.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddDetail(DetailDto detailDto)
+        public IActionResult DeleteStudentDetail(int id)
         {
-            detailDto.StudentId = ActiveStudent.Id;
-            _detailsDao.AddDetail(detailDto);
+            _detailsDao.DeleteDetail(id);
             return RedirectToAction("Index");
         }
 
+
+        [HttpPost]
+        [ExportModelState]
+        public IActionResult AddDetail(DetailDto detail)
+        {
+
+            if (!ModelState.IsValid)
+            {
+                TempData["Detail"] = JsonSerializer.Serialize(detail);
+                return RedirectToAction("Index");
+            }
+
+            detail.StudentId = ActiveStudent.Id;
+            _detailsDao.AddDetail(detail);
+            return RedirectToAction("Index");
+        }
+
+        [ImportModelState]
         public IActionResult Index()
         {
             var student = _studentDao.GetStudent(ActiveStudent.Id);
             if (student == null)
                 return RedirectToAction("Logout", "Login");
-            return View(student);
+
+            var detail = TempData.ContainsKey("Detail")
+                ? JsonSerializer.Deserialize<DetailDto>(TempData["Detail"].ToString())
+                : null;
+
+            var profile = new Profile
+            {
+                Detail = detail,
+                Student = student
+            };
+
+            return View(profile);
         }
     }
 }

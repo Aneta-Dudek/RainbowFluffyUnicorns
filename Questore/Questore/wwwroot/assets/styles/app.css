@@ -486,8 +486,6 @@ h2 {
     font-size: 24px;
     color: #8FCE5D;
     padding: 20px 0 10px 30px;
-    position: relative;
-    z-index: -1;
 }
 
 .edit-toggle-button-2 {

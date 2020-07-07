@@ -5,8 +5,10 @@ using Questore.Models;
 using Questore.Persistence;
 using System;
 using System.Text.Json;
+using CloudinaryDotNet.Actions;
 using Questore.Dtos;
 using Questore.ModelState;
+using Questore.Photos;
 using Questore.ViewModel;
 
 namespace Questore.Controllers
@@ -17,16 +19,39 @@ namespace Questore.Controllers
 
         private readonly IDetailsDAO _detailsDao;
 
+        private readonly IPhotoAccessor _photoAccessor;
+
         private readonly ISession _session;
 
         private Student ActiveStudent => JsonSerializer.Deserialize<Student>(_session.GetString("user"));
 
 
-        public ProfileController(IServiceProvider services, IStudentDAO studentDao, IDetailsDAO detailsDao)
+        public ProfileController(IServiceProvider services, IStudentDAO studentDao, IDetailsDAO detailsDao, IPhotoAccessor photoAccessor)
         {
             _studentDao = studentDao;
             _detailsDao = detailsDao;
+            _photoAccessor = photoAccessor;
             _session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+        }
+
+        [HttpPost]
+        public IActionResult ChangePhoto(IFormFile file)
+        {
+            var photoUploadResult = _photoAccessor.AddPhoto(file);
+            var currentStudent = ActiveStudent;
+
+
+            if (photoUploadResult.PublicId != null && photoUploadResult.Url != null)
+            {
+                if (currentStudent.PhotoId != "default")
+                    _photoAccessor.DeletePhoto(currentStudent.PhotoId);
+
+                currentStudent.PhotoId = photoUploadResult.PublicId;
+                currentStudent.ImageUrl = photoUploadResult.Url;
+                _studentDao.UpdateStudent(currentStudent.Id, currentStudent);
+            }
+
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

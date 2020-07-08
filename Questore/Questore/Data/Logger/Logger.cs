@@ -12,16 +12,18 @@ namespace Questore.Logger
         public void LogException(string path, string message, string stackTrace)
         {
             string fileName = $"Exception_{DateTime.Now.ToShortDateString()}.log";
-            string filePath = $"{AppDomain.CurrentDomain.BaseDirectory}\\{fileName}";
+            string filePath = $"{AppDomain.CurrentDomain.BaseDirectory}{fileName}";
             StringBuilder sb = new StringBuilder();
             sb.AppendLine("-----------------------------------");
             sb.AppendLine(DateTime.Now.ToString());
             sb.AppendLine($"Path: {path}");
             sb.AppendLine($"Message: {message}");
             sb.AppendLine($"Stack Trace: {stackTrace}");
-            // using StreamWriter writer = new StreamWriter(filePath, true);
-            // writer.Write(sb.ToString());
-            // writer.Flush();
+            if (!File.Exists(filePath))
+                File.Create(filePath);
+            using StreamWriter writer = new StreamWriter(filePath, true);
+            writer.Write(sb.ToString());
+            writer.Flush();
         }
     }
 }

@@ -139,7 +139,7 @@ namespace Questore.Persistence
                 Coolcoins = reader.GetInt32((int)DBUtilities.StudentEnum.Coolcoins),
                 Experience = reader.GetInt32((int)DBUtilities.StudentEnum.Experience),
                 ImageUrl = reader.GetString((int)DBUtilities.StudentEnum.ImageUrl),
-                PhotoId = reader.GetString((int)DBUtilities.StudentEnum.ImageId)
+                PhotoId = reader.GetString((int)DBUtilities.StudentEnum.PublicImageId)
             };
 
             return student;

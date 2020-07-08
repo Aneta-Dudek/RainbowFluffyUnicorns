@@ -1,21 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using Questore.Data.Models;
+﻿using System.Collections.Generic;
+using Questore.Models;
 
-namespace Questore.Models
+namespace Questore.Data.Dtos
 {
-    public class Student : User
+    public class StudentDto : UserDto
     {
-        public Student()
+        public StudentDto()
         {
             Role = "student";
         }
-
-        public int Id { get; set; }
-
-        public string FirstName { get; set; }
-
-        public string LastName { get; set; }
 
         public int Coolcoins { get; set; }
 
@@ -32,7 +25,7 @@ namespace Questore.Models
         public IEnumerable<Team> Teams { get; set; }
 
         public IEnumerable<Artifact> Artifacts { get; set; }
-        
+
         public IEnumerable<StudentDetail> Details { get; set; }
     }
 }

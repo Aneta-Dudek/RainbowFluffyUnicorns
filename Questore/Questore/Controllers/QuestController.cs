@@ -1,41 +1,27 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
-using Questore.Models;
-using Questore.Persistence;
-using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using Questore.Services;
 using System.Linq;
-using System.Text.Json;
 
 namespace Questore.Controllers
 {
     public class QuestController : Controller
     {
-        private readonly IQuestDAO _questDao;
+        private readonly QuestService _questService;
 
-        private readonly ISession _session;
-
-        private readonly IStudentDAO _student;
-
-        private Student ActiveStudent => JsonSerializer.Deserialize<Student>(_session.GetString("user"));
-
-
-        public QuestController(IServiceProvider services, IQuestDAO questDao, IStudentDAO studentDao)
+        public QuestController(IQuestService questService)
         {
-            _questDao = questDao;
-            _session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
-            _student = studentDao;
+            _questService = (QuestService)questService;
         }
 
         public IActionResult Index()
         {
-            var quests = _questDao.GetQuests().ToList();
+            var quests = _questService.GetQuests().ToList();
             return View(quests);
         }
 
         public IActionResult Claim(int id)
         {
-            _questDao.ClaimQuest(id, ActiveStudent.Id);
+            _questService.ClaimQuest(id);
             return RedirectToAction("Index", "Profile");
         }
     }

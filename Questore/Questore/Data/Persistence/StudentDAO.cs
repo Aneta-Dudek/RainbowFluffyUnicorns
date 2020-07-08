@@ -18,7 +18,7 @@ namespace Questore.Persistence
         public IEnumerable<Student> GetStudents()
         {
             using var connection = Connection;
-            var query = $"SELECT id, first_name, last_name, email, coolcoins, experience, image_url, photo_id " +
+            var query = $"SELECT id, first_name, last_name, coolcoins, experience, image_url, photo_id, credentials " +
                         $"FROM {_table};";
 
             using var command = new NpgsqlCommand(query, connection);
@@ -32,6 +32,9 @@ namespace Questore.Persistence
 
                 AssignStudentDetails(student);
 
+                var email = GetStudentEmail(student.CredentialsId);
+                student.Email = email;
+
                 students.Add(student);
             }
             return students;
@@ -40,7 +43,7 @@ namespace Questore.Persistence
         public Student GetStudent(int id)
         {
             using var connection = Connection;
-            var query = $"SELECT id, first_name, last_name, email, coolcoins, experience, image_url, photo_id " +
+            var query = $"SELECT id, first_name, last_name, coolcoins, experience, image_url, photo_id, credentials " +
                         $"FROM {_table} " +
                         $"WHERE id = @id;";
 
@@ -53,9 +56,15 @@ namespace Questore.Persistence
             while (reader.Read())
             {
                 student = ProvideOneStudent(reader);
+                var email = GetStudentEmail(student.CredentialsId);
+                student.Email = email;
 
                 AssignStudentDetails(student);
             }
+
+
+
+
             return student;
         }
 
@@ -71,13 +80,12 @@ namespace Questore.Persistence
         public void AddStudent(Student student)
         {
             using var connection = Connection;
-            var query = $"INSERT INTO {_table}(first_name, last_name, email, password, coolcoins, experience, image_url) " +
+            var query = $"INSERT INTO {_table}(first_name, last_name, password, coolcoins, experience, image_url) " +
                         $"VALUES (@first_name, @last_name, @email, @password, @coolcoins, @experience, @image_url);";
             using var command = new NpgsqlCommand(query, connection);
 
             command.Parameters.Add("first_name", NpgsqlDbType.Varchar).Value = student.FirstName;
             command.Parameters.Add("last_name", NpgsqlDbType.Varchar).Value = student.LastName;
-            command.Parameters.Add("email", NpgsqlDbType.Varchar).Value = student.Email;
             command.Parameters.Add("password", NpgsqlDbType.Varchar).Value = student.Password;
             command.Parameters.Add("coolcoins", NpgsqlDbType.Integer).Value = student.Coolcoins;
             command.Parameters.Add("experience", NpgsqlDbType.Integer).Value = student.Experience;
@@ -93,7 +101,6 @@ namespace Questore.Persistence
             var query = $"UPDATE {_table} " +
                         $"SET first_name = @first_name, " +
                         $"last_name = @last_name, " +
-                        $"email = @email, " +
                         $"photo_id = @photo_id, " +
                         $"coolcoins = @coolcoins, " +
                         $"experience = @experience, " +
@@ -104,7 +111,6 @@ namespace Questore.Persistence
 
             command.Parameters.Add("first_name", NpgsqlDbType.Varchar).Value = updatedStudent.FirstName;
             command.Parameters.Add("last_name", NpgsqlDbType.Varchar).Value = updatedStudent.LastName;
-            command.Parameters.Add("email", NpgsqlDbType.Varchar).Value = updatedStudent.Email;
             command.Parameters.Add("coolcoins", NpgsqlDbType.Integer).Value = updatedStudent.Coolcoins;
             command.Parameters.Add("experience", NpgsqlDbType.Integer).Value = updatedStudent.Experience;
             command.Parameters.Add("image_url", NpgsqlDbType.Varchar).Value = updatedStudent.ImageUrl;
@@ -135,14 +141,33 @@ namespace Questore.Persistence
                 Id = reader.GetInt32((int)DBUtilities.StudentEnum.Id),
                 FirstName = reader.GetString((int)DBUtilities.StudentEnum.FirstName),
                 LastName = reader.GetString((int)DBUtilities.StudentEnum.LastName),
-                Email = reader.GetString((int)DBUtilities.StudentEnum.Email),
                 Coolcoins = reader.GetInt32((int)DBUtilities.StudentEnum.Coolcoins),
                 Experience = reader.GetInt32((int)DBUtilities.StudentEnum.Experience),
                 ImageUrl = reader.GetString((int)DBUtilities.StudentEnum.ImageUrl),
-                PhotoId = reader.GetString((int)DBUtilities.StudentEnum.PublicImageId)
+                PhotoId = reader.GetString((int)DBUtilities.StudentEnum.PublicImageId),
+                CredentialsId = reader.GetInt32((int)DBUtilities.StudentEnum.Credentials)
             };
 
             return student;
+        }
+
+        private string GetStudentEmail(int id)
+        {
+            using var connection = Connection;
+            var query = "SELECT email FROM credential" +
+                        $" WHERE id = {id};";
+
+            using var commandStudent = new NpgsqlCommand(query, connection);
+            var reader = commandStudent.ExecuteReader();
+
+            if (reader.HasRows)
+            {
+                reader.Read();
+                var studentEmail = reader.GetString(0);
+                return studentEmail;
+            }
+
+            return null;
         }
 
         private Artifact ProvideOneStudentArtifact(NpgsqlDataReader reader)

@@ -5,7 +5,6 @@ using Questore.Models;
 using Questore.Persistence;
 using System;
 using System.Text.Json;
-using CloudinaryDotNet.Actions;
 using Questore.Dtos;
 using Questore.ModelState;
 using Questore.Photos;
@@ -81,9 +80,12 @@ namespace Questore.Controllers
         [ImportModelState]
         public IActionResult Index()
         {
-            var student = _studentDao.GetStudent(ActiveStudent.Id);
-            if (student == null)
+            var id = ActiveStudent.Id;
+            if (id == 0)
                 return RedirectToAction("Logout", "Login");
+
+            var student = _studentDao.GetStudent(id);
+
 
             var detail = TempData.ContainsKey("Detail")
                 ? JsonSerializer.Deserialize<DetailDto>(TempData["Detail"].ToString())

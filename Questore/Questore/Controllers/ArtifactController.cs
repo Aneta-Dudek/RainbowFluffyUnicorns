@@ -45,10 +45,6 @@ namespace Questore.Controllers
         public IActionResult Use(int id)
         {
             _artifactDao.UseArtifact(id);
-            var updatedStudent = _studentDao.GetStudent(ActiveStudent.Id);
-            if (updatedStudent == null)
-                return RedirectToAction("Index");
-            _session.SetString("user", JsonSerializer.Serialize(updatedStudent));
             return RedirectToAction("Index", "Profile");
         }
 
@@ -56,20 +52,12 @@ namespace Questore.Controllers
         public IActionResult Buy(int id)
         {
             _artifactDao.BuyArtifact(id, ActiveStudent.Id);
-            var updatedStudent = _studentDao.GetStudent(ActiveStudent.Id);
-            if (updatedStudent == null)
-                return RedirectToAction("Index");
-            _session.SetString("user", JsonSerializer.Serialize(updatedStudent));
             return RedirectToAction("Index", "Profile");
         }
 
         public IActionResult DeleteStudentArtifact(int id)
         {
             _artifactDao.DeleteStudentArtifact(id);
-            var updatedStudent = _studentDao.GetStudent(ActiveStudent.Id);
-            if (updatedStudent == null)
-                return RedirectToAction("Index");
-            _session.SetString("user", JsonSerializer.Serialize(updatedStudent));
             return RedirectToAction("Index", "Profile");
         }
     }

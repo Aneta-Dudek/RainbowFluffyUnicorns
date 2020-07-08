@@ -36,10 +36,6 @@ namespace Questore.Controllers
         public IActionResult Claim(int id)
         {
             _questDao.ClaimQuest(id, ActiveStudent.Id);
-            var updatedStudent = _student.GetStudent(ActiveStudent.Id);
-            if (updatedStudent == null)
-                return RedirectToAction("Index");
-            _session.SetString("user", JsonSerializer.Serialize(updatedStudent));
             return RedirectToAction("Index", "Profile");
         }
     }

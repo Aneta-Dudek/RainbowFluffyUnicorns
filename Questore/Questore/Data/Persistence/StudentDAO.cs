@@ -80,8 +80,8 @@ namespace Questore.Persistence
         public void AddStudent(Student student)
         {
             using var connection = Connection;
-            var query = $"INSERT INTO {_table}(first_name, last_name, password, coolcoins, experience, image_url) " +
-                        $"VALUES (@first_name, @last_name, @email, @password, @coolcoins, @experience, @image_url);";
+            var query = $"INSERT INTO {_table}(first_name, last_name, coolcoins, experience, image_url, photo_id, credentials) " +
+                        $"VALUES (@first_name, @last_name, @coolcoins, @experience, @image_url, @photo_id, @credentials);";
             using var command = new NpgsqlCommand(query, connection);
 
             command.Parameters.Add("first_name", NpgsqlDbType.Varchar).Value = student.FirstName;
@@ -90,6 +90,9 @@ namespace Questore.Persistence
             command.Parameters.Add("coolcoins", NpgsqlDbType.Integer).Value = student.Coolcoins;
             command.Parameters.Add("experience", NpgsqlDbType.Integer).Value = student.Experience;
             command.Parameters.Add("image_url", NpgsqlDbType.Varchar).Value = "default_url";
+            command.Parameters.Add("credentials", NpgsqlDbType.Integer).Value = student.CredentialsId;
+            command.Parameters.Add("photo_id", NpgsqlDbType.Varchar).Value = "default";
+
 
             command.Prepare();
             command.ExecuteNonQuery();

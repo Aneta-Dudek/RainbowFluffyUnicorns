@@ -19,9 +19,9 @@ namespace Questore.Logger
             sb.AppendLine($"Path: {path}");
             sb.AppendLine($"Message: {message}");
             sb.AppendLine($"Stack Trace: {stackTrace}");
-            using StreamWriter writer = new StreamWriter(filePath, true);
-            writer.Write(sb.ToString());
-            writer.Flush();
+            // using StreamWriter writer = new StreamWriter(filePath, true);
+            // writer.Write(sb.ToString());
+            // writer.Flush();
         }
     }
 }

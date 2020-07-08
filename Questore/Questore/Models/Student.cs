@@ -20,6 +20,8 @@ namespace Questore.Models
 
         public string ImageUrl { get; set; }
 
+        public string PhotoId { get; set; }
+
         public Title Title { get; set; }
 
         public IEnumerable<Class> Classes { get; set; }

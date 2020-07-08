@@ -1,0 +1,22 @@
+﻿@model FormFile
+
+<div id="backdrop-photo"></div>
+<div class="modal card" id="change-photo-modal">
+    <form asp-action="ChangePhoto" enctype="multipart/form-data" method="post">
+        <div class="modal__content">
+            <div class="center-content"><h2 class="margin-on-bot">Change your photo</h2></div>
+            <div asp-validation-summary="All" class="font-red"></div>
+            <div class="image-preview" id="image-preview">
+                <img src="" alt="Image Preview" class="image-preview-image" id="image-preview-img"/>
+                <span  id="image-preview-text">preview</span>
+
+            </div>
+        </div>
+        <div class="modal__actions flex-actions">
+            <input id="file" name="file" asp-for="@Model" type="file">
+            <label for="file">choose file</label>
+            <input type="submit" id="change-photo" value="confirm" class="button green-btn"/>
+            <button id="cancel-photo" class="button red-btn" type="reset">cancel</button>
+        </div>
+    </form>
+</div>

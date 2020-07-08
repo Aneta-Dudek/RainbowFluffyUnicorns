@@ -4,6 +4,7 @@
 
 @section Scripts {
     <script type="text/javascript" src="~/assets/scripts/addDetail.js" defer></script>
+    <script type="text/javascript" src="~/assets/scripts/changePhoto.js" defer></script>
 }
 
 @model Profile
@@ -65,6 +66,7 @@
     Model.Detail ??= new DetailDto();
 }
 
+<partial name="_PhotoModal" model="Model.FormFile"/>
 <partial name="_DetailModal" model="Model.Detail"/>
 
 

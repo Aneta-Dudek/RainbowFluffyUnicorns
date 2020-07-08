@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Questore.Persistence;
+using Questore.Photos;
 
 namespace Questore.ServicesExtensions
 {
@@ -14,7 +11,8 @@ namespace Questore.ServicesExtensions
             services.AddScoped<IArtifactDAO, ArtifactDAO>()
                 .AddScoped<IQuestDAO, QuestDAO>()
                 .AddScoped<IStudentDAO, StudentDAO>()
-                .AddScoped<IDetailsDAO, DetailsDAO>();
+                .AddScoped<IDetailsDAO, DetailsDAO>()
+                .AddScoped<IPhotoAccessor, PhotoAccessor>();
 
             return services;
         }

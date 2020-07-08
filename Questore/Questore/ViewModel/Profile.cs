@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Microsoft.AspNetCore.Http;
 using Questore.Dtos;
 using Questore.Models;
 
@@ -12,5 +9,7 @@ namespace Questore.ViewModel
         public Student Student { get; set; }
 
         public DetailDto Detail { get; set; }
+
+        public FormFile FormFile { get; set; }
     }
 }

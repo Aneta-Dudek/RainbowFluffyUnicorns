@@ -2,7 +2,7 @@
 {
     public static class DBUtilities
     {
-        public enum StudentEnum { Id, FirstName, LastName, Email, Coolcoins, Experience, ImageUrl }
+        public enum StudentEnum { Id, FirstName, LastName, Email, Coolcoins, Experience, ImageUrl, ImageId }
 
         public enum ArtifactEnum { Id, Name, Description, ImageUrl, Price, IsUsed, StudentArtifactId }
 

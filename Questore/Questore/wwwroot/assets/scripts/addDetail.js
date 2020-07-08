@@ -9,7 +9,6 @@ const descriptionInput = document.getElementById('description-input');
 const showModal = () => {
     addDetailModal.classList.add('visible');
     toggleBackdrop();
-
 }
 
 const toggleBackdrop = () => {

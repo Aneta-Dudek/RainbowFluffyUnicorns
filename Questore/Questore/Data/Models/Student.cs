@@ -1,18 +1,21 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Questore.Data.Models;
 
 namespace Questore.Models
 {
-    public class Student
+    public class Student : User
     {
+        public Student()
+        {
+            Role = "student";
+        }
+
         public int Id { get; set; }
 
         public string FirstName { get; set; }
 
         public string LastName { get; set; }
-
-        public string Email { get; set; }
-
-        public string Password { get; set; }
 
         public int Coolcoins { get; set; }
 

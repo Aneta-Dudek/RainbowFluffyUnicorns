@@ -912,13 +912,13 @@ input[type="submit"]:focus, input[type="image"] {
         width: calc(50% - 5px);
     }
 
-    .item-inner-container-team-view:nth-child(3n + 3) {
-        margin-right: 10px;
-    }
+        .item-inner-container-team-view:nth-child(3n + 3) {
+            margin-right: 10px;
+        }
 
-    .item-inner-container-team-view:nth-child(2n + 2) {
-        margin-right: 0;
-    }
+        .item-inner-container-team-view:nth-child(2n + 2) {
+            margin-right: 0;
+        }
 
     .item:nth-child(3n + 2) {
         margin-left: 15px;
@@ -929,16 +929,11 @@ input[type="submit"]:focus, input[type="image"] {
         margin-right: 0;
     }
 
-    /*SIDE-MENU*/
-    .menu-container {
-        width: 100px;
-        min-width: 100px;
-        padding-left: 0;
+    .container-element:nth-child(n) {
+        max-width: 250px;
+        margin: 15px auto 0 auto;
     }
 
-    .singe-menu-name {
-        display: none;
-    }
 
     .details-wrapper-side-menu {
         display: none;

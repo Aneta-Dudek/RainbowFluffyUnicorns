@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Questore.Models;
 using Questore.Persistence;
@@ -10,27 +9,39 @@ using System.Text.Json;
 
 namespace Questore.Services
 {
-    public class ArtifactService : ArtifactDAO, IArtifactService
+    public class ArtifactService : IArtifactService
     {
         private readonly ISession _session;
+        private readonly IArtifactDAO _artifactDao;
 
         private Student ActiveStudent => JsonSerializer.Deserialize<Student>(_session.GetString("user"));
 
-        public ArtifactService(IServiceProvider services, IConfiguration configuration) : base(configuration)
+        public ArtifactService(IServiceProvider services, IArtifactDAO artifactDao)
         {
             _session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+            _artifactDao = artifactDao;
         }
 
         public IEnumerable<Artifact> GetAffordableArtifacts()
         {
-            var artifacts = GetArtifacts().ToList();
+            var artifacts = _artifactDao.GetArtifacts().ToList();
             CheckAffordability(artifacts);
             return artifacts;
         }
 
         public void BuyArtifact(int id)
         {
-            BuyArtifact(id, ActiveStudent.Id);
+            _artifactDao.BuyArtifact(id, ActiveStudent.Id);
+        }
+
+        public void UseArtifact(int id)
+        {
+            _artifactDao.UseArtifact(id);
+        }
+
+        public void DeleteStudentArtifact(int id)
+        {
+            _artifactDao.DeleteStudentArtifact(id);
         }
 
         private void CheckAffordability(IEnumerable<Artifact> artifacts)

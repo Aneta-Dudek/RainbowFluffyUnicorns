@@ -5,11 +5,11 @@ namespace Questore.Controllers
 {
     public class ArtifactController : Controller
     {
-        private readonly ArtifactService _artifactService;
+        private readonly IArtifactService _artifactService;
 
         public ArtifactController(IArtifactService artifactService)
         {
-            _artifactService = (ArtifactService)artifactService;
+            _artifactService = artifactService;
         }
         public IActionResult Index()
         {

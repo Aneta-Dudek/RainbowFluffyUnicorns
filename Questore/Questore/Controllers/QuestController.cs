@@ -6,16 +6,16 @@ namespace Questore.Controllers
 {
     public class QuestController : Controller
     {
-        private readonly QuestService _questService;
+        private readonly IQuestService _questService;
 
         public QuestController(IQuestService questService)
         {
-            _questService = (QuestService)questService;
+            _questService = questService;
         }
 
         public IActionResult Index()
         {
-            var quests = _questService.GetQuests().ToList();
+            var quests = _questService.GetQuests();
             return View(quests);
         }
 

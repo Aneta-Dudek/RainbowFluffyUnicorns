@@ -10,21 +10,19 @@ using System.Text.Json;
 
 namespace Questore.Controllers
 {
-    public class ArtifactController : Controller
+    public class ArtifactController : BaseController
     {
         private readonly IArtifactDAO _artifactDao;
-
-        private readonly ISession _session;
 
         private readonly IStudentDAO _studentDao;
 
         private Student ActiveStudent => JsonSerializer.Deserialize<Student>(_session.GetString("user"));
 
-        public ArtifactController(IServiceProvider services, IArtifactDAO artifactDao, IStudentDAO studentDao)
+        public ArtifactController(IServiceProvider services, IArtifactDAO artifactDao, IStudentDAO studentDao) :
+            base(services)
         {
             _artifactDao = artifactDao;
             _studentDao = studentDao;
-            _session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
         }
         public IActionResult Index()
         {

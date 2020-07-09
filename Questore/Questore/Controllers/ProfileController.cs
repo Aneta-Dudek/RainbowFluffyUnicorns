@@ -12,7 +12,7 @@ using Questore.ViewModel;
 
 namespace Questore.Controllers
 {
-    public class ProfileController : Controller
+    public class ProfileController : BaseController
     {
         private readonly IStudentDAO _studentDao;
 
@@ -20,17 +20,15 @@ namespace Questore.Controllers
 
         private readonly IPhotoAccessor _photoAccessor;
 
-        private readonly ISession _session;
-
         private Student ActiveStudent => JsonSerializer.Deserialize<Student>(_session.GetString("user"));
 
 
         public ProfileController(IServiceProvider services, IStudentDAO studentDao, IDetailsDAO detailsDao, IPhotoAccessor photoAccessor)
+            : base(services) 
         {
             _studentDao = studentDao;
             _detailsDao = detailsDao;
             _photoAccessor = photoAccessor;
-            _session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
         }
 
         [HttpPost]

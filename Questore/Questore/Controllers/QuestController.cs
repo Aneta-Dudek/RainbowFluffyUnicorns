@@ -9,21 +9,19 @@ using System.Text.Json;
 
 namespace Questore.Controllers
 {
-    public class QuestController : Controller
+    public class QuestController : BaseController
     {
         private readonly IQuestDAO _questDao;
-
-        private readonly ISession _session;
 
         private readonly IStudentDAO _student;
 
         private Student ActiveStudent => JsonSerializer.Deserialize<Student>(_session.GetString("user"));
 
 
-        public QuestController(IServiceProvider services, IQuestDAO questDao, IStudentDAO studentDao)
+        public QuestController(IServiceProvider services, IQuestDAO questDao, IStudentDAO studentDao) :
+            base(services)
         {
             _questDao = questDao;
-            _session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
             _student = studentDao;
         }
 

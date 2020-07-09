@@ -5,23 +5,19 @@ using Questore.Persistence;
 using System;
 using System.Text.Json;
 using Microsoft.Extensions.Configuration;
+using Questore.Data.Interfaces;
 using Questore.Dtos;
 
 namespace Questore.Controllers
 {
-    public class LoginController : Controller
+    public class LoginController : BaseController
     {
-        private readonly IStudentDAO _studentDao;
-
         private Authentication _authentication;
 
-        private ISession _session;
-
-        public LoginController(IServiceProvider services, IConfiguration configuration, IStudentDAO studentDao)
+        public LoginController(IServiceProvider services, IAdminDAO adminDao, IConfiguration configuration, IStudentDAO studentDao) 
+            : base(services)
         {
-            _studentDao = studentDao;
-            _authentication = new Authentication(studentDao, configuration);
-            _session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
+            _authentication = new Authentication(studentDao, adminDao, configuration);
         }
 
         public IActionResult Index()
@@ -32,17 +28,24 @@ namespace Questore.Controllers
         [HttpPost]
         public IActionResult Index(Login login)
         {
-            if (!ModelState.IsValid)
-                return View(login);
-
             var user = _authentication.Authenticate(login);
-            if (user != null)
+            if (user == null)
+            {
+                ModelState.AddModelError("", "Username/password not found");
+                return View(login);
+            }
+
+            if (user.Role == "student")
             {
                 _session.SetString("user", JsonSerializer.Serialize<object>(user));
                 return RedirectToAction("index", "quest");
+            } 
+            else if (user.Role == "admin")
+            {
+                _session.SetString("user", JsonSerializer.Serialize<object>(user));
+                return RedirectToAction("Index", "Admin");
             }
 
-            ModelState.AddModelError("", "Username/password not found");
             return View(login);
         }
 

@@ -61,10 +61,6 @@ namespace Questore.Persistence
 
                 AssignStudentDetails(student);
             }
-
-
-
-
             return student;
         }
 
@@ -92,7 +88,6 @@ namespace Questore.Persistence
             command.Parameters.Add("image_url", NpgsqlDbType.Varchar).Value = "default_url";
             command.Parameters.Add("credentials", NpgsqlDbType.Integer).Value = student.CredentialsId;
             command.Parameters.Add("photo_id", NpgsqlDbType.Varchar).Value = "default";
-
 
             command.Prepare();
             command.ExecuteNonQuery();

@@ -4,6 +4,8 @@
     {
         public enum StudentEnum { Id, FirstName, LastName, Coolcoins, Experience, ImageUrl, PublicImageId, Credentials }
 
+        public enum AdminEnum { Id, FirstName, LastName, ImageUrl, PublicImageId, Credentials }
+
         public enum ArtifactEnum { Id, Name, Description, ImageUrl, Price, IsUsed, StudentArtifactId }
 
         public enum ClassEnum { Id, Name, DateStarted, ImageUrl }

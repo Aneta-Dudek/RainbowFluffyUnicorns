@@ -12,7 +12,7 @@ namespace Questore.Controllers
 
         public ErrorController()
         {
-            _iLog = Data.Logger.Logger.GetInstance;
+            _iLog = Data.Logger.Logger.Instance;
         }
 
         public IActionResult Index()

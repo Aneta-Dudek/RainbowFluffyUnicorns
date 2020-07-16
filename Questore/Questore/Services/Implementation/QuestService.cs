@@ -1,13 +1,14 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.DependencyInjection;
 using Questore.Data.Interfaces;
 using Questore.Data.Models;
+using Questore.Services.Interfaces;
 
-namespace Questore.Services
+namespace Questore.Services.Implementation
 {
     public class QuestService : IQuestService
     {

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Questore.Data.Models;
 
-namespace Questore.Services
+namespace Questore.Services.Interfaces
 {
     public interface IArtifactService
     {

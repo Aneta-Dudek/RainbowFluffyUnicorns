@@ -3,6 +3,8 @@ using Questore.Data.Interfaces;
 using Questore.Data.Persistence;
 using Questore.Data.Photos;
 using Questore.Services;
+using Questore.Services.Implementation;
+using Questore.Services.Interfaces;
 
 namespace Questore.ServicesExtensions
 {

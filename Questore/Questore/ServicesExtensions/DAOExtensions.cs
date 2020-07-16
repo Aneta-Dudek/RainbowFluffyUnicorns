@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Questore.Persistence;
-using Questore.Photos;
+using Questore.Data.Interfaces;
+using Questore.Data.Persistence;
+using Questore.Data.Photos;
 using Questore.Services;
 
 namespace Questore.ServicesExtensions

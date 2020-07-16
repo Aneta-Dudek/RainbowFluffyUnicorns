@@ -1,11 +1,12 @@
-﻿using Npgsql;
-using NpgsqlTypes;
-using Questore.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.Extensions.Configuration;
+using Npgsql;
+using NpgsqlTypes;
+using Questore.Data.Interfaces;
+using Questore.Data.Models;
 
-namespace Questore.Persistence
+namespace Questore.Data.Persistence
 {
     public class StudentDAO : DefaultDAO, IStudentDAO
     {

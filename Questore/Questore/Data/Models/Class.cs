@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Questore.Models
+namespace Questore.Data.Models
 {
     public class Class
     {

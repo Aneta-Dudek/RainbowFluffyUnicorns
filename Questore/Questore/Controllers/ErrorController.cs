@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Questore.Logger;
+using Questore.Data.Logger;
 
 
 namespace Questore.Controllers
@@ -12,7 +12,7 @@ namespace Questore.Controllers
 
         public ErrorController()
         {
-            _iLog = Logger.Logger.GetInstance;
+            _iLog = Data.Logger.Logger.GetInstance;
         }
 
         public IActionResult Index()

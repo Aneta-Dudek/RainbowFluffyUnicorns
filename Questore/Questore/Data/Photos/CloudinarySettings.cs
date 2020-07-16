@@ -1,4 +1,4 @@
-﻿namespace Questore.Photos
+﻿namespace Questore.Data.Photos
 {
     public class CloudinarySettings
     {

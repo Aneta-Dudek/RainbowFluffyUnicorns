@@ -1,5 +1,5 @@
-﻿using Questore.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Questore.Data.Models;
 
 namespace Questore.Services
 {

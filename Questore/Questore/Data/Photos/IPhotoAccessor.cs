@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Questore.Dtos;
+using Questore.Data.Dtos;
 
-namespace Questore.Photos
+namespace Questore.Data.Photos
 {
     public interface IPhotoAccessor
     {

@@ -1,11 +1,11 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Questore.Models;
-using Questore.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.Json;
+using Questore.Data.Interfaces;
+using Questore.Data.Models;
 
 namespace Questore.Services
 {

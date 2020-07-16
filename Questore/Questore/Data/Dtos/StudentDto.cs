@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Questore.Models;
+using Questore.Data.Models;
 
 namespace Questore.Data.Dtos
 {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Questore.Dtos
+namespace Questore.Data.Dtos
 {
     public class Login
     {

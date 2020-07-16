@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Questore.Data.Photos;
 using Questore.Middleware;
-using Questore.Photos;
 using Questore.ServicesExtensions;
 
 namespace Questore

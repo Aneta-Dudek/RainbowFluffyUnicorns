@@ -1,8 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-
-namespace Questore.Dtos
+namespace Questore.Data.Dtos
 {
     [Serializable]
     public class DetailDto

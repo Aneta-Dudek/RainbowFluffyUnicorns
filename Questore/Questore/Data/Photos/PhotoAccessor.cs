@@ -1,11 +1,11 @@
-﻿using Microsoft.AspNetCore.Http;
-using Questore.Dtos;
-using System;
+﻿using System;
 using CloudinaryDotNet;
 using CloudinaryDotNet.Actions;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Options;
+using Questore.Data.Dtos;
 
-namespace Questore.Photos
+namespace Questore.Data.Photos
 {
     public class PhotoAccessor : IPhotoAccessor
     {

@@ -3,10 +3,8 @@ using Npgsql;
 using Questore.Data.Dtos;
 using Questore.Data.Interfaces;
 using Questore.Data.Models;
-using Questore.Dtos;
- using Questore.Models;
 
-namespace Questore.Persistence
+namespace Questore.Data.Persistence
 {
     public class Authentication : DefaultDAO, IAuthentication
     {

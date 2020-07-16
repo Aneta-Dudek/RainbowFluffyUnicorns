@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Npgsql;
-using NpgsqlTypes;
-using Questore.Dtos;
-using Questore.Models;
+using Questore.Data.Dtos;
+using Questore.Data.Interfaces;
 
-namespace Questore.Persistence
+namespace Questore.Data.Persistence
 {
     public class DetailsDAO : DefaultDAO, IDetailsDAO
     {

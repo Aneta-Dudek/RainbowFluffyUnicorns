@@ -29,14 +29,14 @@ namespace XUnitTestQuestore
             _artifacts.Clear();
         }
 
-        private void Seed()
+        private void SeedArtifacts()
         {
             _artifacts = Builder<Artifact>
                 .CreateListOfSize(100)
                 .Build();
         }
 
-        private void Seed_OneArtifact_100Coins()
+        private void SeedArtifacts_Where_OneArtifactIsWorth100Coins()
         {
             var priceGenerator = new RandomGenerator();
             _artifacts = Builder<Artifact>
@@ -52,7 +52,7 @@ namespace XUnitTestQuestore
         public void GetArtifact_AfterAddingArtifact_ContainsArtifact()
         {
             //given
-            Seed();
+            SeedArtifacts();
             var artifactDao = ArtifactDaoMock();
 
             var artifact = Builder<Artifact>.CreateNew()
@@ -73,7 +73,7 @@ namespace XUnitTestQuestore
         public void GetAffordableArtifacts_Having100Coins_AffordsOneArtifact()
         {
             //given
-            Seed_OneArtifact_100Coins();
+            SeedArtifacts_Where_OneArtifactIsWorth100Coins();
             var artifactDao = ArtifactDaoMock();
             var serviceProvider = ServiceProviderMock(HttpContextAccessorMock(
                 new Student()
@@ -129,7 +129,6 @@ namespace XUnitTestQuestore
         {
 
             var mockHttpContextAccessor = new Mock<IHttpContextAccessor>();
-            var context = new DefaultHttpContext();
             mockHttpContextAccessor.Setup(_ => _.HttpContext.Session).Returns(SessionMock(student));
             return mockHttpContextAccessor.Object;
         }

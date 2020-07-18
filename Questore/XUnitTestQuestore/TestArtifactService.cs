@@ -49,27 +49,6 @@ namespace XUnitTestQuestore
         }
 
         [Fact]
-        public void GetArtifact_AfterAddingArtifact_ContainsArtifact()
-        {
-            //given
-            SeedArtifacts();
-            var artifactDao = ArtifactDaoMock();
-
-            var artifact = Builder<Artifact>.CreateNew()
-                .With(artifact => artifact.Id = 101)
-                .Build();
-
-            //when
-            artifactDao.AddArtifact(artifact);
-            var retreievedArtifact = artifactDao.GetArtifact(101);
-
-            //then
-            Assert.Contains(artifact, _artifacts);
-            Assert.Equal(artifact, retreievedArtifact);
-
-        }
-
-        [Fact]
         public void GetAffordableArtifacts_Having100Coins_AffordsOneArtifact()
         {
             //given
@@ -125,6 +104,7 @@ namespace XUnitTestQuestore
 
             return serviceProvider.Object;
         }
+
         private IHttpContextAccessor HttpContextAccessorMock(Student student)
         {
 
@@ -132,6 +112,7 @@ namespace XUnitTestQuestore
             mockHttpContextAccessor.Setup(_ => _.HttpContext.Session).Returns(SessionMock(student));
             return mockHttpContextAccessor.Object;
         }
+
         private static ISession SessionMock(Student student)
         {
             MockHttpSession httpcontext = new MockHttpSession();

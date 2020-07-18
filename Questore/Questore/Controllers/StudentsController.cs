@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Questore.Controllers
 {
-    public class ViewsController : Controller
+    public class StudentsController : Controller
     {
         public IActionResult Index()
         {

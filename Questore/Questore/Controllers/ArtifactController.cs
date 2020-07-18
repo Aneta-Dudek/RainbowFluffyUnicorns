@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Questore.Services;
 using Questore.Services.Interfaces;
 
 namespace Questore.Controllers
@@ -14,7 +13,7 @@ namespace Questore.Controllers
         }
         public IActionResult Index()
         {
-            var artifacts = _artifactService.GetAffordableArtifacts();
+            var artifacts = _artifactService.MarkAffordableArtifacts();
             return View(artifacts);
         }
 

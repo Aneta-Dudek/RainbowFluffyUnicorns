@@ -1,14 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Npgsql;
 using NpgsqlTypes;
 using Questore.Data.Interfaces;
 using Questore.Data.Models;
-using Questore.Models;
-using Questore.Persistence;
 
 namespace Questore.Data.Persistence
 {

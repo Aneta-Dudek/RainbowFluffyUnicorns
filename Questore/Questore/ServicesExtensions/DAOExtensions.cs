@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Questore.Data.Interfaces;
 using Questore.Data.Persistence;
-using Questore.Persistence;
-using Questore.Photos;
+using Questore.Data.Photos;
+using Questore.Services.Implementation;
+using Questore.Services.Interfaces;
 
 namespace Questore.ServicesExtensions
 {
@@ -15,6 +16,8 @@ namespace Questore.ServicesExtensions
                 .AddScoped<IStudentDAO, StudentDAO>()
                 .AddScoped<IDetailsDAO, DetailsDAO>()
                 .AddScoped<IAdminDAO, AdminDAO>()
+                .AddScoped<IQuestService, QuestService>()
+                .AddScoped<IArtifactService, ArtifactService>()
                 .AddScoped<IPhotoAccessor, PhotoAccessor>();
 
             return services;

@@ -49,7 +49,7 @@ namespace XUnitTestQuestore
         }
 
         [Fact]
-        public void GetAffordableArtifacts_Having100Coins_AffordsOneArtifact()
+        public void GetArtifacts_Having100Coins_AffordsOneArtifact()
         {
             //given
             SeedArtifacts_Where_OneArtifactIsWorth100Coins();
@@ -61,12 +61,12 @@ namespace XUnitTestQuestore
                 }));
             var artifactService = new ArtifactService(serviceProvider, artifactDao);
 
-
             //when
-            var sut = artifactService.MarkAffordableArtifacts();
+            var sut = artifactService.GetArtifacts();
             var affordableCount = sut.Count(a => a.IsAffordable == true);
-            Assert.Equal(1, affordableCount);
 
+            //then
+            Assert.Equal(1, affordableCount);
         }
 
         private IArtifactDAO ArtifactDaoMock()

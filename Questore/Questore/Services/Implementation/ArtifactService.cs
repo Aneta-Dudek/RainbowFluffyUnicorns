@@ -15,7 +15,7 @@ namespace Questore.Services.Implementation
         private readonly ISession _session;
         private readonly IArtifactDAO _artifactDao;
 
-        private Student ActiveStudent => JsonSerializer.Deserialize<Student>(_session.GetString("user"));
+        private User ActiveUser => JsonSerializer.Deserialize<User>(_session.GetString("user"));
 
         public ArtifactService(IServiceProvider services, IArtifactDAO artifactDao)
         {
@@ -32,21 +32,32 @@ namespace Questore.Services.Implementation
 
         public void BuyArtifact(int id)
         {
-            _artifactDao.BuyArtifact(id, ActiveStudent.Id);
+            if (ActiveUser.Role == "admin")
+            {
+                _artifactDao.BuyArtifact(id, ActiveUser.Id);
+            }
         }
 
         public void UseArtifact(int id)
         {
-            _artifactDao.UseArtifact(id);
+            if (ActiveUser.Role == "admin")
+            {
+                _artifactDao.UseArtifact(id);
+            }
         }
 
         public void DeleteStudentArtifact(int id)
         {
-            _artifactDao.DeleteStudentArtifact(id);
+            if (ActiveUser.Role == "admin")
+            {
+                _artifactDao.DeleteStudentArtifact(id);
+            }
         }
 
         private void CheckAffordability(IEnumerable<Artifact> artifacts)
         {
+            var ActiveStudent = (Student) ActiveUser;
+
             foreach (var artifact in artifacts)
             {
                 artifact.IsAffordable = ActiveStudent.Coolcoins >= artifact.Price;

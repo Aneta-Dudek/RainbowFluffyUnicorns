@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 
 namespace Questore.Data.Models
 {
-    public abstract class User
+    public class User
     {
+        public int Id { get; set; }
+
         public int CredentialsId { get; set; }
 
         public string Email { get; set; }

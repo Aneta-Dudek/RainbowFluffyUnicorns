@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Questore.Models;
+using Questore.Data.Models;
 
-namespace Questore.Persistence
+namespace Questore.Data.Interfaces
 {
     public interface IStudentDAO
     {

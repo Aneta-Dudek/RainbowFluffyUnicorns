@@ -1,6 +1,6 @@
-﻿using Questore.Dtos;
+﻿using Questore.Data.Dtos;
 
-namespace Questore.Persistence
+namespace Questore.Data.Interfaces
 {
     public interface IDetailsDAO
     {

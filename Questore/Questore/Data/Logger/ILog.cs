@@ -1,4 +1,4 @@
-﻿namespace Questore.Logger
+﻿namespace Questore.Data.Logger
 {
     public interface ILog
     {

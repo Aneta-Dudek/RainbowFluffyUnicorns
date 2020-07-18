@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Npgsql;
 
-namespace Questore.Persistence
+namespace Questore.Data.Persistence
 {
     public class DefaultDAO
     {

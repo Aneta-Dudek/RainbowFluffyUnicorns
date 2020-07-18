@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
-using Questore.Dtos;
-using Questore.Models;
+using Questore.Data.Dtos;
+using Questore.Data.Models;
 
 namespace Questore.ViewModel
 {

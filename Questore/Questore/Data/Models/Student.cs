@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using Questore.Data.Models;
+﻿using System.Collections.Generic;
 
-namespace Questore.Models
+namespace Questore.Data.Models
 {
     public class Student : User
     {

@@ -1,4 +1,4 @@
-﻿namespace Questore.Models
+﻿namespace Questore.Data.Models
 {
     public class Quest
     {

@@ -1,61 +1,40 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
-using Questore.Models;
-using Questore.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json;
+﻿using Microsoft.AspNetCore.Mvc;
+using Questore.Services;
+using Questore.Services.Interfaces;
 
 namespace Questore.Controllers
 {
-    public class ArtifactController : BaseController
+    public class ArtifactController : Controller
     {
-        private readonly IArtifactDAO _artifactDao;
+        private readonly IArtifactService _artifactService;
 
-        private readonly IStudentDAO _studentDao;
-
-        private Student ActiveStudent => JsonSerializer.Deserialize<Student>(_session.GetString("user"));
-
-        public ArtifactController(IServiceProvider services, IArtifactDAO artifactDao, IStudentDAO studentDao) :
-            base(services)
+        public ArtifactController(IArtifactService artifactService)
         {
-            _artifactDao = artifactDao;
-            _studentDao = studentDao;
+            _artifactService = artifactService;
         }
         public IActionResult Index()
         {
-            var artifacts = _artifactDao.GetArtifacts().ToList();
-            CheckAffordability(artifacts);
+            var artifacts = _artifactService.GetAffordableArtifacts();
             return View(artifacts);
-        }
-
-        private void CheckAffordability(IEnumerable<Artifact> artifacts)
-        {
-            foreach (var artifact in artifacts)
-            {
-                artifact.IsAffordable = ActiveStudent.Coolcoins >= artifact.Price;
-            }
         }
 
         [HttpPost]
         public IActionResult Use(int id)
         {
-            _artifactDao.UseArtifact(id);
+            _artifactService.UseArtifact(id);
             return RedirectToAction("Index", "Profile");
         }
 
         [HttpPost]
         public IActionResult Buy(int id)
         {
-            _artifactDao.BuyArtifact(id, ActiveStudent.Id);
+            _artifactService.BuyArtifact(id);
             return RedirectToAction("Index", "Profile");
         }
 
         public IActionResult DeleteStudentArtifact(int id)
         {
-            _artifactDao.DeleteStudentArtifact(id);
+            _artifactService.DeleteStudentArtifact(id);
             return RedirectToAction("Index", "Profile");
         }
     }

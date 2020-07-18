@@ -1,5 +1,5 @@
-﻿using Questore.Data.Models;
-using Questore.Dtos;
+﻿using Questore.Data.Dtos;
+using Questore.Data.Models;
 
 namespace Questore.Data.Interfaces
 {

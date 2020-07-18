@@ -1,4 +1,4 @@
-﻿namespace Questore.Persistence
+﻿namespace Questore.Data.Persistence
 {
     public static class DBUtilities
     {

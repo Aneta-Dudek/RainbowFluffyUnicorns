@@ -19,6 +19,7 @@ time, mark, audio, video {
     font: inherit;
     vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -78,6 +79,102 @@ h2 {
     display: inline;
     font-weight: normal;
     font-size: 24px;
+}
+
+ /*SIDE-MENU*/
+
+ .center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.shadow {
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.25);
+  }
+
+ .menu-container {
+    max-width: 230px;
+    background: #ECECEC;
+    padding-top: 20px;
+    padding-left: 30px;
+}
+
+.inner-menu-container.admin {
+    display: flex;
+}
+
+.avatar-image {
+    margin-left: 28px;
+    height: 50px;
+    width: 50px;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.details-wrapper-side-menu {
+    margin: auto 0 auto 15px;
+}
+
+    .details-wrapper-side-menu .name {
+        font-size: 1em;
+    }
+
+    .details-wrapper-side-menu .role {
+        font-size: 0.7em;
+    }
+
+.inner-menu-container.list {
+    display: flex;
+    flex-direction: column;
+}
+
+.single-menu-container {
+    display: flex;
+    margin-left: 25px;
+    margin-bottom: 5px;
+}
+
+    .single-menu-container:first-child {
+        margin-top: 20px;
+    }
+
+.symbol {
+    width: 25px;
+    height: 25px;
+    margin: 5px 0 5px 15px;
+}
+
+.singe-menu-name {
+    margin: 7px 0 5px 15px;
+    vertical-align: middle;
+}
+
+    .singe-menu-name:focus {
+        color: #49c8d9
+    }
+
+.active-icon {
+    display: none;
+}
+
+.single-menu-container.active-side .icon {
+    display: none;
+}
+
+.single-menu-container.active-side .active-icon {
+    display: block;
+}
+
+.active-side {
+    color: #49C8D9;
+    background-color: #fafafa;
+}
+
+.single-menu-container:hover {
+    background-color: #DADADA;
 }
 
 /* LOGIN CLASSES */

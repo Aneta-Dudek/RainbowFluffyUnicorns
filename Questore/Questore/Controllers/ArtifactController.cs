@@ -13,7 +13,7 @@ namespace Questore.Controllers
         }
         public IActionResult Index()
         {
-            var artifacts = _artifactService.MarkAffordableArtifacts();
+            var artifacts = _artifactService.GetArtifacts();
             return View(artifacts);
         }
 

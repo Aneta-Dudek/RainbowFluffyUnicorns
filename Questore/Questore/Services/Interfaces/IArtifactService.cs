@@ -5,7 +5,7 @@ namespace Questore.Services.Interfaces
 {
     public interface IArtifactService
     {
-        public IEnumerable<Artifact> MarkAffordableArtifacts();
+        public IEnumerable<Artifact> GetArtifacts();
 
         public void BuyArtifact(int id);
 

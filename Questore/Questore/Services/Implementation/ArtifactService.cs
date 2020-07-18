@@ -23,10 +23,10 @@ namespace Questore.Services.Implementation
             _artifactDao = artifactDao;
         }
 
-        public IEnumerable<Artifact> MarkAffordableArtifacts()
+        public IEnumerable<Artifact> GetArtifacts()
         {
             var artifacts = _artifactDao.GetArtifacts().ToList();
-            CheckAffordability(artifacts);
+            SetArtifactsAffordability(artifacts);
             return artifacts;
         }
 
@@ -45,7 +45,7 @@ namespace Questore.Services.Implementation
             _artifactDao.DeleteStudentArtifact(id);
         }
 
-        private void CheckAffordability(IEnumerable<Artifact> artifacts)
+        private void SetArtifactsAffordability(IEnumerable<Artifact> artifacts)
         {
             foreach (var artifact in artifacts)
             {

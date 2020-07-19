@@ -1,0 +1,19 @@
+﻿@model Questore.Data.Dtos.DetailDto
+
+<div id="backdrop"></div>
+<div class="modal card" id="add-modal">
+    <form asp-action="AddDetail" method="post">
+        <div class="modal__content">
+            <div class="center-content" ><h2>Add new detail</h2></div>
+            <div asp-validation-summary="All" class="font-red"></div>
+            <label asp-for="Name" class="label-style"></label>
+            <input id="name-input" asp-for="Name" type="text" class="input-style" value="@Model.Name"/>
+            <label asp-for="Content" class="label-style"></label>
+            <input id="description-input" asp-for="Content" class="input-style" type="text" value="@Model.Content" />
+        </div>
+        <div class="modal__actions">
+            <input type="submit" id="add" value="add" class="button green-btn margin-right" />
+            <button id="cancel" class="button red-btn" type="reset">cancel</button>
+        </div>
+    </form>
+</div>

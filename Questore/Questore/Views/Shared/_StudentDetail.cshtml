@@ -1,8 +1,13 @@
-﻿@model StudentDetail
+﻿@model Questore.Data.Models.StudentDetail
 
 <div class="input">
     <div class="text-padding">
+        <form asp-action="DeleteStudentDetail" asp-controller="Profile" asp-route-id="@Model.Id" method="post">
+            <input type="image" src="assets/buttons/interface.png" border="0" alt="Delete" class="remove-on-detail" />
+        </form>
+
         @Model.Name
+
     </div>
     <div class="text-box text-padding">
         @Model.Content

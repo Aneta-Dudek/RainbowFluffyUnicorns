@@ -2,7 +2,7 @@
     ViewData["Title"] = "View";
     Layout = "~/Views/Shared/_LayoutLogin.cshtml";
 }
-@model Login
+@model Questore.Data.Dtos.Login
 
 <div class="login-box move-down">
     <div>
@@ -15,9 +15,9 @@
 <div class="login-box big-margin-top">
     <div class="login-box-inside gradient-border">
         <form asp-action="Index" method="post">
-            <div class="center-content"><h2 class="margin-on-bot">Login</h2></div>
+            <div class="center-content"><h2>Login</h2></div>
             <p>
-                @Html.ValidationSummary(false, "", new { @class = "label-style font-red" })
+                @Html.ValidationSummary(false, "", new {@class = "label-style font-red"})
                 <br/>
             </p>
             <p>

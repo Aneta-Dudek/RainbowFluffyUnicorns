@@ -10,11 +10,8 @@ namespace Questore.Data.Persistence
     public class Authentication : DefaultDAO, IAuthentication
     {
         private readonly IStudentDAO _studentDao;
-
         private readonly IAdminDAO _adminDao;
-
         private readonly string _table = "student";
-
         private readonly string _userTb = "credential";
 
         public Authentication(IStudentDAO studentDao, IAdminDAO adminDao, IConfiguration configuration) : base(configuration)

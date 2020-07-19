@@ -6,11 +6,8 @@ namespace Questore.Services.Interfaces
     public interface IArtifactService
     {
         public IEnumerable<Artifact> GetArtifacts();
-
         public void BuyArtifact(int id);
-
         public void UseArtifact(int id);
-
         public void DeleteStudentArtifact(int id);
     }
 }

@@ -15,13 +15,9 @@ namespace Questore.Controllers
     public class ProfileController : BaseController
     {
         private readonly IStudentDAO _studentDao;
-
         private readonly IDetailsDAO _detailsDao;
-
         private readonly IPhotoAccessor _photoAccessor;
-
         private Student ActiveStudent => JsonSerializer.Deserialize<Student>(_session.GetString("user"));
-
 
         public ProfileController(IServiceProvider services, IStudentDAO studentDao, IDetailsDAO detailsDao, IPhotoAccessor photoAccessor)
             : base(services) 

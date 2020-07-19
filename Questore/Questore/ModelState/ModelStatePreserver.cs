@@ -20,7 +20,6 @@ namespace Questore.ModelState
 
             return JsonConvert.SerializeObject(errorList);
         }
-
         public static ModelStateDictionary DeserialiseModelState(string serialisedErrorList)
         {
             var errorList = JsonConvert.DeserializeObject<List<ModelStateTransferValue>>(serialisedErrorList);

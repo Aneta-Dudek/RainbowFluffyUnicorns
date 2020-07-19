@@ -14,7 +14,6 @@ namespace Questore.Services.Implementation
     {
         private readonly ISession _session;
         private readonly IArtifactDAO _artifactDao;
-
         private Student ActiveStudent => JsonSerializer.Deserialize<Student>(_session.GetString("user"));
 
         public ArtifactService(IServiceProvider services, IArtifactDAO artifactDao)

@@ -54,9 +54,7 @@ namespace Questore.Data.Photos
         public string DeletePhoto(string photoId)
         {
             var deleteParams = new DeletionParams(photoId);
-
             var result = _cloudinary.Destroy(deleteParams);
-
             return result.Result == "ok" ? result.Result : null;
         }
     }

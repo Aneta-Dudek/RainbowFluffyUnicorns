@@ -18,7 +18,6 @@ namespace Questore.Services.Implementation
         private readonly IStudentDAO _studentDao;
 
         private readonly IQuestDAO _questDao;
-
         private Student ActiveStudent => JsonSerializer.Deserialize<Student>(_session.GetString("user"));
 
         public QuestService(IServiceProvider services, IStudentDAO studentDao, IQuestDAO questDao)

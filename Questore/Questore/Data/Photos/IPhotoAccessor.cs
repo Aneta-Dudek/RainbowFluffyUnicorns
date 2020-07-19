@@ -6,7 +6,6 @@ namespace Questore.Data.Photos
     public interface IPhotoAccessor
     {
         public PhotoUploadResult AddPhoto(IFormFile file);
-
         public string DeletePhoto(string photoId);
     }
 }

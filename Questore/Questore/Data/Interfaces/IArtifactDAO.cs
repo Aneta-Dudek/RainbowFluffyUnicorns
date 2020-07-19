@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using Questore.Data.Models;
+﻿using Questore.Data.Models;
+using System.Collections.Generic;
 
 namespace Questore.Data.Interfaces
 {
     public interface IArtifactDAO
     {
-        IEnumerable<Artifact> GetArtifacts();
+        ICollection<Artifact> GetArtifacts();
         Artifact GetArtifact(int id);
         void AddArtifact(Artifact artifact);
         void UpdateArtifact(int id, Artifact updatedArtifact);

@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Npgsql;
 using NpgsqlTypes;
 using Questore.Data.Interfaces;
 using Questore.Data.Models;
+using System.Collections.Generic;
 
 namespace Questore.Data.Persistence
 {
@@ -15,7 +15,7 @@ namespace Questore.Data.Persistence
         {
         }
 
-        public IEnumerable<Artifact> GetArtifacts()
+        public ICollection<Artifact> GetArtifacts()
         {
             using var connection = Connection;
             var query = $"SELECT id, name, description, image_url, price " +

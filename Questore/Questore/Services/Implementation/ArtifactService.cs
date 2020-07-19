@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text.Json;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Questore.Data.Interfaces;
 using Questore.Data.Models;
 using Questore.Services.Interfaces;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text.Json;
 
 namespace Questore.Services.Implementation
 {
@@ -23,10 +23,10 @@ namespace Questore.Services.Implementation
             _artifactDao = artifactDao;
         }
 
-        public IEnumerable<Artifact> GetAffordableArtifacts()
+        public IEnumerable<Artifact> GetArtifacts()
         {
             var artifacts = _artifactDao.GetArtifacts().ToList();
-            CheckAffordability(artifacts);
+            SetArtifactsAffordability(artifacts);
             return artifacts;
         }
 
@@ -45,7 +45,7 @@ namespace Questore.Services.Implementation
             _artifactDao.DeleteStudentArtifact(id);
         }
 
-        private void CheckAffordability(IEnumerable<Artifact> artifacts)
+        private void SetArtifactsAffordability(IEnumerable<Artifact> artifacts)
         {
             foreach (var artifact in artifacts)
             {

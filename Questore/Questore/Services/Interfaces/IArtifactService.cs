@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using Questore.Data.Models;
+﻿using Questore.Data.Models;
+using System.Collections.Generic;
 
 namespace Questore.Services.Interfaces
 {
     public interface IArtifactService
     {
-        public IEnumerable<Artifact> GetAffordableArtifacts();
+        public IEnumerable<Artifact> GetArtifacts();
 
         public void BuyArtifact(int id);
 

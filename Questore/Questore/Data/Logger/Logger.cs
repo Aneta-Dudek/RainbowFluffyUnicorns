@@ -25,7 +25,7 @@ namespace Questore.Data.Logger
                 File.Create(filePath);
             }
 
-            using StreamWriter writer = new StreamWriter(filePath, true);
+            using var writer = new StreamWriter(filePath, true);
 
             writer.Write(sb.ToString());
             writer.Flush();

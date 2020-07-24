@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Questore.Data.Models
+﻿namespace Questore.Data.Models
 {
     public class Admin : User
     {
@@ -12,6 +7,7 @@ namespace Questore.Data.Models
         public string LastName { get; set; }
         public string ImageUrl { get; set; }
         public string PhotoId { get; set; }
+
         public Admin()
         {
             Role = "admin";

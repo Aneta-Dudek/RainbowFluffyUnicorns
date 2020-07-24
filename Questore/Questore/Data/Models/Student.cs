@@ -16,6 +16,7 @@ namespace Questore.Data.Models
         public IEnumerable<Team> Teams { get; set; }
         public IEnumerable<Artifact> Artifacts { get; set; }
         public IEnumerable<StudentDetail> Details { get; set; }
+
         public Student()
         {
             Role = "student";
